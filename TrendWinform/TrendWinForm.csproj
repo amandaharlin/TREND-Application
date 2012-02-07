@@ -1,0 +1,471 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TrendWinForm</RootNamespace>
+    <AssemblyName>TrendWinForm</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>E:\Users\Jesse_Harlin\Desktop\Trend\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>0.0.1.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>5158D233167DE80DED2774EF013DABAE1E0A339F</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>TrendWinForm_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.2.5.2\lib\NET35\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate, Version=1.2.0.712, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentNHibernate.1.2.0.712\lib\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="HibernatingRhinos.Profiler.Appender.v4.0">
+      <HintPath>E:\Users\Jesse_Harlin\Desktop\NHPROFILER\HibernatingRhinos.Profiler.Appender.v4.0.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Iesi.Collections.3.1.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="NHibernate, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.3.1.0.4000\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle">
+      <HintPath>..\packages\NHibernate.Castle.3.1.0.4000\lib\Net35\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutTrend.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutTrend.Designer.cs">
+      <DependentUpon>AboutTrend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyUtilities\FormTitleHelper.cs" />
+    <Compile Include="View_CaseBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View_CaseBrowser.Designer.cs">
+      <DependentUpon>View_CaseBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Create_ActiveUserFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Create_ActiveUserFile.Designer.cs">
+      <DependentUpon>Create_ActiveUserFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Create_BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Create_BaseForm.Designer.cs">
+      <DependentUpon>Create_BaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Create_Case.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Create_Case.Designer.cs">
+      <DependentUpon>Create_Case.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Create_Case_Subforms\ComputerInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Create_Case_Subforms\ComputerInformation.Designer.cs">
+      <DependentUpon>ComputerInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Create_Case_Subforms\CustomerandCaseInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Create_Case_Subforms\CustomerandCaseInformation.Designer.cs">
+      <DependentUpon>CustomerandCaseInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Create_Case_Subforms\ForensicProcessing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Create_Case_Subforms\ForensicProcessing.Designer.cs">
+      <DependentUpon>ForensicProcessing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Create_Case_Subforms\HardDriveInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Create_Case_Subforms\HardDriveInformation.Designer.cs">
+      <DependentUpon>HardDriveInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Create_Computer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Create_Computer.Designer.cs">
+      <DependentUpon>Create_Computer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Create_DestinationMedia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Create_DestinationMedia.Designer.cs">
+      <DependentUpon>Create_DestinationMedia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Create_Employee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Create_Employee.Designer.cs">
+      <DependentUpon>Create_Employee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Create_Firm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Create_Firm.Designer.cs">
+      <DependentUpon>Create_Firm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Create_FirmContact.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Create_FirmContact.Designer.cs">
+      <DependentUpon>Create_FirmContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Create_ForensicProcess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Create_ForensicProcess.Designer.cs">
+      <DependentUpon>Create_ForensicProcess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Create_HardDrive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Create_HardDrive.Designer.cs">
+      <DependentUpon>Create_HardDrive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Create_Raid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Create_Raid.Designer.cs">
+      <DependentUpon>Create_Raid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\Entities\ActiveUserFile.cs" />
+    <Compile Include="Domain\Entities\BaseEntity.cs" />
+    <Compile Include="Domain\Entities\Case.cs" />
+    <Compile Include="Domain\Entities\CdfInfo.cs" />
+    <Compile Include="Domain\Entities\Computer.cs" />
+    <Compile Include="Domain\Entities\DestinationMedia.cs" />
+    <Compile Include="Domain\Entities\Employee.cs" />
+    <Compile Include="Domain\Entities\Firm.cs" />
+    <Compile Include="Domain\Entities\FirmContact.cs" />
+    <Compile Include="Domain\Entities\ForensicProcess.cs" />
+    <Compile Include="Domain\Entities\HardDrive.cs" />
+    <Compile Include="Domain\Entities\NotesAndConclusion.cs" />
+    <Compile Include="Domain\Entities\Raid.cs" />
+    <Compile Include="Domain\ValueObjects\Address.cs" />
+    <Compile Include="Domain\ValueObjects\JumperDiagram.cs" />
+    <Compile Include="Domain\ValueObjects\Name.cs" />
+    <Compile Include="Domain\ValueObjects\PhoneNumber.cs" />
+    <Compile Include="Domain\Entities\UtilityList.cs" />
+    <Compile Include="Edit_UtilityLists.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Edit_UtilityLists.Designer.cs">
+      <DependentUpon>Edit_UtilityLists.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FluentMappings\ActiveUserFileMap.cs" />
+    <Compile Include="FluentMappings\AddressMap.cs" />
+    <Compile Include="FluentMappings\CaseMap.cs" />
+    <Compile Include="FluentMappings\CdfInfoMap.cs" />
+    <Compile Include="FluentMappings\ComputerMap.cs" />
+    <Compile Include="FluentMappings\DestiantionMediaMap.cs" />
+    <Compile Include="FluentMappings\EmployeeMap.cs" />
+    <Compile Include="FluentMappings\FirmContactMap.cs" />
+    <Compile Include="FluentMappings\FirmMap.cs" />
+    <Compile Include="FluentMappings\ForensicProcessMap.cs" />
+    <Compile Include="FluentMappings\HardDriveMap.cs" />
+    <Compile Include="FluentMappings\JumperDiagramMap.cs" />
+    <Compile Include="FluentMappings\NameMap.cs" />
+    <Compile Include="FluentMappings\NotesAndConclusionMap.cs" />
+    <Compile Include="FluentMappings\PhoneNumberMap.cs" />
+    <Compile Include="FluentMappings\RaidMap.cs" />
+    <Compile Include="FluentMappings\UtilityListMap.cs" />
+    <Compile Include="MDIParentMasterPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIParentMasterPage.Designer.cs">
+      <DependentUpon>MDIParentMasterPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Create_Case_Subforms\NotesConclusion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Create_Case_Subforms\NotesConclusion.Designer.cs">
+      <DependentUpon>NotesConclusion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Custom Controllers\Othercheckbox_textbox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Custom Controllers\Othercheckbox_textbox.Designer.cs">
+      <DependentUpon>Othercheckbox_textbox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Create_Case_Subforms\SubmitFeedback.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Create_Case_Subforms\SubmitFeedback.Designer.cs">
+      <DependentUpon>SubmitFeedback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyUtilities\EntitiesToComboBox.cs" />
+    <Compile Include="MyUtilities\EntitiesToListView.cs" />
+    <Compile Include="MyUtilities\ErrorProviders.cs" />
+    <Compile Include="MyUtilities\ListViewToDetailsFields.cs" />
+    <Compile Include="MyUtilities\RadioButtonListUtilities.cs" />
+    <Compile Include="MyUtilities\SelectSingleEntityById.cs" />
+    <Compile Include="MyUtilities\UserContolToValueObject.cs" />
+    <Compile Include="MyUtilities\UserControlToEntity.cs" />
+    <Compile Include="MyUtilities\UtilityListFormHelper.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Custom Controllers\YesCheckBox_TextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Custom Controllers\YesCheckBox_TextBox.Designer.cs">
+      <DependentUpon>YesCheckBox_TextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SessionConfig.cs" />
+    <Compile Include="TrendDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TrendDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="MyUtilities\UtilityQueries.cs" />
+    <EmbeddedResource Include="AboutTrend.resx">
+      <DependentUpon>AboutTrend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_CaseBrowser.resx">
+      <DependentUpon>View_CaseBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Create_ActiveUserFile.resx">
+      <DependentUpon>Create_ActiveUserFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Create_BaseForm.resx">
+      <DependentUpon>Create_BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Create_Case.resx">
+      <DependentUpon>Create_Case.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Create_Case_Subforms\ComputerInformation.resx">
+      <DependentUpon>ComputerInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Create_Case_Subforms\CustomerandCaseInformation.resx">
+      <DependentUpon>CustomerandCaseInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Create_Case_Subforms\ForensicProcessing.resx">
+      <DependentUpon>ForensicProcessing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Create_Case_Subforms\HardDriveInformation.resx">
+      <DependentUpon>HardDriveInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Create_Computer.resx">
+      <DependentUpon>Create_Computer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Create_DestinationMedia.resx">
+      <DependentUpon>Create_DestinationMedia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Create_Employee.resx">
+      <DependentUpon>Create_Employee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Create_Firm.resx">
+      <DependentUpon>Create_Firm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Create_FirmContact.resx">
+      <DependentUpon>Create_FirmContact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Create_ForensicProcess.resx">
+      <DependentUpon>Create_ForensicProcess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Create_HardDrive.resx">
+      <DependentUpon>Create_HardDrive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Create_Raid.resx">
+      <DependentUpon>Create_Raid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit_UtilityLists.resx">
+      <DependentUpon>Edit_UtilityLists.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIParentMasterPage.resx">
+      <DependentUpon>MDIParentMasterPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Create_Case_Subforms\NotesConclusion.resx">
+      <DependentUpon>NotesConclusion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Custom Controllers\Othercheckbox_textbox.resx">
+      <DependentUpon>Othercheckbox_textbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Create_Case_Subforms\SubmitFeedback.resx">
+      <DependentUpon>SubmitFeedback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Custom Controllers\YesCheckBox_TextBox.resx">
+      <DependentUpon>YesCheckBox_TextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="TrendDataSet.xsc">
+      <DependentUpon>TrendDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TrendDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TrendDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TrendDataSet.xss">
+      <DependentUpon>TrendDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TrendWinForm_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SQL.Server.Compact.3.5">
+      <Visible>False</Visible>
+      <ProductName>SQL Server Compact 3.5 SP2</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TrendCustromControls\TrendCustromControls.csproj">
+      <Project>{80409D15-50E7-4E47-B7E7-0368E4305EA3}</Project>
+      <Name>TrendCustromControls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Icons\desktop_computer_64.png" />
+    <EmbeddedResource Include="Images\Icons\laptop_computer_64.png" />
+    <EmbeddedResource Include="Images\Icons\plus-icon.png" />
+    <None Include="Resources\view_details.gif" />
+    <None Include="Resources\application_tile_horizontal.png" />
+    <None Include="Resources\anon_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+    <None Include="Resources\icon_forward_16.png" />
+    <None Include="Resources\icon_palette.png" />
+    <None Include="Resources\paint.png" />
+    <EmbeddedResource Include="Images\Icons\platter_hardDrive_48.png" />
+    <EmbeddedResource Include="Images\Icons\solidState_hardDrive_48.png" />
+    <EmbeddedResource Include="Images\Icons\mystery_computer_48.png" />
+    <EmbeddedResource Include="Images\Icons\desktop_computer_48.png" />
+    <EmbeddedResource Include="Images\Icons\mobile_computer_48.png" />
+    <EmbeddedResource Include="Images\Icons\laptop_computer_48.png" />
+    <EmbeddedResource Include="Images\Icons\server_computer_48.png" />
+    <EmbeddedResource Include="Images\Icons\magnifyinglass-large_48.png" />
+    <EmbeddedResource Include="Images\Icons\DVD_48.png" />
+    <EmbeddedResource Include="Images\Icons\File_byJesse_48.png" />
+    <EmbeddedResource Include="Images\none_derp_360.jpg" />
+    <EmbeddedResource Include="Images\Icons\briefcase_closed_48x48.png" />
+    <EmbeddedResource Include="Images\Icons\briefcase_open_48x48.png" />
+    <EmbeddedResource Include="Images\formHeaderIcons\formState_Create.ico" />
+    <EmbeddedResource Include="Images\formHeaderIcons\formState_Edit.ico" />
+    <EmbeddedResource Include="Images\formHeaderIcons\formState_View.ico" />
+    <EmbeddedResource Include="Images\formHeaderIcons\formState_Contact.ico" />
+    <Content Include="laptop-computer_64x.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
