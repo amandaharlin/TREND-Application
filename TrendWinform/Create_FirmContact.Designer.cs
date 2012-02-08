@@ -35,7 +35,7 @@
             this.firmContactBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.firmContactTableAdapter = new TrendWinForm.TrendDataSetTableAdapters.FirmContactTableAdapter();
             this.tableAdapterManager = new TrendWinForm.TrendDataSetTableAdapters.TableAdapterManager();
-            this.AddEmployee = new System.Windows.Forms.Button();
+            this.AddFirm = new System.Windows.Forms.Button();
             this.nameUserControl1 = new TrendCustromControls.NameUserControl();
             this.phoneUserControl1 = new TrendCustromControls.PhoneUserControl();
             this.groupBoxSelectedfirmDetails = new System.Windows.Forms.GroupBox();
@@ -55,6 +55,7 @@
             this.firmTableAdapter = new TrendWinForm.TrendDataSetTableAdapters.FirmTableAdapter();
             this.firm_idComboBox = new System.Windows.Forms.ComboBox();
             firm_idLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trendDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.firmContactBindingSource)).BeginInit();
             this.groupBoxSelectedfirmDetails.SuspendLayout();
@@ -100,16 +101,17 @@
             this.tableAdapterManager.RaidTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = TrendWinForm.TrendDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // AddEmployee
+            // AddFirm
             // 
-            this.AddEmployee.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddEmployee.BackgroundImage")));
-            this.AddEmployee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.AddEmployee.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.AddEmployee.Location = new System.Drawing.Point(552, 17);
-            this.AddEmployee.Name = "AddEmployee";
-            this.AddEmployee.Size = new System.Drawing.Size(24, 24);
-            this.AddEmployee.TabIndex = 6;
-            this.AddEmployee.UseVisualStyleBackColor = true;
+            this.AddFirm.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddFirm.BackgroundImage")));
+            this.AddFirm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.AddFirm.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.AddFirm.Location = new System.Drawing.Point(552, 17);
+            this.AddFirm.Name = "AddFirm";
+            this.AddFirm.Size = new System.Drawing.Size(24, 24);
+            this.AddFirm.TabIndex = 6;
+            this.AddFirm.UseVisualStyleBackColor = true;
+            this.AddFirm.Click += new System.EventHandler(this.AddFirm_Click);
             // 
             // nameUserControl1
             // 
@@ -295,7 +297,7 @@
             this.Controls.Add(this.groupBoxSelectedfirmDetails);
             this.Controls.Add(this.phoneUserControl1);
             this.Controls.Add(this.nameUserControl1);
-            this.Controls.Add(this.AddEmployee);
+            this.Controls.Add(this.AddFirm);
             this.Controls.Add(firm_idLabel);
             this.Controls.Add(this.firm_idComboBox);
             this.Name = "Create_FirmContact";
@@ -304,7 +306,7 @@
             this.Shown += new System.EventHandler(this.Create_FirmContact_Shown);
             this.Controls.SetChildIndex(this.firm_idComboBox, 0);
             this.Controls.SetChildIndex(firm_idLabel, 0);
-            this.Controls.SetChildIndex(this.AddEmployee, 0);
+            this.Controls.SetChildIndex(this.AddFirm, 0);
             this.Controls.SetChildIndex(this.nameUserControl1, 0);
             this.Controls.SetChildIndex(this.phoneUserControl1, 0);
             this.Controls.SetChildIndex(this.groupBoxSelectedfirmDetails, 0);
@@ -312,6 +314,7 @@
             this.Controls.SetChildIndex(this.positionTextbox, 0);
             this.Controls.SetChildIndex(this.notesTextbox, 0);
             this.Controls.SetChildIndex(this.label2, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trendDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.firmContactBindingSource)).EndInit();
             this.groupBoxSelectedfirmDetails.ResumeLayout(false);
@@ -328,7 +331,7 @@
         private System.Windows.Forms.BindingSource firmContactBindingSource;
         private TrendDataSetTableAdapters.FirmContactTableAdapter firmContactTableAdapter;
         private TrendDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.Button AddEmployee;
+        private System.Windows.Forms.Button AddFirm;
         private TrendCustromControls.NameUserControl nameUserControl1;
         private TrendCustromControls.PhoneUserControl phoneUserControl1;
         private System.Windows.Forms.GroupBox groupBoxSelectedfirmDetails;
