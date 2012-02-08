@@ -51,10 +51,8 @@ H:\WindowsFormsApplications\TREND Application\TrendWinForm\obj\x86\Debug\TrendWi
 H:\WindowsFormsApplications\TREND Application\TrendWinForm\obj\x86\Debug\TrendWinForm.Create_FirmContact.resources
 H:\WindowsFormsApplications\TREND Application\TrendWinForm\obj\x86\Debug\TrendWinForm.MDIParentMasterPage.resources
 H:\WindowsFormsApplications\TREND Application\TrendWinForm\obj\x86\Debug\TrendWinForm.NotesandConclusions.resources
-H:\WindowsFormsApplications\TREND Application\TrendWinForm\obj\x86\Debug\TrendWinForm.Othercheckbox_textbox.resources
 H:\WindowsFormsApplications\TREND Application\TrendWinForm\obj\x86\Debug\TrendWinForm.SubmitFeedback.resources
 H:\WindowsFormsApplications\TREND Application\TrendWinForm\obj\x86\Debug\TrendWinForm.Properties.Resources.resources
-H:\WindowsFormsApplications\TREND Application\TrendWinForm\obj\x86\Debug\YesCheckBoxOption.YesCheckBox_TextBox.resources
 H:\WindowsFormsApplications\TREND Application\TrendWinForm\obj\x86\Debug\GenerateResource.read.1.tlog
 H:\WindowsFormsApplications\TREND Application\TrendWinForm\obj\x86\Debug\GenerateResource.write.1.tlog
 H:\WindowsFormsApplications\TREND Application\TrendWinForm\obj\x86\Debug\TrendWinForm.exe

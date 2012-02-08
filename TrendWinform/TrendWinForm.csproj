@@ -255,12 +255,6 @@
     <Compile Include="Create_Case_Subforms\NotesConclusion.Designer.cs">
       <DependentUpon>NotesConclusion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Custom Controllers\Othercheckbox_textbox.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Custom Controllers\Othercheckbox_textbox.Designer.cs">
-      <DependentUpon>Othercheckbox_textbox.cs</DependentUpon>
-    </Compile>
     <Compile Include="Create_Case_Subforms\SubmitFeedback.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -278,12 +272,6 @@
     <Compile Include="MyUtilities\UtilityListFormHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Custom Controllers\YesCheckBox_TextBox.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Custom Controllers\YesCheckBox_TextBox.Designer.cs">
-      <DependentUpon>YesCheckBox_TextBox.cs</DependentUpon>
-    </Compile>
     <Compile Include="SessionConfig.cs" />
     <Compile Include="TrendDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -351,9 +339,6 @@
     <EmbeddedResource Include="Create_Case_Subforms\NotesConclusion.resx">
       <DependentUpon>NotesConclusion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Custom Controllers\Othercheckbox_textbox.resx">
-      <DependentUpon>Othercheckbox_textbox.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Create_Case_Subforms\SubmitFeedback.resx">
       <DependentUpon>SubmitFeedback.cs</DependentUpon>
     </EmbeddedResource>
@@ -367,9 +352,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Custom Controllers\YesCheckBox_TextBox.resx">
-      <DependentUpon>YesCheckBox_TextBox.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -422,9 +404,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TrendCustromControls\TrendCustromControls.csproj">
+    <ProjectReference Include="..\TrendCustromControls\TrendCustomControls.csproj">
       <Project>{80409D15-50E7-4E47-B7E7-0368E4305EA3}</Project>
-      <Name>TrendCustromControls</Name>
+      <Name>TrendCustomControls</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

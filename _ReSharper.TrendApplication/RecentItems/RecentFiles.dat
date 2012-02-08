@@ -1,8 +1,5 @@
 ﻿<RecentFiles>
   <RecentFiles>
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:Entities/f:BaseEntity.cs" caret="0" fromTop="0" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:Entities/f:CdfInfo.cs" caret="0" fromTop="0" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:Entities/f:Computer.cs" caret="0" fromTop="0" />
     <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:Entities/f:DestinationMedia.cs" caret="0" fromTop="0" />
     <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:Entities/f:Firm.cs" caret="171" fromTop="6" />
     <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:Entities/f:ForensicProcess.cs" caret="0" fromTop="0" />
@@ -21,18 +18,19 @@
     <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:EntitiesToComboBox.cs" caret="1482" fromTop="0" />
     <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Computer.Designer.cs" caret="41792" fromTop="30" />
     <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Computer.cs" caret="882" fromTop="31" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="1879" fromTop="0" />
     <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Raid.cs" caret="3766" fromTop="100" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:EntitiesToListView.cs" caret="5326" fromTop="109" />
     <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:ListViewToDetailsFields.cs" caret="0" fromTop="0" />
     <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:RadioButtonListUtilities.cs" caret="0" fromTop="0" />
     <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:UtilityListFormHelper.cs" caret="0" fromTop="0" />
     <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:UtilityQueries.cs" caret="0" fromTop="0" />
     <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:UserControlToEntity.cs" caret="0" fromTop="0" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:UserContolToValueObject.cs" caret="0" fromTop="0" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_ForensicProcess.cs" caret="6961" fromTop="10" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:View_CaseBrowser.cs" caret="7996" fromTop="22" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:EntitiesToListView.cs" caret="314" fromTop="11" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:UserContolToValueObject.cs" caret="684" fromTop="23" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="18842" fromTop="24" />
   </RecentFiles>
   <RecentEdits>
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:FluentMappings/f:HardDriveMap.cs" caret="748" fromTop="24" />
     <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:Entities/f:HardDrive.cs" caret="831" fromTop="24" />
     <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Raid.cs" caret="3355" fromTop="56" />
     <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:Entities/f:ActiveUserFile.cs" caret="606" fromTop="19" />
@@ -62,5 +60,6 @@
     <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Raid.cs" caret="3654" fromTop="33" />
     <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Raid.cs" caret="3766" fromTop="37" />
     <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:UtilityQueries.cs" caret="0" fromTop="0" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="18775" fromTop="24" />
   </RecentEdits>
 </RecentFiles>
