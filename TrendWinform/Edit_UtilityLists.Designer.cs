@@ -103,7 +103,7 @@
             this.textBoxListItemToAdd.Location = new System.Drawing.Point(42, 633);
             this.textBoxListItemToAdd.Name = "textBoxListItemToAdd";
             this.textBoxListItemToAdd.Size = new System.Drawing.Size(410, 20);
-            this.textBoxListItemToAdd.TabIndex = 158;
+            this.textBoxListItemToAdd.TabIndex = 1;
             // 
             // buttonAddItemToList
             // 
@@ -135,7 +135,7 @@
             this.textBoxItemToDelete.Name = "textBoxItemToDelete";
             this.textBoxItemToDelete.ReadOnly = true;
             this.textBoxItemToDelete.Size = new System.Drawing.Size(410, 20);
-            this.textBoxItemToDelete.TabIndex = 161;
+            this.textBoxItemToDelete.TabIndex = 2;
             // 
             // labelLengthOfList
             // 

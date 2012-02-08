@@ -24,6 +24,7 @@ namespace TrendWinForm
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            textBoxListItemToAdd.Focus();
         }
 
         private void buttonAddItemToList_Click(object sender, EventArgs e)
@@ -170,5 +171,7 @@ namespace TrendWinForm
         {
             Close();
         }
+
+       
     }
 }

@@ -16,9 +16,10 @@ namespace TrendWinForm.MyUtilities
 
         public UtilityListFormHelper()
         {
-
+            
         }
 
+    
         public UtilityListFormHelper(string summonList, ComboBox formCombobox)
         {
             SummonList = summonList;
@@ -26,7 +27,7 @@ namespace TrendWinForm.MyUtilities
         }
 
 
-        public  void SummonUtilityList()
+        public void SummonUtilityList()
         {
             Edit_UtilityLists newEditUtilityLists = new Edit_UtilityLists();
             newEditUtilityLists.ListToEdit = SummonList;

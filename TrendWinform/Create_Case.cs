@@ -123,7 +123,8 @@ namespace TrendWinForm
             UpdateDataBoundControls();
         }
 
-        //validation
+        #region[validation]
+        
 
         private void caseNumberTextBox_Validating(object sender, CancelEventArgs e)
         {
@@ -154,7 +155,7 @@ namespace TrendWinForm
                 e.Cancel = true;
             }
         }
-
+        #endregion
 
 
         //Comboboxes, etc.
@@ -243,7 +244,8 @@ namespace TrendWinForm
         }
 
 
-
+        #region [ Save & Cancel Buttons ]
+        
         // Save and Cancel Buttons
         private void SaveButton_Click(object sender, EventArgs e)
         {
@@ -343,7 +345,7 @@ namespace TrendWinForm
             }
         }
 
-
+        #endregion
 
 
         private void firm_idComboBox_SelectionChangeCommitted(object sender, EventArgs e)
@@ -353,6 +355,8 @@ namespace TrendWinForm
             EntitiesToComboBox.FillFirmContactComboBoxByFirm(selectedfirm, requester_idComboBox);
         }
 
+        #region [ CRUD ]
+        
         private void buttonViewComputer_Click(object sender, EventArgs e)
         {
             MessageBox.Show("View computer with GUid at selected index");
@@ -371,6 +375,9 @@ namespace TrendWinForm
               MessageBox.Show("Delete computer with GUid at selected index");
         }
 
+
+        #endregion
+
         private void DisplayStatsOfcurrentlySelectedComputer()
         {
 
@@ -378,14 +385,16 @@ namespace TrendWinForm
 
 
 
+       
+
+        #region [ Computer Tab ]
+
         ////////////////////////////////////////
         ///COMPUTER TAB!!!!!
         /// 
         /// 
         /// <summary>manage computers associated with case and thier associated hard drives. all entities are transient until save button is clicked.</summary>
         ///////////////////////////////////////
-
-
 
         private Create_Computer newCompSubform = null;
         private void buttonAddComputer_Click(object sender, EventArgs e)
@@ -396,14 +405,7 @@ namespace TrendWinForm
             newCompSubform.Show();
         }
 
-        private void AddComputerTolist(object sender, EventArgs e)
-        {
-            var computer = newCompSubform.NewComputer;
-            computer.HardDrives.ForEach(hd => CaseHardDrives.Add(hd));
-            CaseComputers.Add(computer);
-            EntitiesToListView.FillComputersListview(CaseComputers, listViewAssociatedComputerList);
-            EntitiesToListView.FillHardDrivesListView(CaseHardDrives, listViewHardDrivesOnHardDrivePage);
-        }
+   
 
 
         //....CompTab: Map COmputer Data to Fields
@@ -434,12 +436,19 @@ namespace TrendWinForm
             }
         }
 
+        private void AddComputerTolist(object sender, EventArgs e)
+        {
+            var computer = newCompSubform.NewComputer;
+            computer.HardDrives.ForEach(hd => CaseHardDrives.Add(hd));
+            CaseComputers.Add(computer);
+            EntitiesToListView.FillComputersListview(CaseComputers, listViewAssociatedComputerList);
+            EntitiesToListView.FillHardDrivesListView(CaseHardDrives, listViewHardDrivesOnHardDrivePage);
+        }
+
         private void listViewComputerAssociatedHardDrives_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewComputerAssociatedHardDrives.SelectedItems.Count == 1)
             {
-
-
 
                 var i = listViewComputerAssociatedHardDrives.SelectedItems[0].Index;
 
@@ -452,7 +461,7 @@ namespace TrendWinForm
 
             }
         }
-
+        #endregion
 
         #region[HD Tab]
 
