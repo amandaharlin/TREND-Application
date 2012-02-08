@@ -21,12 +21,26 @@ namespace TrendWinForm
         public IList<Computer> SelectableAssociatedComputers { get; set; }
         public IList<HardDrive> SelectableAssociatedHardDrives { get; set; }
 
+        private UtilityListFormHelper addProcessPerformedHelper;
+        private UtilityListFormHelper addDeviceUsedHelper;
+        private UtilityListFormHelper addSoftwareHelper;
+        private UtilityListFormHelper addImagesMadeHelper;
+        private UtilityListFormHelper addImagesVerifiedByHelper;
+       
+
+
         public Create_ForensicProcess()
         {
             InitializeComponent();
+            
+
+            addProcessPerformedHelper = new UtilityListFormHelper("Process_Performed", comboBoxProcessPerformed);
+            addDeviceUsedHelper = new UtilityListFormHelper("Device_Used", comboBoxDeviceUsed);
+            addSoftwareHelper = new UtilityListFormHelper("Software_Used", comboBoxSoftwareProcessing);
+            addImagesMadeHelper = new UtilityListFormHelper("Images_Made", comboBoxImagesMade);
+            addImagesVerifiedByHelper = new UtilityListFormHelper("Images_Verified_By", comboBoxImagesVerifiedBy);
+
             PopulateFormComboBoxes();
-
-
         }
 
         private void Create_ForensicProcess_Shown(object sender, EventArgs e)
@@ -40,26 +54,30 @@ namespace TrendWinForm
                 checkedListBoxAssociatedcomputers.DisplayMember = "Value";
                 checkedListBoxAssociatedcomputers.ValueMember = "Key";
             } 
-
             if (displayHardDrives.Any())
             {
                 checkedListBoxAssociatedhardDrives.DataSource = new BindingSource(displayHardDrives, null);
                 checkedListBoxAssociatedhardDrives.DisplayMember = "Value";
                 checkedListBoxAssociatedhardDrives.ValueMember = "Key";
             }
-
-            
-
         }
 
         private void UpdateFormEvent(object sender, EventArgs e)
         {
+            var comboBoxesList = UtilityQueries.ReturnDictionaryOfComboBoxes(this);
             PopulateFormComboBoxes();
+            comboBoxesList.ToList().ForEach(c => { c.Key.SelectedIndex = c.Key.FindStringExact(c.Value); });
         }
 
         private void PopulateFormComboBoxes()
         {
             EntitiesToComboBox.FillEmployeeComboBox(comboBoxCDFInfoTech);
+
+            addProcessPerformedHelper.PopulateComboBoxWithUtilityStrings();
+            addDeviceUsedHelper.PopulateComboBoxWithUtilityStrings();
+            addSoftwareHelper.PopulateComboBoxWithUtilityStrings();
+            addImagesMadeHelper.PopulateComboBoxWithUtilityStrings();
+            addImagesVerifiedByHelper.PopulateComboBoxWithUtilityStrings();
 
             //processing performed
             comboBoxProcessPerformed.Items.Clear();
@@ -195,6 +213,31 @@ namespace TrendWinForm
             Create_Employee newEmployeeForm = new Create_Employee();
             newEmployeeForm.FormClosed += UpdateFormEvent;
             newEmployeeForm.Show();
+        }
+
+        private void buttonAddProcessPerformed_Click(object sender, EventArgs e)
+        {
+            addProcessPerformedHelper.SummonUtilityList();
+        }
+
+        private void buttonAddDeviceUsed_Click(object sender, EventArgs e)
+        {
+            addDeviceUsedHelper.SummonUtilityList();
+        }
+
+        private void buttonAddSoftware_Click(object sender, EventArgs e)
+        {
+            addSoftwareHelper.SummonUtilityList();
+        }
+
+        private void buttonAddImagesMade_Click(object sender, EventArgs e)
+        {
+            addImagesMadeHelper.SummonUtilityList();
+        }
+
+        private void buttonAddImagesVerifiedBy_Click(object sender, EventArgs e)
+        {
+            addImagesVerifiedByHelper.SummonUtilityList();
         }
 
         

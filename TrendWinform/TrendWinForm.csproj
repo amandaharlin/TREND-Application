@@ -130,30 +130,6 @@
     <Compile Include="Create_Case.Designer.cs">
       <DependentUpon>Create_Case.cs</DependentUpon>
     </Compile>
-    <Compile Include="Create_Case_Subforms\ComputerInformation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Create_Case_Subforms\ComputerInformation.Designer.cs">
-      <DependentUpon>ComputerInformation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Create_Case_Subforms\CustomerandCaseInformation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Create_Case_Subforms\CustomerandCaseInformation.Designer.cs">
-      <DependentUpon>CustomerandCaseInformation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Create_Case_Subforms\ForensicProcessing.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Create_Case_Subforms\ForensicProcessing.Designer.cs">
-      <DependentUpon>ForensicProcessing.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Create_Case_Subforms\HardDriveInformation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Create_Case_Subforms\HardDriveInformation.Designer.cs">
-      <DependentUpon>HardDriveInformation.cs</DependentUpon>
-    </Compile>
     <Compile Include="Create_Computer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -249,18 +225,6 @@
     <Compile Include="MDIParentMasterPage.Designer.cs">
       <DependentUpon>MDIParentMasterPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Create_Case_Subforms\NotesConclusion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Create_Case_Subforms\NotesConclusion.Designer.cs">
-      <DependentUpon>NotesConclusion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Create_Case_Subforms\SubmitFeedback.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Create_Case_Subforms\SubmitFeedback.Designer.cs">
-      <DependentUpon>SubmitFeedback.cs</DependentUpon>
-    </Compile>
     <Compile Include="MyUtilities\EntitiesToComboBox.cs" />
     <Compile Include="MyUtilities\EntitiesToListView.cs" />
     <Compile Include="MyUtilities\ErrorProviders.cs" />
@@ -294,18 +258,6 @@
     <EmbeddedResource Include="Create_Case.resx">
       <DependentUpon>Create_Case.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Create_Case_Subforms\ComputerInformation.resx">
-      <DependentUpon>ComputerInformation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Create_Case_Subforms\CustomerandCaseInformation.resx">
-      <DependentUpon>CustomerandCaseInformation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Create_Case_Subforms\ForensicProcessing.resx">
-      <DependentUpon>ForensicProcessing.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Create_Case_Subforms\HardDriveInformation.resx">
-      <DependentUpon>HardDriveInformation.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Create_Computer.resx">
       <DependentUpon>Create_Computer.cs</DependentUpon>
     </EmbeddedResource>
@@ -335,12 +287,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MDIParentMasterPage.resx">
       <DependentUpon>MDIParentMasterPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Create_Case_Subforms\NotesConclusion.resx">
-      <DependentUpon>NotesConclusion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Create_Case_Subforms\SubmitFeedback.resx">
-      <DependentUpon>SubmitFeedback.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

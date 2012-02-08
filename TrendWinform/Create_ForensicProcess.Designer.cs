@@ -176,6 +176,7 @@
             this.buttonAddImagesVerifiedBy.Size = new System.Drawing.Size(24, 24);
             this.buttonAddImagesVerifiedBy.TabIndex = 216;
             this.buttonAddImagesVerifiedBy.UseVisualStyleBackColor = true;
+            this.buttonAddImagesVerifiedBy.Click += new System.EventHandler(this.buttonAddImagesVerifiedBy_Click);
             // 
             // buttonAddImagesMade
             // 
@@ -187,6 +188,7 @@
             this.buttonAddImagesMade.Size = new System.Drawing.Size(24, 24);
             this.buttonAddImagesMade.TabIndex = 215;
             this.buttonAddImagesMade.UseVisualStyleBackColor = true;
+            this.buttonAddImagesMade.Click += new System.EventHandler(this.buttonAddImagesMade_Click);
             // 
             // comboBoxImagesVerifiedBy
             // 
@@ -261,6 +263,7 @@
             this.buttonAddSoftware.Size = new System.Drawing.Size(24, 24);
             this.buttonAddSoftware.TabIndex = 216;
             this.buttonAddSoftware.UseVisualStyleBackColor = true;
+            this.buttonAddSoftware.Click += new System.EventHandler(this.buttonAddSoftware_Click);
             // 
             // buttonAddDeviceUsed
             // 
@@ -272,6 +275,7 @@
             this.buttonAddDeviceUsed.Size = new System.Drawing.Size(24, 24);
             this.buttonAddDeviceUsed.TabIndex = 215;
             this.buttonAddDeviceUsed.UseVisualStyleBackColor = true;
+            this.buttonAddDeviceUsed.Click += new System.EventHandler(this.buttonAddDeviceUsed_Click);
             // 
             // buttonAddProcessPerformed
             // 
@@ -283,6 +287,7 @@
             this.buttonAddProcessPerformed.Size = new System.Drawing.Size(24, 24);
             this.buttonAddProcessPerformed.TabIndex = 214;
             this.buttonAddProcessPerformed.UseVisualStyleBackColor = true;
+            this.buttonAddProcessPerformed.Click += new System.EventHandler(this.buttonAddProcessPerformed_Click);
             // 
             // comboBoxSoftwareProcessing
             // 

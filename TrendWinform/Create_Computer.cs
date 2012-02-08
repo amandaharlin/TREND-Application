@@ -117,6 +117,11 @@ namespace TrendWinForm
             EntitiesToComboBox.FillEmployeeComboBox(comboBoxShutDownBy);
             EntitiesToComboBox.FillEmployeeComboBox(comboBoxCdfInfoTech);
 
+            addMakeHelper.PopulateComboBoxWithUtilityStrings();
+            addModelHelper.PopulateComboBoxWithUtilityStrings();
+            addSetupkeystrokeHelper.PopulateComboBoxWithUtilityStrings();
+            addTimeProvidedByHelper.PopulateComboBoxWithUtilityStrings();
+
             comboBoxType.Items.Clear();
             comboBoxType.Items.Add("Desktop");
             comboBoxType.Items.Add("Laptop");
@@ -124,10 +129,7 @@ namespace TrendWinForm
             comboBoxType.Items.Add("Mobile");
             comboBoxType.Items.Add("Other");
 
-            addMakeHelper.PopulateComboBoxWithUtilityStrings();
-            addModelHelper.PopulateComboBoxWithUtilityStrings();
-            addSetupkeystrokeHelper.PopulateComboBoxWithUtilityStrings();
-            addTimeProvidedByHelper.PopulateComboBoxWithUtilityStrings();
+            
         }
 
         private void AddEmployee_Click(object sender, EventArgs e)
@@ -357,11 +359,6 @@ namespace TrendWinForm
         private void buttonaddTimeProvidedBy_Click(object sender, EventArgs e)
         {
             addTimeProvidedByHelper.SummonUtilityList();
-        }
-
-        private void CancelButton_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void buttonAddServerType_Click(object sender, EventArgs e)
