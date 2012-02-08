@@ -441,7 +441,7 @@ namespace TrendWinForm
 
 
 
-                v  ar i = listViewComputerAssociatedHardDrives.SelectedItems[0].Index;
+                var i = listViewComputerAssociatedHardDrives.SelectedItems[0].Index;
 
                 textBoxHDDetails_Make.Text = this_Computer.HardDrives[i].Make;
                 textBoxHDDetails_Model.Text = this_Computer.HardDrives[i].Model;
