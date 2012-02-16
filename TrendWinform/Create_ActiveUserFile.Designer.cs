@@ -50,9 +50,13 @@
             this.labelCDFFinishDateTime = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.labelCdfInfo = new System.Windows.Forms.Label();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.trackBar2 = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.panel11.SuspendLayout();
             this.panel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel11
@@ -70,6 +74,8 @@
             this.panel11.Controls.Add(this.labelAUFFileName);
             this.panel11.Controls.Add(this.labelReferenceComputer);
             this.panel11.Controls.Add(this.labelCreateActiveUserFile);
+            this.panel11.Controls.Add(this.trackBar1);
+            this.panel11.Controls.Add(this.trackBar2);
             this.panel11.Location = new System.Drawing.Point(2, 4);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(573, 193);
@@ -79,7 +85,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(389, 164);
+            this.label2.Location = new System.Drawing.Point(538, 166);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(25, 24);
             this.label2.TabIndex = 215;
@@ -89,7 +95,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(203, 164);
+            this.label1.Location = new System.Drawing.Point(248, 166);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(25, 24);
             this.label1.TabIndex = 214;
@@ -97,16 +103,16 @@
             // 
             // textBoxAUFCPUUsage
             // 
-            this.textBoxAUFCPUUsage.Location = new System.Drawing.Point(301, 166);
+            this.textBoxAUFCPUUsage.Location = new System.Drawing.Point(498, 168);
             this.textBoxAUFCPUUsage.MaxLength = 3;
             this.textBoxAUFCPUUsage.Name = "textBoxAUFCPUUsage";
-            this.textBoxAUFCPUUsage.Size = new System.Drawing.Size(84, 20);
+            this.textBoxAUFCPUUsage.Size = new System.Drawing.Size(34, 20);
             this.textBoxAUFCPUUsage.TabIndex = 213;
             // 
             // labelAUFCPUUsage
             // 
             this.labelAUFCPUUsage.AutoSize = true;
-            this.labelAUFCPUUsage.Location = new System.Drawing.Point(234, 170);
+            this.labelAUFCPUUsage.Location = new System.Drawing.Point(319, 170);
             this.labelAUFCPUUsage.Name = "labelAUFCPUUsage";
             this.labelAUFCPUUsage.Size = new System.Drawing.Size(63, 13);
             this.labelAUFCPUUsage.TabIndex = 212;
@@ -123,10 +129,10 @@
             // 
             // textBoxAUFMemoryUsage
             // 
-            this.textBoxAUFMemoryUsage.Location = new System.Drawing.Point(116, 165);
+            this.textBoxAUFMemoryUsage.Location = new System.Drawing.Point(213, 170);
             this.textBoxAUFMemoryUsage.MaxLength = 3;
             this.textBoxAUFMemoryUsage.Name = "textBoxAUFMemoryUsage";
-            this.textBoxAUFMemoryUsage.Size = new System.Drawing.Size(84, 20);
+            this.textBoxAUFMemoryUsage.Size = new System.Drawing.Size(39, 20);
             this.textBoxAUFMemoryUsage.TabIndex = 206;
             // 
             // labelAUFMemoryUsage
@@ -262,6 +268,21 @@
             this.labelCdfInfo.TabIndex = 199;
             this.labelCdfInfo.Text = "Cdf Info";
             // 
+            // trackBar1
+            // 
+            this.trackBar1.BackColor = System.Drawing.SystemColors.Control;
+            this.trackBar1.Location = new System.Drawing.Point(101, 165);
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(106, 45);
+            this.trackBar1.TabIndex = 216;
+            // 
+            // trackBar2
+            // 
+            this.trackBar2.Location = new System.Drawing.Point(388, 165);
+            this.trackBar2.Name = "trackBar2";
+            this.trackBar2.Size = new System.Drawing.Size(104, 45);
+            this.trackBar2.TabIndex = 217;
+            // 
             // Create_ActiveUserFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -279,6 +300,8 @@
             this.panel11.PerformLayout();
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -306,6 +329,8 @@
         internal System.Windows.Forms.Label labelCDFFinishDateTime;
         internal System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label labelCdfInfo;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.TrackBar trackBar2;
 
     }
 }

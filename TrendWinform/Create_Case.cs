@@ -457,7 +457,7 @@ namespace TrendWinForm
                 textBoxHDDetails_Serial.Text = this_Computer.HardDrives[i].Serial;
                 textBoxHDDetails_Interface.Text = this_Computer.HardDrives[i].DriveInterface;
 
-
+              
 
             }
         }
@@ -538,7 +538,7 @@ namespace TrendWinForm
                 var i = listViewForensicProcesses.SelectedItems[0].Index;
                 this_ForensicProcess = CaseForensicProcesses[i];
 
-
+                
                 ListViewToDetailsFields.ForensicProcesseslistViewToDetailFields(i, CaseForensicProcesses, this);
                 EntitiesToListView.FillDestinationMediaListViewDetailView(CaseForensicProcesses[i].DestinationMediae, listViewFPDestinationMediae);
 

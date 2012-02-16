@@ -34,6 +34,7 @@ namespace TrendWinForm
         {
             InitializeComponent();
 
+            checkBoxSystemWasServer.Enabled = false;
             comboBoxServerType.Enabled = false;
             textBoxHostname.Enabled = false;
             txtCMOSChangesMade.Enabled = false;
@@ -57,24 +58,13 @@ namespace TrendWinForm
         
         }
 
-        private void checkBoxSystemWasServer_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxSystemWasServer.Checked)
-            {
-                comboBoxServerType.Enabled = true;
-            }
-            else
-            {
-                comboBoxServerType.Items.Clear();
-                comboBoxServerType.Enabled = false;
-            }
-        }
 
         private void checkBoxWasHostedSystem_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxWasHostedSystem.Checked)
             {
                 textBoxHostname.Enabled = true;
+                textBoxHostname.Focus();
             }
             else
             {
@@ -88,6 +78,7 @@ namespace TrendWinForm
             if (checkBoxCmosChanged.Checked)
             {
                 txtCMOSChangesMade.Enabled = true;
+                txtCMOSChangesMade.Focus();
             }
             else
             {
@@ -183,11 +174,26 @@ namespace TrendWinForm
         private Create_Raid newRaidForm = null;
         private void buttonAddRaid_Click(object sender, EventArgs e)
         {
-            this.newRaidForm = new Create_Raid();
-            newRaidForm.SelectableHardDrives = ComputerHardDrives;
-            newRaidForm.OnDataAvailable += new EventHandler(AddRaidToList);
-            newRaidForm.FormClosed += this.UpdateFormEvent;
-            newRaidForm.Show();
+            if(ComputerHardDrives.Any())
+            {
+                this.newRaidForm = new Create_Raid();
+                newRaidForm.SelectableHardDrives = ComputerHardDrives;
+                newRaidForm.OnDataAvailable += new EventHandler(AddRaidToList);
+                newRaidForm.FormClosed += this.UpdateFormEvent;
+                newRaidForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("An existing Hard Drive is required before any RAIDS can be added.\r\nPlease add a Hard Drive before reattemtping.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //errorProvider.SetError(listViewCreateComputerHardDrives, string.Empty);
+                ////errorProvider.SetIconPadding(listViewCreateComputerHardDrives, 25);
+                //if (listViewCreateComputerHardDrives.Text == null)
+                //{
+                //    errorProvider.SetError(listViewCreateComputerRaid, "You must associate a Hard Drive with this RAID");
+                //}
+                ////CancelButton.PerformClick();
+                ////e.Cancel = true;
+            }
         }
 
         private void AddRaidToList(object sender, EventArgs e)
@@ -261,6 +267,8 @@ namespace TrendWinForm
 
 
         }
+
+
         #region [Validating]
 
         private void comboBoxMake_Validating(object sender, CancelEventArgs e)
@@ -339,6 +347,9 @@ namespace TrendWinForm
                 e.Cancel = true;
             }
         }
+
+       
+
         #endregion
 
         private void buttonAddCompModel_Click(object sender, EventArgs e)
@@ -365,6 +376,25 @@ namespace TrendWinForm
         {
             addServerType.SummonUtilityList();
         }
+
+        private void comboBoxType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxType.SelectedIndex == 2)
+            {
+                checkBoxSystemWasServer.Enabled = true;
+                checkBoxSystemWasServer.Checked = true;
+                comboBoxServerType.Enabled = true;
+            }
+            else
+            {
+                checkBoxSystemWasServer.Enabled = false;
+                checkBoxSystemWasServer.Checked = false;
+                comboBoxServerType.Items.Clear();
+                comboBoxServerType.Enabled = false;
+            }
+        }
+
+      
 
 
 

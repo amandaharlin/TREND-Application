@@ -22,7 +22,7 @@ namespace TrendCustromControls
         {
             get
             {
-                string phone = textBoxPhoneFirstThree.Text + textBoxPhoneLastFour.Text;
+                string phone = textBoxPhoneFirstThree.Text + " - " + textBoxPhoneLastFour.Text;
                 int phoneNumber;
                 int.TryParse(phone, out phoneNumber);
                 return phoneNumber;
@@ -33,12 +33,25 @@ namespace TrendCustromControls
                 if (incomingNumber.Length == 7)
                 {
                     textBoxPhoneFirstThree.Text = incomingNumber.Substring(0, 3);
-                    textBoxPhoneLastFour.Text = incomingNumber.Substring(2, 4); 
+                    textBoxPhoneLastFour.Text = incomingNumber.Substring(2, 4);
                 }
-                
+
 
             }
         }
+
+        //public string FirstThreeDigits
+        //{
+        //    get { return textBoxPhoneFirstThree.Text; }
+        //    set { textBoxPhoneFirstThree.Text = value; }
+        //}
+        //public string LastFourDigits
+        //{
+        //    get { return textBoxPhoneLastFour.Text; }
+        //    set { textBoxPhoneLastFour.Text = value; }
+        //}
+
+      
         public int AreaCode
         {
             get

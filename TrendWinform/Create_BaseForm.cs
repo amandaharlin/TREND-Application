@@ -12,25 +12,15 @@ namespace TrendWinForm
 {
     public partial class Create_BaseForm : Form
     {
-
         public event EventHandler OnDataAvailable;
         public Create_BaseForm()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-
-            //UpdateEventObserver observer = new UpdateEventObserver();
-            //UpdateEventObservable observable = new UpdateEventObservable();
-
-            //this.FormClosed += ;
-
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            
-
-         
             errorProvider.Clear();
             this.Close();
         }
@@ -43,17 +33,11 @@ namespace TrendWinForm
                 if (OnDataAvailable != null) { OnDataAvailable(this, EventArgs.Empty); }
                 this.Close();
             }
-           
         }
 
         public virtual void OnSave(EventArgs e)
         {
             // Override this
         }
-
-
-
-
-
     }
 }
