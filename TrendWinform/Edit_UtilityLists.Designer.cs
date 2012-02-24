@@ -160,6 +160,7 @@
             this.Controls.Add(this.labelCurrentList);
             this.Controls.Add(this.panel1);
             this.Name = "Edit_UtilityLists";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Edit List";
             this.Shown += new System.EventHandler(this.Edit_UtilityLists_Shown);
             this.panel1.ResumeLayout(false);

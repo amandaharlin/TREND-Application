@@ -14,6 +14,8 @@ namespace TrendWinForm.FluentMappings
         {
             Map(x => x.Type);
             Map(x => x.Number);
+            //Map(x => x.FirstThreeDigits);
+            //Map(x => x.LastFourDigits);
             Map(x => x.AreaCode);
             Map(x => x.Extension);
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -26,13 +27,13 @@ namespace TrendWinForm
         private UtilityListFormHelper addSoftwareHelper;
         private UtilityListFormHelper addImagesMadeHelper;
         private UtilityListFormHelper addImagesVerifiedByHelper;
-       
+
 
 
         public Create_ForensicProcess()
         {
             InitializeComponent();
-            
+
 
             addProcessPerformedHelper = new UtilityListFormHelper("Process_Performed", comboBoxProcessPerformed);
             addDeviceUsedHelper = new UtilityListFormHelper("Device_Used", comboBoxDeviceUsed);
@@ -48,12 +49,12 @@ namespace TrendWinForm
             var displayComputers = SelectableAssociatedComputers.ToDictionary(comp => comp, comp => comp.Make + " | " + comp.Model);
             var displayHardDrives = SelectableAssociatedHardDrives.ToDictionary(hd => hd, hd => hd.Make + " | " + hd.Model);
 
-            if(displayComputers.Any())
+            if (displayComputers.Any())
             {
                 checkedListBoxAssociatedcomputers.DataSource = new BindingSource(displayComputers, null);
                 checkedListBoxAssociatedcomputers.DisplayMember = "Value";
                 checkedListBoxAssociatedcomputers.ValueMember = "Key";
-            } 
+            }
             if (displayHardDrives.Any())
             {
                 checkedListBoxAssociatedhardDrives.DataSource = new BindingSource(displayHardDrives, null);
@@ -79,45 +80,45 @@ namespace TrendWinForm
             addImagesMadeHelper.PopulateComboBoxWithUtilityStrings();
             addImagesVerifiedByHelper.PopulateComboBoxWithUtilityStrings();
 
-            //processing performed
-            comboBoxProcessPerformed.Items.Clear();
-            comboBoxProcessPerformed.Items.Add("Imaging");
-            comboBoxProcessPerformed.Items.Add("Logical Copy");
-            comboBoxProcessPerformed.Items.Add("Clone");
-            comboBoxProcessPerformed.Items.Add("Review");
-            comboBoxProcessPerformed.Items.Add("No Processing");
+            ////processing performed
+            //comboBoxProcessPerformed.Items.Clear();
+            //comboBoxProcessPerformed.Items.Add("Imaging");
+            //comboBoxProcessPerformed.Items.Add("Logical Copy");
+            //comboBoxProcessPerformed.Items.Add("Clone");
+            //comboBoxProcessPerformed.Items.Add("Review");
+            //comboBoxProcessPerformed.Items.Add("No Processing");
 
-            //forensic device used
-            comboBoxDeviceUsed.Items.Clear();
-            comboBoxDeviceUsed.Items.Add("Portable Computer");
-            comboBoxDeviceUsed.Items.Add("Write Blocker");
-            comboBoxDeviceUsed.Items.Add("TD1 Duplicator");
-            comboBoxDeviceUsed.Items.Add("Other");
+            ////forensic device used
+            //comboBoxDeviceUsed.Items.Clear();
+            //comboBoxDeviceUsed.Items.Add("Portable Computer");
+            //comboBoxDeviceUsed.Items.Add("Write Blocker");
+            //comboBoxDeviceUsed.Items.Add("TD1 Duplicator");
+            //comboBoxDeviceUsed.Items.Add("Other");
 
-            //software used
-            comboBoxSoftwareProcessing.Items.Clear();
-            comboBoxSoftwareProcessing.Items.Add("FTK Imager");
-            comboBoxSoftwareProcessing.Items.Add("EnCase");
-            comboBoxSoftwareProcessing.Items.Add("Helix Pro");
-            comboBoxSoftwareProcessing.Items.Add("Other");
-            comboBoxSoftwareProcessing.Items.Add("Version");
+            ////software used
+            //comboBoxSoftwareProcessing.Items.Clear();
+            //comboBoxSoftwareProcessing.Items.Add("FTK Imager");
+            //comboBoxSoftwareProcessing.Items.Add("EnCase");
+            //comboBoxSoftwareProcessing.Items.Add("Helix Pro");
+            //comboBoxSoftwareProcessing.Items.Add("Other");
+            //comboBoxSoftwareProcessing.Items.Add("Version");
 
 
-            //images made
-            comboBoxImagesMade.Items.Clear();
-            comboBoxImagesMade.Items.Add("EDD");
-            comboBoxImagesMade.Items.Add("Examination Copy");
-            comboBoxImagesMade.Items.Add("Clone Copy");
-            comboBoxImagesMade.Items.Add("Archive");
-            comboBoxImagesMade.Items.Add("Other");
+            ////images made
+            //comboBoxImagesMade.Items.Clear();
+            //comboBoxImagesMade.Items.Add("EDD");
+            //comboBoxImagesMade.Items.Add("Examination Copy");
+            //comboBoxImagesMade.Items.Add("Clone Copy");
+            //comboBoxImagesMade.Items.Add("Archive");
+            //comboBoxImagesMade.Items.Add("Other");
 
-            //images verified by
-            comboBoxImagesVerifiedBy.Items.Clear();
-            comboBoxImagesVerifiedBy.Items.Add("MD5 Hash");
-            comboBoxImagesVerifiedBy.Items.Add("SHA1 Hash");
-            comboBoxImagesVerifiedBy.Items.Add("SHA 256 Hash");
-            comboBoxImagesVerifiedBy.Items.Add("Not Verified");
-            comboBoxImagesVerifiedBy.Items.Add("Other");
+            ////images verified by
+            //comboBoxImagesVerifiedBy.Items.Clear();
+            //comboBoxImagesVerifiedBy.Items.Add("MD5 Hash");
+            //comboBoxImagesVerifiedBy.Items.Add("SHA1 Hash");
+            //comboBoxImagesVerifiedBy.Items.Add("SHA 256 Hash");
+            //comboBoxImagesVerifiedBy.Items.Add("Not Verified");
+            //comboBoxImagesVerifiedBy.Items.Add("Other");
         }
         public override void OnSave(EventArgs e)
         {
@@ -164,24 +165,12 @@ namespace TrendWinForm
                                                            Cdfdate = dateTimePickerFPFinishDateTime.Value,
                                                            TechExaminer = SelectSingleEntityById.SelectEmployeeById(new Guid(comboBoxCDFInfoTech.SelectedValue.ToString()))
                                                        },
-                                          
-                                        //DestinationMediae = new DestinationMedia()
-                                        // {
-                                        //    Type = "",
-                                        //    Brand = "",
-                                        //    //Size = "",
-                                        //    SerialNumber = "",
-                                        // },
-                                         //= ForensicProcessDestinationMediae,
-                                         
+                                         DestinationMediae = ForensicProcessDestinationMediae,
+
                                          ReferenceHardDrives = selectedHardDrives,
-                                         ReferenceComputers =  selectedComputers
-
-
-                                         //
-
-
+                                         ReferenceComputers = selectedComputers,
                                      };
+            ForensicProcessDestinationMediae.ToList().ForEach(dm => dm.SerialNumber = NewForensicProcess.ToString());
         }
 
 
@@ -240,9 +229,8 @@ namespace TrendWinForm
             addImagesVerifiedByHelper.SummonUtilityList();
         }
 
-        
-
-
-
+    
     }
+
+
 }

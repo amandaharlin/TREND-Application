@@ -1,65 +1,66 @@
 ﻿<RecentFiles>
   <RecentFiles>
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:Entities/f:DestinationMedia.cs" caret="0" fromTop="0" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:Entities/f:Firm.cs" caret="171" fromTop="6" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:Entities/f:ForensicProcess.cs" caret="0" fromTop="0" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:Entities/f:HardDrive.cs" caret="0" fromTop="0" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:Entities/f:NotesAndConclusion.cs" caret="0" fromTop="0" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:Entities/f:Raid.cs" caret="0" fromTop="0" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:ValueObjects/f:PhoneNumber.cs" caret="0" fromTop="0" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:ValueObjects/f:Name.cs" caret="0" fromTop="0" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:ValueObjects/f:JumperDiagram.cs" caret="0" fromTop="0" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:ValueObjects/f:Address.cs" caret="0" fromTop="0" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:Entities/f:UtilityList.cs" caret="0" fromTop="0" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:Entities/f:Case.cs" caret="235" fromTop="10" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:Entities/f:Employee.cs" caret="263" fromTop="10" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:Entities/f:FirmContact.cs" caret="174" fromTop="7" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:SelectSingleEntityById.cs" caret="0" fromTop="0" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:EntitiesToComboBox.cs" caret="1482" fromTop="0" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Computer.Designer.cs" caret="41792" fromTop="30" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Computer.cs" caret="882" fromTop="31" />
     <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Raid.cs" caret="3766" fromTop="100" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:ListViewToDetailsFields.cs" caret="0" fromTop="0" />
     <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:RadioButtonListUtilities.cs" caret="0" fromTop="0" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:UtilityListFormHelper.cs" caret="0" fromTop="0" />
     <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:UtilityQueries.cs" caret="0" fromTop="0" />
     <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:UserControlToEntity.cs" caret="0" fromTop="0" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_ForensicProcess.cs" caret="6961" fromTop="10" />
     <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:View_CaseBrowser.cs" caret="7996" fromTop="22" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:EntitiesToListView.cs" caret="314" fromTop="11" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:UserContolToValueObject.cs" caret="684" fromTop="23" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="18842" fromTop="24" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_DestinationMedia.Designer.cs" caret="0" fromTop="0" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Computer.Designer.cs" caret="33193" fromTop="22" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_BaseForm.cs" caret="774" fromTop="24" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_ForensicProcess.Designer.cs" caret="38226" fromTop="22" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:UtilityListFormHelper.cs" caret="1764" fromTop="27" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:EntitiesToListView.cs" caret="8804" fromTop="140" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="20827" fromTop="146" />
+    <File id="80409D15-50E7-4E47-B7E7-0368E4305EA3/f:NameUserControl.cs" caret="309" fromTop="13" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:ValueObjects/f:Name.cs" caret="199" fromTop="9" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:ValueObjects/f:PhoneNumber.cs" caret="285" fromTop="11" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:FluentMappings/f:PhoneNumberMap.cs" caret="400" fromTop="15" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Firm.Designer.cs" caret="7151" fromTop="21" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:ListViewToDetailsFields.cs" caret="16419" fromTop="28" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Firm.cs" caret="1849" fromTop="20" />
+    <File id="80409D15-50E7-4E47-B7E7-0368E4305EA3/f:PhoneUserControl.cs" caret="730" fromTop="11" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:ValueObjects/f:Address.cs" caret="469" fromTop="14" />
+    <File id="80409D15-50E7-4E47-B7E7-0368E4305EA3/f:AddressUserControl.cs" caret="0" fromTop="0" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_FirmContact.Designer.cs" caret="7160" fromTop="21" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Employee.Designer.cs" caret="6794" fromTop="21" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:UserContolToValueObject.cs" caret="752" fromTop="20" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_FirmContact.cs" caret="3235" fromTop="21" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_HardDrive.cs" caret="6320" fromTop="0" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_DestinationMedia.cs" caret="1596" fromTop="23" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Computer.cs" caret="4470" fromTop="0" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_ForensicProcess.cs" caret="5902" fromTop="16" />
   </RecentFiles>
   <RecentEdits>
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:Entities/f:HardDrive.cs" caret="831" fromTop="24" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Raid.cs" caret="3355" fromTop="56" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:Entities/f:ActiveUserFile.cs" caret="606" fromTop="19" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_ActiveUserFile.cs" caret="648" fromTop="23" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_BaseForm.cs" caret="425" fromTop="19" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="949" fromTop="29" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="16795" fromTop="29" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="15013" fromTop="29" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:Entities/f:Employee.cs" caret="263" fromTop="10" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:Entities/f:Case.cs" caret="235" fromTop="10" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Computer.cs" caret="16242" fromTop="40" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Computer.cs" caret="1211" fromTop="15" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Computer.cs" caret="1062" fromTop="25" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Computer.cs" caret="1649" fromTop="47" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Computer.cs" caret="1306" fromTop="38" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Computer.cs" caret="2184" fromTop="34" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Computer.cs" caret="8394" fromTop="30" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Computer.cs" caret="8417" fromTop="153" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Computer.cs" caret="2184" fromTop="41" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Computer.cs" caret="8417" fromTop="43" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Computer.Designer.cs" caret="41792" fromTop="30" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Computer.cs" caret="2330" fromTop="43" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Computer.cs" caret="2589" fromTop="50" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Computer.cs" caret="882" fromTop="31" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Raid.cs" caret="715" fromTop="26" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Raid.cs" caret="6053" fromTop="26" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Raid.cs" caret="3654" fromTop="33" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Raid.cs" caret="3766" fromTop="37" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:UtilityQueries.cs" caret="0" fromTop="0" />
-    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="18775" fromTop="24" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:ListViewToDetailsFields.cs" caret="16299" fromTop="32" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="22470" fromTop="25" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_DestinationMedia.cs" caret="2477" fromTop="24" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_DestinationMedia.cs" caret="2477" fromTop="11" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_DestinationMedia.cs" caret="795" fromTop="12" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_DestinationMedia.cs" caret="1495" fromTop="20" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:ListViewToDetailsFields.cs" caret="5213" fromTop="8" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:ListViewToDetailsFields.cs" caret="12248" fromTop="26" />
+    <File id="80409D15-50E7-4E47-B7E7-0368E4305EA3/f:PhoneUserControl.cs" caret="1534" fromTop="40" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Employee.Designer.cs" caret="6794" fromTop="21" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_FirmContact.Designer.cs" caret="7131" fromTop="21" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Firm.Designer.cs" caret="7118" fromTop="21" />
+    <File id="80409D15-50E7-4E47-B7E7-0368E4305EA3/f:PhoneUserControl.cs" caret="1368" fromTop="24" />
+    <File id="80409D15-50E7-4E47-B7E7-0368E4305EA3/f:PhoneUserControl.cs" caret="1524" fromTop="32" />
+    <File id="80409D15-50E7-4E47-B7E7-0368E4305EA3/f:PhoneUserControl.cs" caret="476" fromTop="1" />
+    <File id="80409D15-50E7-4E47-B7E7-0368E4305EA3/f:PhoneUserControl.cs" caret="1154" fromTop="21" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:FluentMappings/f:PhoneNumberMap.cs" caret="400" fromTop="15" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:ValueObjects/f:PhoneNumber.cs" caret="454" fromTop="15" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:UserContolToValueObject.cs" caret="957" fromTop="19" />
+    <File id="80409D15-50E7-4E47-B7E7-0368E4305EA3/f:PhoneUserControl.cs" caret="611" fromTop="20" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_FirmContact.cs" caret="3277" fromTop="21" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:ValueObjects/f:Address.cs" caret="469" fromTop="14" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_ForensicProcess.cs" caret="10559" fromTop="22" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_ForensicProcess.cs" caret="10559" fromTop="26" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_ForensicProcess.cs" caret="10559" fromTop="26" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_ForensicProcess.cs" caret="10559" fromTop="18" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_ForensicProcess.cs" caret="10546" fromTop="19" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_ForensicProcess.cs" caret="10546" fromTop="12" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_ForensicProcess.cs" caret="5663" fromTop="23" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_ForensicProcess.cs" caret="5902" fromTop="16" />
   </RecentEdits>
 </RecentFiles>

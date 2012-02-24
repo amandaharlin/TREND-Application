@@ -206,6 +206,7 @@ namespace TrendWinForm.MyUtilities
             {
                 createCaseFormInstance.textBoxHDRelatedComputerMake.Text = "";
                 createCaseFormInstance.textBoxHDRelatedComputerModel.Text = "";
+                createCaseFormInstance.textBoxHDRelatedComputerType.Text = "";
                 createCaseFormInstance.textBoxHDRelatedComputerSerialNum.Text = "";
                 createCaseFormInstance.textBoxHDRelatedComputerSvcTag.Text = "";
                 createCaseFormInstance.textBoxHDRelatedCompSysInfoSystemRunning.Text = "";

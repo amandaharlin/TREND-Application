@@ -12,6 +12,8 @@ namespace TrendWinForm.Domain.ValueObjects
     {
         public virtual string Type { get; set; }
         public virtual int Number { get; set; }
+       // public virtual int FirstThreeDigits { get; set; }
+       //public virtual int LastFourDigits { get; set; }
         public virtual int AreaCode { get; set; }
         public virtual string Extension { get; set; }
     }

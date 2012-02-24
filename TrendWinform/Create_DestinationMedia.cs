@@ -22,12 +22,16 @@ namespace TrendWinForm
         public Create_DestinationMedia()
         {
             InitializeComponent();
+            addBrandType = new UtilityListFormHelper("Brand_Type", comboBoxBrandOutput);
             PopulateFormComboBoxes();
+
+
         }
 
         private void UpdateFormEvent(object sender, EventArgs e)
         {
             PopulateFormComboBoxes();
+
         }
 
         private void PopulateFormComboBoxes()
@@ -40,6 +44,8 @@ namespace TrendWinForm
             comboBoxDestinationMedia.Items.Add("CD");
             comboBoxDestinationMedia.Items.Add("SAN");
             comboBoxDestinationMedia.Items.Add("Other");
+
+            addBrandType.PopulateComboBoxWithUtilityStrings();
         }
 
         public override void OnSave(EventArgs e)
@@ -63,10 +69,10 @@ namespace TrendWinForm
             NewDestinationMedia = new DestinationMedia()
             {
                 Type = comboBoxDestinationMedia.Text,
-                Brand = textBoxBrandOutput.Text,
+                Brand = comboBoxBrandOutput.Text,
                 Size = Convert.ToDecimal(textBoxSizeOutput.Text),
                 SerialNumber = textBoxSerialNumber.Text
-                
+
             };
         }
 

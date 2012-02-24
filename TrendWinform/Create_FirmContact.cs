@@ -83,7 +83,8 @@ namespace TrendWinForm
                 textBoxStreet2.Text = firm.Address.StreetLine2;
                 textBoxState.Text = firm.Address.State;
                 textBoxZipCode.Text = firm.Address.ZipCode;
-                textBoxPhoneNumber.Text = firm.PhoneNumber.AreaCode + " - " +firm.PhoneNumber.Number + " [" + firm.PhoneNumber.Extension + "] ";
+                textBoxPhoneNumber.Text = string.Format(firm.PhoneNumber.AreaCode + firm.PhoneNumber.Number + " [" + firm.PhoneNumber.Extension + "]");
+                //textBoxPhoneNumber.Text = firm.PhoneNumber.AreaCode + firm.PhoneNumber.FirstThreeDigits + " - " + firm.PhoneNumber.LastFourDigits + "[" + firm.PhoneNumber.Extension + "]";
                 textBoxNotes.Text = firm.FirmDescription;
                 groupBoxSelectedfirmDetails.Text = firm.FirmName;
             }
@@ -110,6 +111,8 @@ namespace TrendWinForm
         {
             ShowFirmDetails();
         }
+
+
 
         private Create_Firm newFirm = null;
         private void AddFirm_Click(object sender, EventArgs e)

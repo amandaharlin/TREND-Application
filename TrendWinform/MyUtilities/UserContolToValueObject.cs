@@ -30,6 +30,8 @@ namespace TrendWinForm.MyUtilities
                                {
                                   Type = target.Type,
                                   Number = target.Number,
+                                  //FirstThreeDigits = target.FirstThreeDigits,
+                                  //LastFourDigits = target.LastFourDigits,
                                   AreaCode = target.AreaCode,
                                   Extension = target.Extension
                                };

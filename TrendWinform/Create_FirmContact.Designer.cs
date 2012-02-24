@@ -129,7 +129,7 @@
             this.phoneUserControl1.Extension = "";
             this.phoneUserControl1.Location = new System.Drawing.Point(221, 172);
             this.phoneUserControl1.Name = "phoneUserControl1";
-            this.phoneUserControl1.Number = 0;
+            //this.phoneUserControl1.Number = 0;
             this.phoneUserControl1.Size = new System.Drawing.Size(358, 91);
             this.phoneUserControl1.TabIndex = 9;
             this.phoneUserControl1.Type = "Mobile";
