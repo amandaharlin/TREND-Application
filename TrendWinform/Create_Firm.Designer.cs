@@ -132,7 +132,7 @@
             this.phoneUserControlFirm.Extension = "";
             this.phoneUserControlFirm.Location = new System.Drawing.Point(5, 184);
             this.phoneUserControlFirm.Name = "phoneUserControlFirm";
-            this.phoneUserControlFirm.Number = 0;
+           // this.phoneUserControlFirm.Number = 0;
             this.phoneUserControlFirm.Size = new System.Drawing.Size(358, 91);
             this.phoneUserControlFirm.TabIndex = 7;
             this.phoneUserControlFirm.Type = "Mobile";

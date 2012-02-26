@@ -26,5 +26,13 @@ namespace TrendWinForm.MyUtilities
             }
             
         }
+
+
+        public static void DeleteComputerById(Guid compId)
+        {
+
+        }
+
+
     }
 }

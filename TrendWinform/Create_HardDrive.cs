@@ -109,7 +109,7 @@ namespace TrendWinForm
                                    Model = comboBoxHDModel.Text,
                                    Type = comboBoxHDType.Text,
                                    Serial = textBoxSerialNum.Text,
-                                   SizeInKilobytes = Convert.ToDecimal(textBoxSize.Text),
+                                   SizeInGB = Convert.ToDecimal(textBoxSize.Text),
                                    DriveInterface = RadioButtonListUtilities.ExtractTextFromRadioButtonGroup(groupBoxDriveInterface),
                                    DrivePosition = RadioButtonListUtilities.ExtractTextFromRadioButtonGroup(groupBoxDrivePostitionAsInstalled),
                                    JumperSetting = RadioButtonListUtilities.ExtractTextFromRadioButtonGroup(groupBoxJumperSettings),

@@ -99,7 +99,7 @@
             this.AddEmployee.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddEmployee.BackgroundImage")));
             this.AddEmployee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.AddEmployee.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.AddEmployee.Location = new System.Drawing.Point(255, 27);
+            this.AddEmployee.Location = new System.Drawing.Point(238, 27);
             this.AddEmployee.Name = "AddEmployee";
             this.AddEmployee.Size = new System.Drawing.Size(24, 24);
             this.AddEmployee.TabIndex = 212;
@@ -112,14 +112,15 @@
             this.comboBoxCDFInfoTech.FormattingEnabled = true;
             this.comboBoxCDFInfoTech.Location = new System.Drawing.Point(100, 29);
             this.comboBoxCDFInfoTech.Name = "comboBoxCDFInfoTech";
-            this.comboBoxCDFInfoTech.Size = new System.Drawing.Size(154, 21);
+            this.comboBoxCDFInfoTech.Size = new System.Drawing.Size(137, 21);
             this.comboBoxCDFInfoTech.TabIndex = 211;
+            this.comboBoxCDFInfoTech.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxCDFInfoTech_Validating);
             // 
             // dateTimePickerFPFinishDateTime
             // 
             this.dateTimePickerFPFinishDateTime.Location = new System.Drawing.Point(100, 54);
             this.dateTimePickerFPFinishDateTime.Name = "dateTimePickerFPFinishDateTime";
-            this.dateTimePickerFPFinishDateTime.Size = new System.Drawing.Size(178, 20);
+            this.dateTimePickerFPFinishDateTime.Size = new System.Drawing.Size(162, 20);
             this.dateTimePickerFPFinishDateTime.TabIndex = 197;
             // 
             // label17
@@ -171,22 +172,24 @@
             this.buttonAddImagesVerifiedBy.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonAddImagesVerifiedBy.BackgroundImage")));
             this.buttonAddImagesVerifiedBy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonAddImagesVerifiedBy.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonAddImagesVerifiedBy.Location = new System.Drawing.Point(251, 52);
+            this.buttonAddImagesVerifiedBy.Location = new System.Drawing.Point(235, 51);
             this.buttonAddImagesVerifiedBy.Name = "buttonAddImagesVerifiedBy";
             this.buttonAddImagesVerifiedBy.Size = new System.Drawing.Size(24, 24);
             this.buttonAddImagesVerifiedBy.TabIndex = 216;
             this.buttonAddImagesVerifiedBy.UseVisualStyleBackColor = true;
+            this.buttonAddImagesVerifiedBy.Click += new System.EventHandler(this.buttonAddImagesVerifiedBy_Click);
             // 
             // buttonAddImagesMade
             // 
             this.buttonAddImagesMade.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonAddImagesMade.BackgroundImage")));
             this.buttonAddImagesMade.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonAddImagesMade.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonAddImagesMade.Location = new System.Drawing.Point(251, 29);
+            this.buttonAddImagesMade.Location = new System.Drawing.Point(235, 28);
             this.buttonAddImagesMade.Name = "buttonAddImagesMade";
             this.buttonAddImagesMade.Size = new System.Drawing.Size(24, 24);
             this.buttonAddImagesMade.TabIndex = 215;
             this.buttonAddImagesMade.UseVisualStyleBackColor = true;
+            this.buttonAddImagesMade.Click += new System.EventHandler(this.buttonAddImagesMade_Click);
             // 
             // comboBoxImagesVerifiedBy
             // 
@@ -194,8 +197,9 @@
             this.comboBoxImagesVerifiedBy.FormattingEnabled = true;
             this.comboBoxImagesVerifiedBy.Location = new System.Drawing.Point(96, 54);
             this.comboBoxImagesVerifiedBy.Name = "comboBoxImagesVerifiedBy";
-            this.comboBoxImagesVerifiedBy.Size = new System.Drawing.Size(154, 21);
+            this.comboBoxImagesVerifiedBy.Size = new System.Drawing.Size(139, 21);
             this.comboBoxImagesVerifiedBy.TabIndex = 213;
+            this.comboBoxImagesVerifiedBy.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxImagesVerifiedBy_Validating);
             // 
             // comboBoxImagesMade
             // 
@@ -203,8 +207,9 @@
             this.comboBoxImagesMade.FormattingEnabled = true;
             this.comboBoxImagesMade.Location = new System.Drawing.Point(96, 30);
             this.comboBoxImagesMade.Name = "comboBoxImagesMade";
-            this.comboBoxImagesMade.Size = new System.Drawing.Size(154, 21);
+            this.comboBoxImagesMade.Size = new System.Drawing.Size(139, 21);
             this.comboBoxImagesMade.TabIndex = 212;
+            this.comboBoxImagesMade.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxImagesMade_Validating);
             // 
             // labelImagesVerifiedBy
             // 
@@ -256,33 +261,36 @@
             this.buttonAddSoftware.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonAddSoftware.BackgroundImage")));
             this.buttonAddSoftware.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonAddSoftware.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonAddSoftware.Location = new System.Drawing.Point(250, 78);
+            this.buttonAddSoftware.Location = new System.Drawing.Point(235, 78);
             this.buttonAddSoftware.Name = "buttonAddSoftware";
             this.buttonAddSoftware.Size = new System.Drawing.Size(24, 24);
             this.buttonAddSoftware.TabIndex = 216;
             this.buttonAddSoftware.UseVisualStyleBackColor = true;
+            this.buttonAddSoftware.Click += new System.EventHandler(this.buttonAddSoftware_Click);
             // 
             // buttonAddDeviceUsed
             // 
             this.buttonAddDeviceUsed.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonAddDeviceUsed.BackgroundImage")));
             this.buttonAddDeviceUsed.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonAddDeviceUsed.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonAddDeviceUsed.Location = new System.Drawing.Point(250, 54);
+            this.buttonAddDeviceUsed.Location = new System.Drawing.Point(235, 54);
             this.buttonAddDeviceUsed.Name = "buttonAddDeviceUsed";
             this.buttonAddDeviceUsed.Size = new System.Drawing.Size(24, 24);
             this.buttonAddDeviceUsed.TabIndex = 215;
             this.buttonAddDeviceUsed.UseVisualStyleBackColor = true;
+            this.buttonAddDeviceUsed.Click += new System.EventHandler(this.buttonAddDeviceUsed_Click);
             // 
             // buttonAddProcessPerformed
             // 
             this.buttonAddProcessPerformed.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonAddProcessPerformed.BackgroundImage")));
             this.buttonAddProcessPerformed.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonAddProcessPerformed.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonAddProcessPerformed.Location = new System.Drawing.Point(250, 29);
+            this.buttonAddProcessPerformed.Location = new System.Drawing.Point(235, 29);
             this.buttonAddProcessPerformed.Name = "buttonAddProcessPerformed";
             this.buttonAddProcessPerformed.Size = new System.Drawing.Size(24, 24);
             this.buttonAddProcessPerformed.TabIndex = 214;
             this.buttonAddProcessPerformed.UseVisualStyleBackColor = true;
+            this.buttonAddProcessPerformed.Click += new System.EventHandler(this.buttonAddProcessPerformed_Click);
             // 
             // comboBoxSoftwareProcessing
             // 
@@ -290,8 +298,9 @@
             this.comboBoxSoftwareProcessing.FormattingEnabled = true;
             this.comboBoxSoftwareProcessing.Location = new System.Drawing.Point(96, 80);
             this.comboBoxSoftwareProcessing.Name = "comboBoxSoftwareProcessing";
-            this.comboBoxSoftwareProcessing.Size = new System.Drawing.Size(153, 21);
+            this.comboBoxSoftwareProcessing.Size = new System.Drawing.Size(139, 21);
             this.comboBoxSoftwareProcessing.TabIndex = 212;
+            this.comboBoxSoftwareProcessing.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxSoftwareProcessing_Validating);
             // 
             // comboBoxDeviceUsed
             // 
@@ -299,8 +308,9 @@
             this.comboBoxDeviceUsed.FormattingEnabled = true;
             this.comboBoxDeviceUsed.Location = new System.Drawing.Point(96, 55);
             this.comboBoxDeviceUsed.Name = "comboBoxDeviceUsed";
-            this.comboBoxDeviceUsed.Size = new System.Drawing.Size(153, 21);
+            this.comboBoxDeviceUsed.Size = new System.Drawing.Size(139, 21);
             this.comboBoxDeviceUsed.TabIndex = 211;
+            this.comboBoxDeviceUsed.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxDeviceUsed_Validating);
             // 
             // comboBoxProcessPerformed
             // 
@@ -308,8 +318,9 @@
             this.comboBoxProcessPerformed.FormattingEnabled = true;
             this.comboBoxProcessPerformed.Location = new System.Drawing.Point(96, 30);
             this.comboBoxProcessPerformed.Name = "comboBoxProcessPerformed";
-            this.comboBoxProcessPerformed.Size = new System.Drawing.Size(153, 21);
+            this.comboBoxProcessPerformed.Size = new System.Drawing.Size(139, 21);
             this.comboBoxProcessPerformed.TabIndex = 210;
+            this.comboBoxProcessPerformed.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxProcessPerformed_Validating);
             // 
             // labelSoftware
             // 
@@ -433,6 +444,7 @@
             this.textBoxCollectionLocation.Name = "textBoxCollectionLocation";
             this.textBoxCollectionLocation.Size = new System.Drawing.Size(160, 20);
             this.textBoxCollectionLocation.TabIndex = 199;
+            this.textBoxCollectionLocation.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxCollectionLocation_Validating);
             // 
             // label4CollectionLocation
             // 
@@ -506,6 +518,7 @@
             this.checkedListBoxAssociatedcomputers.Name = "checkedListBoxAssociatedcomputers";
             this.checkedListBoxAssociatedcomputers.Size = new System.Drawing.Size(278, 214);
             this.checkedListBoxAssociatedcomputers.TabIndex = 214;
+            this.checkedListBoxAssociatedcomputers.Validating += new System.ComponentModel.CancelEventHandler(this.checkedListBoxAssociatedcomputers_Validating);
             // 
             // checkedListBoxAssociatedhardDrives
             // 
@@ -514,6 +527,7 @@
             this.checkedListBoxAssociatedhardDrives.Name = "checkedListBoxAssociatedhardDrives";
             this.checkedListBoxAssociatedhardDrives.Size = new System.Drawing.Size(280, 214);
             this.checkedListBoxAssociatedhardDrives.TabIndex = 215;
+            this.checkedListBoxAssociatedhardDrives.Validating += new System.ComponentModel.CancelEventHandler(this.checkedListBoxAssociatedhardDrives_Validating);
             // 
             // labelAssociatedcomputers
             // 
