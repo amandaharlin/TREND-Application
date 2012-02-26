@@ -18,9 +18,6 @@ namespace TrendWinForm
             SessionConfig.BeginNhProfiler();
             //SessionConfig.CreateDatabaseFromMappings();
 
-            
-            
-
             //Form Setup
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

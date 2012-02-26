@@ -1,0 +1,12 @@
+H:\WindowsFormsApplications\TREND Application\TrendCustromControls\bin\Debug\TrendCustromControls.dll
+H:\WindowsFormsApplications\TREND Application\TrendCustromControls\bin\Debug\TrendCustromControls.pdb
+H:\WindowsFormsApplications\TREND Application\TrendCustromControls\obj\Debug\ResolveAssemblyReference.cache
+H:\WindowsFormsApplications\TREND Application\TrendCustromControls\obj\Debug\TrendCustromControls.AddressUserControl.resources
+H:\WindowsFormsApplications\TREND Application\TrendCustromControls\obj\Debug\TrendCustromControls.CdfExaminerUserControl.resources
+H:\WindowsFormsApplications\TREND Application\TrendCustromControls\obj\Debug\TrendCustromControls.JumperDiagramUserControl.resources
+H:\WindowsFormsApplications\TREND Application\TrendCustromControls\obj\Debug\TrendCustromControls.NameUserControl.resources
+H:\WindowsFormsApplications\TREND Application\TrendCustromControls\obj\Debug\TrendCustromControls.PhoneUserControl.resources
+H:\WindowsFormsApplications\TREND Application\TrendCustromControls\obj\Debug\GenerateResource.read.1.tlog
+H:\WindowsFormsApplications\TREND Application\TrendCustromControls\obj\Debug\GenerateResource.write.1.tlog
+H:\WindowsFormsApplications\TREND Application\TrendCustromControls\obj\Debug\TrendCustromControls.dll
+H:\WindowsFormsApplications\TREND Application\TrendCustromControls\obj\Debug\TrendCustromControls.pdb

@@ -82,7 +82,7 @@ namespace TrendWinForm.MyUtilities
 
                                        item.SubItems.Add(hd.Model);
                                        item.SubItems.Add(hd.Serial);
-                                       item.SubItems.Add(hd.SizeInKilobytes.ToString());
+                                       item.SubItems.Add(hd.SizeInGB.ToString());
                                        item.SubItems.Add(hd.Type);
                                        item.SubItems.Add(hd.DriveInterface);
                                        item.SubItems.Add(hd.DrivePosition);
@@ -101,6 +101,39 @@ namespace TrendWinForm.MyUtilities
             target.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             target.Columns[target.Columns.Count - 1].Width = -2;
         }
+
+
+        public static void FillHardDrivesListViewMinimalDetailView(IList<HardDrive> hardDrives, ListView target)
+        {
+
+            target.Items.Clear();
+            target.Columns.Clear();
+            target.Columns.Add("Make");
+            target.Columns.Add("Model");
+            target.Columns.Add("Serial ");
+            target.Columns.Add("Size [kb]");
+            IList<string> images = new List<string>();
+            images.Add("TrendWinForm.Images.Icons.platter_hardDrive_48.png");
+            images.Add("TrendWinForm.Images.Icons.solidState_hardDrive_48.png");
+
+            PopulateListViewImages(images, target);
+            hardDrives.ForEach(hd =>
+            {
+                var item = new ListViewItem(hd.Serial);
+                item.Text = hd.Make;
+                item.SubItems.Add(hd.Model);
+                item.SubItems.Add(hd.Serial);
+                item.SubItems.Add(hd.SizeInGB.ToString());
+                if (hd.Type == "Disk Drive") { item.ImageIndex = 0; }
+                else { item.ImageIndex = 1; }
+                target.Items.Add(item);
+            });
+            target.TileSize = new System.Drawing.Size(140, 52);
+            target.View = View.Details;
+            target.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            target.Columns[target.Columns.Count - 1].Width = -2;
+        }
+
 
 
         public static void FillRaidsListView(IList<Raid> raids, ListView target)
@@ -157,6 +190,7 @@ namespace TrendWinForm.MyUtilities
                                               item.SubItems.Add(fp.ProcessingPerformed);
                                               item.SubItems.Add(fp.Software);
 
+
                                               item.ImageIndex = 0;
                                               target.Items.Add(item);
                                           }
@@ -183,7 +217,14 @@ namespace TrendWinForm.MyUtilities
             target.Columns.Add("Size");
             target.Columns.Add("Serial Number");
             IList<String> images = new List<string>();
+            //TODO: Replace with proper images
+            images.Add("TrendWinForm.Images.Icons.solidState_hardDrive_48.png");
+            images.Add("TrendWinForm.Images.Icons.Floppy-Drive_48.png");
             images.Add("TrendWinForm.Images.Icons.DVD_48.png");
+            images.Add("TrendWinForm.Images.Icons.DVD_48.png");
+            images.Add("TrendWinForm.Images.Icons.san_icon_48.png");
+            images.Add("TrendWinForm.Images.Icons.Floppy-Drive_48.png");
+            images.Add("TrendWinForm.Images.Icons.mystery_computer_48.png");
             PopulateListViewImages(images, target);
             destinationMediae.ForEach(dm =>
                                           {
@@ -191,7 +232,35 @@ namespace TrendWinForm.MyUtilities
                                               item.Text = dm.Type;
                                               item.SubItems.Add(dm.Brand);
                                               item.SubItems.Add(dm.Size.ToString());
-                                              item.ImageIndex = 0;
+                                              if (item.Text == "Hard Drive")
+                                              {
+                                                  item.ImageIndex = 0;
+                                              }
+                                              else if (item.Text == "External Drive")
+                                              {
+                                                  item.ImageIndex = 1;
+                                              }
+                                              else if (item.Text == "DVD")
+                                              {
+                                                  item.ImageIndex = 2;
+                                              }
+                                              else if (item.Text == "CD")
+                                              {
+                                                  item.ImageIndex = 3;
+                                              }
+                                              else if (item.Text == "SAN")
+                                              {
+                                                  item.ImageIndex = 4;
+                                              }
+                                              else if (item.Text == "Floppy")
+                                              {
+                                                  item.ImageIndex = 5;
+                                              }
+                                              else
+                                              {
+                                                  item.ImageIndex = 6;
+                                              }
+                                             
                                               target.Items.Add(item);
                                           }
                 );
@@ -254,6 +323,14 @@ namespace TrendWinForm.MyUtilities
                 item.SubItems.Add(auf.CpuUsage.ToString());
                 item.SubItems.Add(auf.Description);
                 item.ImageIndex = 0;
+                if (auf.Id != Guid.Empty)
+                {
+                    item.Tag = auf.Id;
+                }else
+                {
+                    item.Tag = auf;
+                }
+
                 target.Items.Add(item);
             });
         }

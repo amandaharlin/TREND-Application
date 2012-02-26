@@ -17,7 +17,7 @@ namespace TrendWinForm.FluentMappings
             Map(x => x.Model);
             Map(x => x.Type);
             Map(x => x.Serial);
-            Map(x => x.SizeInKilobytes);
+            Map(x => x.SizeInGB);
             Map(x => x.DriveInterface);
             Map(x => x.DrivePosition);
             Map(x => x.JumperSetting);

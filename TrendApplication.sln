@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrendWinForm", "TrendWinForm\TrendWinForm.csproj", "{2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrendCustromControls", "TrendCustromControls\TrendCustromControls.csproj", "{80409D15-50E7-4E47-B7E7-0368E4305EA3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrendCustomControls", "TrendCustromControls\TrendCustomControls.csproj", "{80409D15-50E7-4E47-B7E7-0368E4305EA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
