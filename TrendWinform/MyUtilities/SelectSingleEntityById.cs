@@ -60,5 +60,21 @@ namespace TrendWinForm.MyUtilities
             return employee;
         }
 
+
+        public static ActiveUserFile SelectActiveUserFileById(Guid aufId)
+        {
+            ActiveUserFile auf;
+            var factory = SessionConfig.SessionFactory;
+            using (var session = factory.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    auf = session.Get<ActiveUserFile>(aufId);
+                    transaction.Commit();
+                }
+            }
+            return auf;
+        }
+
     }
 }

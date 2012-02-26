@@ -13,7 +13,7 @@ namespace TrendWinForm.Domain.Entities
         public virtual string Model { get; set; }
         public virtual string Type { get; set; }
         public virtual string Serial { get; set; }
-        public virtual decimal SizeInKilobytes { get; set; }
+        public virtual decimal SizeInGB { get; set; }
 
 
         public virtual string DriveInterface { get; set; }

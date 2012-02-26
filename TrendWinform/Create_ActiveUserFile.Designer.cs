@@ -43,6 +43,8 @@
             this.labelAUFFileName = new System.Windows.Forms.Label();
             this.labelReferenceComputer = new System.Windows.Forms.Label();
             this.labelCreateActiveUserFile = new System.Windows.Forms.Label();
+            this.trackBarMemoryUsage = new System.Windows.Forms.TrackBar();
+            this.trackBarCpuUsage = new System.Windows.Forms.TrackBar();
             this.panel14 = new System.Windows.Forms.Panel();
             this.AddEmployee = new System.Windows.Forms.Button();
             this.comboBoxCdfInfoTech = new System.Windows.Forms.ComboBox();
@@ -50,13 +52,11 @@
             this.labelCDFFinishDateTime = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.labelCdfInfo = new System.Windows.Forms.Label();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.trackBar2 = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarMemoryUsage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarCpuUsage)).BeginInit();
             this.panel14.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel11
@@ -74,8 +74,8 @@
             this.panel11.Controls.Add(this.labelAUFFileName);
             this.panel11.Controls.Add(this.labelReferenceComputer);
             this.panel11.Controls.Add(this.labelCreateActiveUserFile);
-            this.panel11.Controls.Add(this.trackBar1);
-            this.panel11.Controls.Add(this.trackBar2);
+            this.panel11.Controls.Add(this.trackBarMemoryUsage);
+            this.panel11.Controls.Add(this.trackBarCpuUsage);
             this.panel11.Location = new System.Drawing.Point(2, 4);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(573, 193);
@@ -104,10 +104,11 @@
             // textBoxAUFCPUUsage
             // 
             this.textBoxAUFCPUUsage.Location = new System.Drawing.Point(498, 168);
-            this.textBoxAUFCPUUsage.MaxLength = 3;
+            this.textBoxAUFCPUUsage.MaxLength = 4;
             this.textBoxAUFCPUUsage.Name = "textBoxAUFCPUUsage";
             this.textBoxAUFCPUUsage.Size = new System.Drawing.Size(34, 20);
             this.textBoxAUFCPUUsage.TabIndex = 213;
+            this.textBoxAUFCPUUsage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAUFCPUUsage_KeyPress);
             // 
             // labelAUFCPUUsage
             // 
@@ -124,16 +125,18 @@
             this.comboBoxAUFReferenceComputer.FormattingEnabled = true;
             this.comboBoxAUFReferenceComputer.Location = new System.Drawing.Point(116, 27);
             this.comboBoxAUFReferenceComputer.Name = "comboBoxAUFReferenceComputer";
-            this.comboBoxAUFReferenceComputer.Size = new System.Drawing.Size(447, 21);
+            this.comboBoxAUFReferenceComputer.Size = new System.Drawing.Size(427, 21);
             this.comboBoxAUFReferenceComputer.TabIndex = 211;
+            this.comboBoxAUFReferenceComputer.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxAUFReferenceComputer_Validating);
             // 
             // textBoxAUFMemoryUsage
             // 
             this.textBoxAUFMemoryUsage.Location = new System.Drawing.Point(213, 170);
-            this.textBoxAUFMemoryUsage.MaxLength = 3;
+            this.textBoxAUFMemoryUsage.MaxLength = 4;
             this.textBoxAUFMemoryUsage.Name = "textBoxAUFMemoryUsage";
             this.textBoxAUFMemoryUsage.Size = new System.Drawing.Size(39, 20);
             this.textBoxAUFMemoryUsage.TabIndex = 206;
+            this.textBoxAUFMemoryUsage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAUFMemoryUsage_KeyPress);
             // 
             // labelAUFMemoryUsage
             // 
@@ -150,7 +153,7 @@
             this.textBoxAUFDescription.MaxLength = 9990;
             this.textBoxAUFDescription.Multiline = true;
             this.textBoxAUFDescription.Name = "textBoxAUFDescription";
-            this.textBoxAUFDescription.Size = new System.Drawing.Size(447, 82);
+            this.textBoxAUFDescription.Size = new System.Drawing.Size(427, 82);
             this.textBoxAUFDescription.TabIndex = 204;
             // 
             // labelAUFDescription
@@ -167,17 +170,18 @@
             this.textBoxAUFFileName.Location = new System.Drawing.Point(116, 53);
             this.textBoxAUFFileName.MaxLength = 250;
             this.textBoxAUFFileName.Name = "textBoxAUFFileName";
-            this.textBoxAUFFileName.Size = new System.Drawing.Size(447, 20);
+            this.textBoxAUFFileName.Size = new System.Drawing.Size(427, 20);
             this.textBoxAUFFileName.TabIndex = 202;
+            this.textBoxAUFFileName.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxAUFFileName_Validating);
             // 
             // labelAUFFileName
             // 
             this.labelAUFFileName.AutoSize = true;
             this.labelAUFFileName.Location = new System.Drawing.Point(8, 57);
             this.labelAUFFileName.Name = "labelAUFFileName";
-            this.labelAUFFileName.Size = new System.Drawing.Size(54, 13);
+            this.labelAUFFileName.Size = new System.Drawing.Size(77, 13);
             this.labelAUFFileName.TabIndex = 201;
-            this.labelAUFFileName.Text = "File Name";
+            this.labelAUFFileName.Text = "Program Name";
             // 
             // labelReferenceComputer
             // 
@@ -198,6 +202,25 @@
             this.labelCreateActiveUserFile.TabIndex = 198;
             this.labelCreateActiveUserFile.Text = "Create Active User File";
             // 
+            // trackBarMemoryUsage
+            // 
+            this.trackBarMemoryUsage.BackColor = System.Drawing.SystemColors.Control;
+            this.trackBarMemoryUsage.Location = new System.Drawing.Point(101, 165);
+            this.trackBarMemoryUsage.Maximum = 1000;
+            this.trackBarMemoryUsage.Name = "trackBarMemoryUsage";
+            this.trackBarMemoryUsage.Size = new System.Drawing.Size(106, 45);
+            this.trackBarMemoryUsage.TabIndex = 216;
+            this.trackBarMemoryUsage.ValueChanged += new System.EventHandler(this.trackBarMemoryUsage_ValueChanged);
+            // 
+            // trackBarCpuUsage
+            // 
+            this.trackBarCpuUsage.Location = new System.Drawing.Point(388, 165);
+            this.trackBarCpuUsage.Maximum = 1000;
+            this.trackBarCpuUsage.Name = "trackBarCpuUsage";
+            this.trackBarCpuUsage.Size = new System.Drawing.Size(104, 45);
+            this.trackBarCpuUsage.TabIndex = 217;
+            this.trackBarCpuUsage.ValueChanged += new System.EventHandler(this.trackBarCpuUsage_ValueChanged);
+            // 
             // panel14
             // 
             this.panel14.Controls.Add(this.AddEmployee);
@@ -206,9 +229,9 @@
             this.panel14.Controls.Add(this.labelCDFFinishDateTime);
             this.panel14.Controls.Add(this.label41);
             this.panel14.Controls.Add(this.labelCdfInfo);
-            this.panel14.Location = new System.Drawing.Point(5, 200);
+            this.panel14.Location = new System.Drawing.Point(5, 203);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(570, 59);
+            this.panel14.Size = new System.Drawing.Size(570, 56);
             this.panel14.TabIndex = 211;
             // 
             // AddEmployee
@@ -268,21 +291,6 @@
             this.labelCdfInfo.TabIndex = 199;
             this.labelCdfInfo.Text = "Cdf Info";
             // 
-            // trackBar1
-            // 
-            this.trackBar1.BackColor = System.Drawing.SystemColors.Control;
-            this.trackBar1.Location = new System.Drawing.Point(101, 165);
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(106, 45);
-            this.trackBar1.TabIndex = 216;
-            // 
-            // trackBar2
-            // 
-            this.trackBar2.Location = new System.Drawing.Point(388, 165);
-            this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Size = new System.Drawing.Size(104, 45);
-            this.trackBar2.TabIndex = 217;
-            // 
             // Create_ActiveUserFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,10 +306,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarMemoryUsage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarCpuUsage)).EndInit();
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -329,8 +337,8 @@
         internal System.Windows.Forms.Label labelCDFFinishDateTime;
         internal System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label labelCdfInfo;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.TrackBar trackBar2;
+        private System.Windows.Forms.TrackBar trackBarMemoryUsage;
+        private System.Windows.Forms.TrackBar trackBarCpuUsage;
 
     }
 }

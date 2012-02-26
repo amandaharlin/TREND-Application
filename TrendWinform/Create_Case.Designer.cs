@@ -290,9 +290,9 @@
             this.buttonViewForensicProcess = new System.Windows.Forms.Button();
             this.buttonAddForensicProcess = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.buttonRemoveActiveUserFile = new System.Windows.Forms.Button();
+            this.buttonEditActiveUserFile = new System.Windows.Forms.Button();
+            this.buttonViewActiveUserFile = new System.Windows.Forms.Button();
             this.buttonAddActiveUserFiles = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.listViewAUFActiveUserFiles = new System.Windows.Forms.ListView();
@@ -1506,7 +1506,7 @@
             this.textBoxHDDetails_Interface.Location = new System.Drawing.Point(48, 83);
             this.textBoxHDDetails_Interface.Name = "textBoxHDDetails_Interface";
             this.textBoxHDDetails_Interface.ReadOnly = true;
-            this.textBoxHDDetails_Interface.Size = new System.Drawing.Size(101, 20);
+            this.textBoxHDDetails_Interface.Size = new System.Drawing.Size(272, 20);
             this.textBoxHDDetails_Interface.TabIndex = 189;
             // 
             // label42
@@ -1526,7 +1526,7 @@
             this.textBoxHDDetails_Serial.Location = new System.Drawing.Point(48, 60);
             this.textBoxHDDetails_Serial.Name = "textBoxHDDetails_Serial";
             this.textBoxHDDetails_Serial.ReadOnly = true;
-            this.textBoxHDDetails_Serial.Size = new System.Drawing.Size(101, 20);
+            this.textBoxHDDetails_Serial.Size = new System.Drawing.Size(272, 20);
             this.textBoxHDDetails_Serial.TabIndex = 186;
             // 
             // textBoxHDDetails_Model
@@ -1536,7 +1536,7 @@
             this.textBoxHDDetails_Model.Location = new System.Drawing.Point(48, 37);
             this.textBoxHDDetails_Model.Name = "textBoxHDDetails_Model";
             this.textBoxHDDetails_Model.ReadOnly = true;
-            this.textBoxHDDetails_Model.Size = new System.Drawing.Size(101, 20);
+            this.textBoxHDDetails_Model.Size = new System.Drawing.Size(272, 20);
             this.textBoxHDDetails_Model.TabIndex = 185;
             // 
             // textBoxHDDetails_Make
@@ -1546,7 +1546,7 @@
             this.textBoxHDDetails_Make.Location = new System.Drawing.Point(48, 14);
             this.textBoxHDDetails_Make.Name = "textBoxHDDetails_Make";
             this.textBoxHDDetails_Make.ReadOnly = true;
-            this.textBoxHDDetails_Make.Size = new System.Drawing.Size(101, 20);
+            this.textBoxHDDetails_Make.Size = new System.Drawing.Size(272, 20);
             this.textBoxHDDetails_Make.TabIndex = 184;
             // 
             // labelHDMake
@@ -2009,7 +2009,7 @@
             // 
             this.label65.AutoSize = true;
             this.label65.Font = new System.Drawing.Font("Calibri", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label65.Location = new System.Drawing.Point(6, 4);
+            this.label65.Location = new System.Drawing.Point(2, 1);
             this.label65.Name = "label65";
             this.label65.Size = new System.Drawing.Size(116, 24);
             this.label65.TabIndex = 173;
@@ -2034,7 +2034,7 @@
             // 
             this.label66.AutoSize = true;
             this.label66.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label66.Location = new System.Drawing.Point(252, 10);
+            this.label66.Location = new System.Drawing.Point(120, 27);
             this.label66.Name = "label66";
             this.label66.Size = new System.Drawing.Size(102, 13);
             this.label66.TabIndex = 186;
@@ -2042,9 +2042,9 @@
             // 
             // listViewRelatedRaidonHDPage
             // 
-            this.listViewRelatedRaidonHDPage.Location = new System.Drawing.Point(255, 26);
+            this.listViewRelatedRaidonHDPage.Location = new System.Drawing.Point(123, 41);
             this.listViewRelatedRaidonHDPage.Name = "listViewRelatedRaidonHDPage";
-            this.listViewRelatedRaidonHDPage.Size = new System.Drawing.Size(225, 105);
+            this.listViewRelatedRaidonHDPage.Size = new System.Drawing.Size(357, 96);
             this.listViewRelatedRaidonHDPage.TabIndex = 185;
             this.listViewRelatedRaidonHDPage.UseCompatibleStateImageBehavior = false;
             // 
@@ -2052,37 +2052,37 @@
             // 
             this.textBoxHDRaidLevel.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxHDRaidLevel.Enabled = false;
-            this.textBoxHDRaidLevel.Location = new System.Drawing.Point(124, 88);
+            this.textBoxHDRaidLevel.Location = new System.Drawing.Point(7, 117);
             this.textBoxHDRaidLevel.Name = "textBoxHDRaidLevel";
             this.textBoxHDRaidLevel.ReadOnly = true;
-            this.textBoxHDRaidLevel.Size = new System.Drawing.Size(112, 20);
+            this.textBoxHDRaidLevel.Size = new System.Drawing.Size(107, 20);
             this.textBoxHDRaidLevel.TabIndex = 179;
             // 
             // textBoxHDRaidHardwareOrSoftware
             // 
             this.textBoxHDRaidHardwareOrSoftware.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxHDRaidHardwareOrSoftware.Enabled = false;
-            this.textBoxHDRaidHardwareOrSoftware.Location = new System.Drawing.Point(123, 38);
+            this.textBoxHDRaidHardwareOrSoftware.Location = new System.Drawing.Point(7, 41);
             this.textBoxHDRaidHardwareOrSoftware.Name = "textBoxHDRaidHardwareOrSoftware";
             this.textBoxHDRaidHardwareOrSoftware.ReadOnly = true;
-            this.textBoxHDRaidHardwareOrSoftware.Size = new System.Drawing.Size(113, 20);
+            this.textBoxHDRaidHardwareOrSoftware.Size = new System.Drawing.Size(107, 20);
             this.textBoxHDRaidHardwareOrSoftware.TabIndex = 180;
             // 
             // textBoxHDRaidType
             // 
             this.textBoxHDRaidType.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxHDRaidType.Enabled = false;
-            this.textBoxHDRaidType.Location = new System.Drawing.Point(124, 62);
+            this.textBoxHDRaidType.Location = new System.Drawing.Point(7, 78);
             this.textBoxHDRaidType.Name = "textBoxHDRaidType";
             this.textBoxHDRaidType.ReadOnly = true;
-            this.textBoxHDRaidType.Size = new System.Drawing.Size(112, 20);
+            this.textBoxHDRaidType.Size = new System.Drawing.Size(107, 20);
             this.textBoxHDRaidType.TabIndex = 181;
             // 
             // label62
             // 
             this.label62.AutoSize = true;
             this.label62.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label62.Location = new System.Drawing.Point(7, 92);
+            this.label62.Location = new System.Drawing.Point(3, 103);
             this.label62.Name = "label62";
             this.label62.Size = new System.Drawing.Size(58, 13);
             this.label62.TabIndex = 183;
@@ -2092,7 +2092,7 @@
             // 
             this.label63.AutoSize = true;
             this.label63.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label63.Location = new System.Drawing.Point(7, 66);
+            this.label63.Location = new System.Drawing.Point(3, 64);
             this.label63.Name = "label63";
             this.label63.Size = new System.Drawing.Size(31, 13);
             this.label63.TabIndex = 184;
@@ -2102,7 +2102,7 @@
             // 
             this.label64.AutoSize = true;
             this.label64.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label64.Location = new System.Drawing.Point(7, 42);
+            this.label64.Location = new System.Drawing.Point(4, 27);
             this.label64.Name = "label64";
             this.label64.Size = new System.Drawing.Size(110, 13);
             this.label64.TabIndex = 182;
@@ -2450,9 +2450,9 @@
             this.lblHardDriveSize.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblHardDriveSize.Location = new System.Drawing.Point(4, 131);
             this.lblHardDriveSize.Name = "lblHardDriveSize";
-            this.lblHardDriveSize.Size = new System.Drawing.Size(48, 13);
+            this.lblHardDriveSize.Size = new System.Drawing.Size(50, 13);
             this.lblHardDriveSize.TabIndex = 130;
-            this.lblHardDriveSize.Text = "Size (kb)";
+            this.lblHardDriveSize.Text = "Size (Gb)";
             // 
             // textBoxHDSizeOutput
             // 
@@ -3120,9 +3120,9 @@
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.button5);
-            this.tabPage5.Controls.Add(this.button6);
-            this.tabPage5.Controls.Add(this.button7);
+            this.tabPage5.Controls.Add(this.buttonRemoveActiveUserFile);
+            this.tabPage5.Controls.Add(this.buttonEditActiveUserFile);
+            this.tabPage5.Controls.Add(this.buttonViewActiveUserFile);
             this.tabPage5.Controls.Add(this.buttonAddActiveUserFiles);
             this.tabPage5.Controls.Add(this.label16);
             this.tabPage5.Controls.Add(this.listViewAUFActiveUserFiles);
@@ -3134,45 +3134,48 @@
             this.tabPage5.Text = "Active User Files";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // buttonRemoveActiveUserFile
             // 
-            this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button5.Location = new System.Drawing.Point(767, 5);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(24, 24);
-            this.button5.TabIndex = 220;
-            this.button5.UseVisualStyleBackColor = true;
+            this.buttonRemoveActiveUserFile.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonRemoveActiveUserFile.BackgroundImage")));
+            this.buttonRemoveActiveUserFile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.buttonRemoveActiveUserFile.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonRemoveActiveUserFile.Location = new System.Drawing.Point(767, 8);
+            this.buttonRemoveActiveUserFile.Name = "buttonRemoveActiveUserFile";
+            this.buttonRemoveActiveUserFile.Size = new System.Drawing.Size(24, 24);
+            this.buttonRemoveActiveUserFile.TabIndex = 220;
+            this.buttonRemoveActiveUserFile.UseVisualStyleBackColor = true;
+            this.buttonRemoveActiveUserFile.Click += new System.EventHandler(this.buttonRemoveActiveUserFile_Click);
             // 
-            // button6
+            // buttonEditActiveUserFile
             // 
-            this.button6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button6.BackgroundImage")));
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button6.Location = new System.Drawing.Point(799, 5);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(24, 24);
-            this.button6.TabIndex = 219;
-            this.button6.UseVisualStyleBackColor = true;
+            this.buttonEditActiveUserFile.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonEditActiveUserFile.BackgroundImage")));
+            this.buttonEditActiveUserFile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.buttonEditActiveUserFile.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonEditActiveUserFile.Location = new System.Drawing.Point(799, 8);
+            this.buttonEditActiveUserFile.Name = "buttonEditActiveUserFile";
+            this.buttonEditActiveUserFile.Size = new System.Drawing.Size(24, 24);
+            this.buttonEditActiveUserFile.TabIndex = 219;
+            this.buttonEditActiveUserFile.UseVisualStyleBackColor = true;
+            this.buttonEditActiveUserFile.Click += new System.EventHandler(this.buttonEditActiveUserFile_Click);
             // 
-            // button7
+            // buttonViewActiveUserFile
             // 
-            this.button7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button7.BackgroundImage")));
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button7.Location = new System.Drawing.Point(831, 5);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(24, 24);
-            this.button7.TabIndex = 218;
-            this.button7.UseVisualStyleBackColor = true;
+            this.buttonViewActiveUserFile.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonViewActiveUserFile.BackgroundImage")));
+            this.buttonViewActiveUserFile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.buttonViewActiveUserFile.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonViewActiveUserFile.Location = new System.Drawing.Point(831, 8);
+            this.buttonViewActiveUserFile.Name = "buttonViewActiveUserFile";
+            this.buttonViewActiveUserFile.Size = new System.Drawing.Size(24, 24);
+            this.buttonViewActiveUserFile.TabIndex = 218;
+            this.buttonViewActiveUserFile.UseVisualStyleBackColor = true;
+            this.buttonViewActiveUserFile.Click += new System.EventHandler(this.buttonViewActiveUserFile_Click);
             // 
             // buttonAddActiveUserFiles
             // 
             this.buttonAddActiveUserFiles.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonAddActiveUserFiles.BackgroundImage")));
             this.buttonAddActiveUserFiles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonAddActiveUserFiles.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonAddActiveUserFiles.Location = new System.Drawing.Point(863, 5);
+            this.buttonAddActiveUserFiles.Location = new System.Drawing.Point(863, 8);
             this.buttonAddActiveUserFiles.Name = "buttonAddActiveUserFiles";
             this.buttonAddActiveUserFiles.Size = new System.Drawing.Size(24, 24);
             this.buttonAddActiveUserFiles.TabIndex = 217;
@@ -3663,9 +3666,9 @@
         private System.Windows.Forms.Label label60;
         public System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button buttonRemoveActiveUserFile;
+        private System.Windows.Forms.Button buttonEditActiveUserFile;
+        private System.Windows.Forms.Button buttonViewActiveUserFile;
         private System.Windows.Forms.Button buttonAddActiveUserFiles;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ListView listViewAUFActiveUserFiles;

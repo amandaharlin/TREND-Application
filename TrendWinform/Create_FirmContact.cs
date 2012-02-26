@@ -83,8 +83,21 @@ namespace TrendWinForm
                 textBoxStreet2.Text = firm.Address.StreetLine2;
                 textBoxState.Text = firm.Address.State;
                 textBoxZipCode.Text = firm.Address.ZipCode;
-                textBoxPhoneNumber.Text = string.Format(firm.PhoneNumber.AreaCode + firm.PhoneNumber.Number + " [" + firm.PhoneNumber.Extension + "]");
+                textboxAreaCode.Text = firm.PhoneNumber.AreaCode.ToString();
+
+                textBoxPhoneFirstThree.Text = 
+                
+                //textBoxPhoneFirstThree.Text = firm.PhoneNumber.FirstThreeDigits.ToString();
+                //textBoxPhoneLastFour.Text = firm.PhoneNumber.LastFourDigits.ToString();
+                
+                
+                textBoxExtension.Text = firm.PhoneNumber.Extension.ToString();
+
+
+                //textBoxPhoneNumber.Text = string.Format(firm.PhoneNumber.AreaCode + firm.PhoneNumber.Number + " [" + firm.PhoneNumber.Extension + "]");
                 //textBoxPhoneNumber.Text = firm.PhoneNumber.AreaCode + firm.PhoneNumber.FirstThreeDigits + " - " + firm.PhoneNumber.LastFourDigits + "[" + firm.PhoneNumber.Extension + "]";
+                
+                
                 textBoxNotes.Text = firm.FirmDescription;
                 groupBoxSelectedfirmDetails.Text = firm.FirmName;
             }
@@ -95,7 +108,10 @@ namespace TrendWinForm
                 textBoxStreet2.Text = "";
                 textBoxState.Text = "";
                 textBoxZipCode.Text = "";
-                textBoxPhoneNumber.Text = "";
+                textboxAreaCode.Text = "";
+                textBoxPhoneFirstThree.Text = "";
+                textBoxPhoneLastFour.Text = "";
+                textBoxExtension.Text = "";
                 textBoxNotes.Text = "";
                 groupBoxSelectedfirmDetails.Text = "";
             }
@@ -104,7 +120,6 @@ namespace TrendWinForm
         private void firm_idComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
             ShowFirmDetails();
-          
         }
 
         private void Create_FirmContact_Shown(object sender, EventArgs e)
@@ -112,19 +127,13 @@ namespace TrendWinForm
             ShowFirmDetails();
         }
 
-
-
         private Create_Firm newFirm = null;
         private void AddFirm_Click(object sender, EventArgs e)
         {
             this.newFirm = new Create_Firm();
             newFirm.FormClosed += Create_FirmContact_Load;
             newFirm.Show();
-
-            
         }
-
-
 
     }
 }

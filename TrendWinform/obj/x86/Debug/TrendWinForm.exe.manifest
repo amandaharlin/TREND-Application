@@ -131,19 +131,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>49N4Ycw8UV6zfw7R6giWT7WUjyw=</dsig:DigestValue>
+        <dsig:DigestValue>Yh4pOKL3hhcaTGSkYdZvwHyz//Q=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TrendWinForm.exe" size="860160">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TrendWinForm.exe" size="883200">
       <assemblyIdentity name="TrendWinForm" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>TTfFlevQOLcOEhku5mtafmFL470=</dsig:DigestValue>
+        <dsig:DigestValue>Aa4zmZLp89EMkLE8DG6lquPMayA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

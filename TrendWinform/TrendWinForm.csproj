@@ -105,6 +105,7 @@
     <Compile Include="AboutTrend.Designer.cs">
       <DependentUpon>AboutTrend.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyUtilities\DeleteSingleEntityById.cs" />
     <Compile Include="MyUtilities\FormTitleHelper.cs" />
     <Compile Include="View_CaseBrowser.cs">
       <SubType>Form</SubType>
@@ -385,6 +386,9 @@
     <EmbeddedResource Include="Images\formHeaderIcons\formState_Edit.ico" />
     <EmbeddedResource Include="Images\formHeaderIcons\formState_View.ico" />
     <EmbeddedResource Include="Images\formHeaderIcons\formState_Contact.ico" />
+    <EmbeddedResource Include="Images\Icons\Floppy-Drive_48.png" />
+    <EmbeddedResource Include="Images\Icons\san_icon_48.png" />
+    <EmbeddedResource Include="Images\Icons\usb_drive_48.png" />
     <Content Include="laptop-computer_64x.png" />
   </ItemGroup>
   <ItemGroup />

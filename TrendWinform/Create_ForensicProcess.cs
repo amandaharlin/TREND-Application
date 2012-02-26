@@ -131,7 +131,6 @@ namespace TrendWinForm
             IList<HardDrive> selectedHardDrives = new List<HardDrive>();
             IList<Computer> selectedComputers = new List<Computer>();
 
-
             foreach (var item in checkedListBoxAssociatedhardDrives.CheckedItems)
             {
                 int i = checkedListBoxAssociatedhardDrives.Items.IndexOf(item);
@@ -146,31 +145,36 @@ namespace TrendWinForm
 
 
             NewForensicProcess = new ForensicProcess()
-                                     {
-                                         //collection onformation
-                                         CollectionLocation = textBoxCollectionLocation.Text,
-                                         RoomNumber = textBoxRoomNumber.Text,
-                                         CustodianOrUser = textBoxCustodianUser.Text,
-                                         PhotoWasTaken = checkBoxPhotosWereTaken.Checked,
-                                         WasImageOnly = checkBoxOnlyImageWasReceived.Checked,
-                                         WasHardDriveOnly = checkBoxOnlyHardDriveWasReceived.Checked,
-                                         ProcessingPerformed = comboBoxProcessPerformed.Text,
-                                         ForensicDeviceUsed = comboBoxDeviceUsed.Text,
-                                         Software = comboBoxSoftwareProcessing.Text,
-                                         ImagesMade = comboBoxImagesMade.Text,
-                                         ImagesVerifiedBy = comboBoxImagesVerifiedBy.Text,
-                                         CdfInfo = new CdfInfo()
-                                                       {
-                                                           IsFinishDate = true,
-                                                           Cdfdate = dateTimePickerFPFinishDateTime.Value,
-                                                           TechExaminer = SelectSingleEntityById.SelectEmployeeById(new Guid(comboBoxCDFInfoTech.SelectedValue.ToString()))
-                                                       },
-                                         DestinationMediae = ForensicProcessDestinationMediae,
+            {
+                //collection onformation
+                CollectionLocation = textBoxCollectionLocation.Text,
+                RoomNumber = textBoxRoomNumber.Text,
+                CustodianOrUser = textBoxCustodianUser.Text,
+                PhotoWasTaken = checkBoxPhotosWereTaken.Checked,
+                WasImageOnly = checkBoxOnlyImageWasReceived.Checked,
+                WasHardDriveOnly = checkBoxOnlyHardDriveWasReceived.Checked,
+                ProcessingPerformed = comboBoxProcessPerformed.Text,
+                ForensicDeviceUsed = comboBoxDeviceUsed.Text,
+                Software = comboBoxSoftwareProcessing.Text,
+                ImagesMade = comboBoxImagesMade.Text,
+                ImagesVerifiedBy = comboBoxImagesVerifiedBy.Text,
+                CdfInfo = new CdfInfo()
+                {
+                    IsFinishDate = true,
+                    Cdfdate = dateTimePickerFPFinishDateTime.Value,
+                    TechExaminer = SelectSingleEntityById.SelectEmployeeById(new Guid(comboBoxCDFInfoTech.SelectedValue.ToString()))
+                },
+                DestinationMediae = ForensicProcessDestinationMediae,
 
-                                         ReferenceHardDrives = selectedHardDrives,
-                                         ReferenceComputers = selectedComputers,
-                                     };
+                ReferenceHardDrives = selectedHardDrives,
+                ReferenceComputers = selectedComputers,
+            };
             ForensicProcessDestinationMediae.ToList().ForEach(dm => dm.SerialNumber = NewForensicProcess.ToString());
+
+
+
+
+
         }
 
 
@@ -229,8 +233,114 @@ namespace TrendWinForm
             addImagesVerifiedByHelper.SummonUtilityList();
         }
 
-    
+
+
+
+        //Validation
+        private void checkedListBoxAssociatedcomputers_Validating(object sender, CancelEventArgs e)
+        {
+            errorProvider.SetError(checkedListBoxAssociatedcomputers, string.Empty);
+            if (!(checkedListBoxAssociatedcomputers.CheckedItems.Count > 0) && !(checkedListBoxAssociatedhardDrives.CheckedItems.Count > 0))
+            {
+                errorProvider.SetError(labelAssociatedcomputers, "You must select something to associate with a Forensic Process.");
+                e.Cancel = true;
+            }
+        }
+
+        private void checkedListBoxAssociatedhardDrives_Validating(object sender, CancelEventArgs e)
+        {
+            errorProvider.SetError(checkedListBoxAssociatedhardDrives, string.Empty);
+            if (!(checkedListBoxAssociatedcomputers.CheckedItems.Count > 0) && !(checkedListBoxAssociatedhardDrives.CheckedItems.Count > 0))
+            {
+                errorProvider.SetError(labelAssociatedHardDrives, "You must select something to associate with a Forensic Process.");
+                e.Cancel = true;
+            }
+        }
+
+        private void comboBoxProcessPerformed_Validating(object sender, CancelEventArgs e)
+        {
+            errorProvider.SetError(comboBoxProcessPerformed, string.Empty);
+            errorProvider.SetIconPadding(comboBoxProcessPerformed, 25);
+
+
+            if (comboBoxProcessPerformed.Text == "")
+            {
+                errorProvider.SetError(comboBoxProcessPerformed, "You must specify a performed process.");
+                e.Cancel = true;
+            }
+        }
+
+        private void comboBoxDeviceUsed_Validating(object sender, CancelEventArgs e)
+        {
+            errorProvider.SetError(comboBoxDeviceUsed, string.Empty);
+            errorProvider.SetIconPadding(comboBoxDeviceUsed, 25);
+
+
+            if (comboBoxDeviceUsed.Text == "")
+            {
+                errorProvider.SetError(comboBoxDeviceUsed, "You must specify the used device.");
+                e.Cancel = true;
+            }
+        }
+
+        private void comboBoxSoftwareProcessing_Validating(object sender, CancelEventArgs e)
+        {
+            errorProvider.SetError(comboBoxSoftwareProcessing, string.Empty);
+            errorProvider.SetIconPadding(comboBoxSoftwareProcessing, 25);
+
+
+            if (comboBoxSoftwareProcessing.Text == "")
+            {
+                errorProvider.SetError(comboBoxSoftwareProcessing, "You must specify software used.");
+                e.Cancel = true;
+            }
+        }
+
+        private void comboBoxImagesMade_Validating(object sender, CancelEventArgs e)
+        {
+            errorProvider.SetError(comboBoxImagesMade, string.Empty);
+            errorProvider.SetIconPadding(comboBoxImagesMade, 25);
+
+
+            if (comboBoxImagesMade.Text == "")
+            {
+                errorProvider.SetError(comboBoxImagesMade, "You must specify a performed process.");
+                e.Cancel = true;
+            }
+        }
+
+        private void comboBoxImagesVerifiedBy_Validating(object sender, CancelEventArgs e)
+        {
+            errorProvider.SetError(comboBoxImagesVerifiedBy, string.Empty);
+            errorProvider.SetIconPadding(comboBoxImagesVerifiedBy, 25);
+
+
+            if (comboBoxImagesVerifiedBy.Text == "")
+            {
+                errorProvider.SetError(comboBoxImagesVerifiedBy, "You must specify the image verification.");
+                e.Cancel = true;
+            }
+        }
+
+        private void comboBoxCDFInfoTech_Validating(object sender, CancelEventArgs e)
+        {
+            errorProvider.SetError(comboBoxCDFInfoTech, string.Empty);
+            errorProvider.SetIconPadding(comboBoxCDFInfoTech, 25);
+            if (comboBoxCDFInfoTech.Text == "")
+            {
+                errorProvider.SetError(comboBoxCDFInfoTech, "You must associate a Tech with this computer");
+                e.Cancel = true;
+            }
+        }
+
+        private void textBoxCollectionLocation_Validating(object sender, CancelEventArgs e)
+        {
+            errorProvider.SetError(textBoxCollectionLocation, string.Empty);
+            if (textBoxCollectionLocation.Text == "")
+            {
+                errorProvider.SetError(textBoxCollectionLocation, "A location is required, or 'unknown' must be specified.");
+                e.Cancel = true;
+            }
+        }
     }
-
-
 }

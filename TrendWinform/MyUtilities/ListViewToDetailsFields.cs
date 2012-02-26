@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -109,16 +110,12 @@ namespace TrendWinForm.MyUtilities
         //TODO FINISH MAPPING THIS!!!!!!!!
         public static void HardDrivelistViewToDetailFields(int i, IList<HardDrive> caseHardDrives, Create_Case createCaseFormInstance)
         {
-
-
-
-
             //hard drive details
             createCaseFormInstance.textBoxHDMakeOutput.Text = caseHardDrives[i].Make;
             createCaseFormInstance.textBoxHDModelOutput.Text = caseHardDrives[i].Model;
             createCaseFormInstance.textBoxHDTypeOutput.Text = caseHardDrives[i].Type;
             createCaseFormInstance.textBoxHDSerialNumOutput.Text = caseHardDrives[i].Serial;
-            createCaseFormInstance.textBoxHDSizeOutput.Text = caseHardDrives[i].SizeInKilobytes.ToString();
+            createCaseFormInstance.textBoxHDSizeOutput.Text = caseHardDrives[i].SizeInGB.ToString();
             createCaseFormInstance.textBoxHDDriveInterfaceOutput.Text = caseHardDrives[i].DriveInterface;
             createCaseFormInstance.textBoxHDDrivePositionOutput.Text = caseHardDrives[i].DrivePosition;
             createCaseFormInstance.textBoxHDJumperSettingsOutput.Text = caseHardDrives[i].JumperSetting;
@@ -157,8 +154,6 @@ namespace TrendWinForm.MyUtilities
                 createCaseFormInstance.textBoxHDRelatedCompSysInfoVirtualMachine.Text = caseHardDrives[i].ReferenceComputer.WasVirtualMachine.ToString();
                 createCaseFormInstance.textBoxHDRelatedCompSysInfoHostedSystem.Text = caseHardDrives[i].ReferenceComputer.WasHostedSystem.ToString();
                 createCaseFormInstance.textBoxHDRelatedCompSysInfoHostname.Text = caseHardDrives[i].ReferenceComputer.Hostname;
-
-
                 //computer image list
                 IList<String> images = new List<string>();
                 images.Add("TrendWinForm.Images.Icons.desktop_computer_48.png");
@@ -177,7 +172,6 @@ namespace TrendWinForm.MyUtilities
                     Bitmap img = new Bitmap(myStream);
                     computerImageList.Images.Add(img);
                 });
-
 
                 if (caseHardDrives[i].ReferenceComputer.Type == "Desktop")
                 {
@@ -199,8 +193,6 @@ namespace TrendWinForm.MyUtilities
                 {
                     createCaseFormInstance.pictureBoxRelatedComputer.Image = computerImageList.Images[4];
                 }
-
-
             }
             else
             {
@@ -220,17 +212,14 @@ namespace TrendWinForm.MyUtilities
                 createCaseFormInstance.textBoxHDRelatedCompSysInfoHostedSystem.Text = "";
                 createCaseFormInstance.textBoxHDRelatedCompSysInfoHostname.Text = "";
             }
-
-
-
-
             //related raid
             if (caseHardDrives[i].ReferenceRaid != null)
             {
                 createCaseFormInstance.textBoxHDRaidHardwareOrSoftware.Text = caseHardDrives[i].ReferenceRaid.SoftwareOrHardware.ToString();
                 createCaseFormInstance.textBoxHDRaidType.Text = caseHardDrives[i].ReferenceRaid.RaidType;
                 createCaseFormInstance.textBoxHDRaidLevel.Text = caseHardDrives[i].ReferenceRaid.RaidLevel;
-                createCaseFormInstance.listViewRelatedRaidonHDPage.Text = caseHardDrives[i].ReferenceRaid.AssociatedHardDrives.ToString();
+                createCaseFormInstance.listViewRelatedRaidonHDPage.Items.Clear();
+                EntitiesToListView.FillHardDrivesListViewMinimalDetailView(caseHardDrives[i].ReferenceRaid.AssociatedHardDrives, createCaseFormInstance.listViewRelatedRaidonHDPage);
             }
             else
             {
@@ -238,6 +227,8 @@ namespace TrendWinForm.MyUtilities
                 createCaseFormInstance.textBoxHDRaidType.Text = "";
                 createCaseFormInstance.textBoxHDRaidLevel.Text = "";
                 createCaseFormInstance.listViewRelatedRaidonHDPage.Text = "";
+                createCaseFormInstance.listViewRelatedRaidonHDPage.Items.Clear();
+                createCaseFormInstance.listViewRelatedRaidonHDPage.Columns.Clear();
             }
 
         }
@@ -278,7 +269,6 @@ namespace TrendWinForm.MyUtilities
             //createCaseFormInstance.txtSerialNum.Text = caseDestinationMedia[i].SerialNumber.ToString();
             //createCaseFormInstance.textBoxSizeOutput.Text = caseDestinationMedia[i].Size.ToString();
         }
-
 
     }
 }

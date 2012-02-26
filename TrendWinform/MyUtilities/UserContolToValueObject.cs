@@ -29,10 +29,8 @@ namespace TrendWinForm.MyUtilities
             var phoneNum = new PhoneNumber()
                                {
                                   Type = target.Type,
-                                  Number = target.Number,
-                                  //FirstThreeDigits = target.FirstThreeDigits,
-                                  //LastFourDigits = target.LastFourDigits,
                                   AreaCode = target.AreaCode,
+                                  Number = target.Number,
                                   Extension = target.Extension
                                };
 

@@ -38,20 +38,19 @@ namespace TrendWinForm
         {
             InitializeComponent();
             formEditMode = _formEditMode;
-
             NewCase = incomingCase;
         }
         private void Create_Case_Shown(object sender, EventArgs e)
         {
             UpdateDataBoundControls();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            
+
             if (formEditMode.ToLower() == "edit")
             {
                 PopulateFormwithCase(NewCase);
                 FormTitleHelper.SetFormFormattingByEditMode(formEditMode, this, NewCase.Matter.ToString());
             }
-            else if (formEditMode.ToLower() == "view") 
+            else if (formEditMode.ToLower() == "view")
             {
                 PopulateFormwithCase(NewCase);
                 FormTitleHelper.SetFormFormattingByEditMode(formEditMode, this, NewCase.Matter.ToString());
@@ -63,7 +62,8 @@ namespace TrendWinForm
                 });
 
             }
-            else {
+            else
+            {
 
                 FormTitleHelper.SetFormFormattingByEditMode(formEditMode, this);
             }
@@ -124,7 +124,7 @@ namespace TrendWinForm
         }
 
         #region[validation]
-        
+
 
         private void caseNumberTextBox_Validating(object sender, CancelEventArgs e)
         {
@@ -171,8 +171,12 @@ namespace TrendWinForm
             EntitiesToComboBox.FillFirmComboBox(firm_idComboBox);
             EntitiesToComboBox.FillEmployeeComboBox(comboBoxCdfInfoTech);
 
-            var firmGuid = new Guid(firm_idComboBox.SelectedValue.ToString());
-            EntitiesToComboBox.FillFirmContactComboBoxByFirm(firmGuid, requester_idComboBox);
+            if (firm_idComboBox.SelectedValue != null)
+            {
+                var firmGuid = new Guid(firm_idComboBox.SelectedValue.ToString());
+                EntitiesToComboBox.FillFirmContactComboBoxByFirm(firmGuid, requester_idComboBox);
+            }
+
 
 
             // EntitiesToComboBox.FillReferenceComputersComboBox();
@@ -191,6 +195,7 @@ namespace TrendWinForm
 
 
 
+        #region [add buttons]
 
         //Add Entity BUttons
         private void AddFirm_Click(object sender, EventArgs e)
@@ -213,7 +218,9 @@ namespace TrendWinForm
             newEmployeeForm.FormClosed += this.UpdateFormEvent;
             newEmployeeForm.Show();
         }
+        #endregion
 
+        #region[view buttons]
 
         //View Form Buttons
         private void ViewFirm_Click(object sender, EventArgs e)
@@ -242,10 +249,10 @@ namespace TrendWinForm
             }
 
         }
-
+        #endregion
 
         #region [ Save & Cancel Buttons ]
-        
+
         // Save and Cancel Buttons
         private void SaveButton_Click(object sender, EventArgs e)
         {
@@ -274,7 +281,7 @@ namespace TrendWinForm
                                                                         }
 
                                                       };
-                    if (formEditMode.ToLower() == "create") 
+                    if (formEditMode.ToLower() == "create")
                     {
                         NewCase = new Case()
                         {
@@ -297,31 +304,32 @@ namespace TrendWinForm
                     }
                     else if (formEditMode.ToLower() == "edit")
                     {
-                            NewCase.CaseNumber = Convert.ToDecimal(caseNumberTextBox.Text);
-                            NewCase.Matter = matterTextBox.Text;
-                            NewCase.ItemNumber = Convert.ToInt32(itemNumberTextBox.Text);
-                            NewCase.StartDate = startDateDateTimePicker.Value;
-                            NewCase.Barcode = barcodeTextBox.Text;
-                            NewCase.BarcodeDateVerified = barcodeDateVerifiedDateTimePicker.Value;
-                            NewCase.Firm = caseFirm;
-                            NewCase.Requester = caseRequester;
-                            NewCase.Examiner = caseExmployee;
-                            NewCase.Computers = CaseComputers;
-                            NewCase.HardDrives = CaseHardDrives;
-                            NewCase.ForensicProcesses = CaseForensicProcesses;
-                            NewCase.ActiveUserFiles = CaseActiveUserFiles;
-                            NewCase.NotesAndConclusion = caseNotesAndConclusion;
+                        NewCase.CaseNumber = Convert.ToDecimal(caseNumberTextBox.Text);
+                        NewCase.Matter = matterTextBox.Text;
+                        NewCase.ItemNumber = Convert.ToInt32(itemNumberTextBox.Text);
+                        NewCase.StartDate = startDateDateTimePicker.Value;
+                        NewCase.Barcode = barcodeTextBox.Text;
+                        NewCase.BarcodeDateVerified = barcodeDateVerifiedDateTimePicker.Value;
+                        NewCase.Firm = caseFirm;
+                        NewCase.Requester = caseRequester;
+                        NewCase.Examiner = caseExmployee;
+                        NewCase.Computers = CaseComputers;
+                        NewCase.HardDrives = CaseHardDrives;
+                        NewCase.ForensicProcesses = CaseForensicProcesses;
+                        NewCase.ActiveUserFiles = CaseActiveUserFiles;
+                        NewCase.NotesAndConclusion = caseNotesAndConclusion;
                     }
                     else
                     {
                         MessageBox.Show("Invalid Form Edit Mode : Please Restart Appliction.");
                     }
-                   
+
                     NewCase.NotesAndConclusion.ReferenceCase = NewCase;
 
                     using (var transaction = session.BeginTransaction())
                     {
-                        if (formEditMode.ToLower() == "create") {
+                        if (formEditMode.ToLower() == "create")
+                        {
                             session.Save(NewCase);
                         }
                         else if (formEditMode.ToLower() == "edit")
@@ -356,11 +364,11 @@ namespace TrendWinForm
         }
 
         #region [ CRUD ]
-        
+
         private void buttonViewComputer_Click(object sender, EventArgs e)
         {
             MessageBox.Show("View computer with GUid at selected index");
-            
+
         }
 
         private void buttonEditComputer_Click(object sender, EventArgs e)
@@ -372,7 +380,7 @@ namespace TrendWinForm
         {
             //If computer has other associated cases, you should remove the computer fromt eh box, but not the potatobase
             // Otherwise, delete the entire computer.
-              MessageBox.Show("Delete computer with GUid at selected index");
+            MessageBox.Show("Delete computer with GUid at selected index");
         }
 
 
@@ -385,7 +393,7 @@ namespace TrendWinForm
 
 
 
-       
+
 
         #region [ Computer Tab ]
 
@@ -405,10 +413,10 @@ namespace TrendWinForm
             newCompSubform.Show();
         }
 
-   
 
 
-        //....CompTab: Map COmputer Data to Fields
+
+        //....CompTab: Map Computer Data to Fields
 
         private Computer this_Computer;
         private void listViewAssociatedComputerList_SelectedIndexChanged(object sender, EventArgs e)
@@ -430,7 +438,7 @@ namespace TrendWinForm
                 {
                     EntitiesToListView.FillHardRaidsListViewDetailView(CaseComputers[i].Raids, listViewAssociatedRaids);
                 }
-                
+
                 groupBoxDriveDetails.Controls.OfType<TextBox>().ForEach(x => x.Text = "");
 
             }
@@ -457,7 +465,7 @@ namespace TrendWinForm
                 textBoxHDDetails_Serial.Text = this_Computer.HardDrives[i].Serial;
                 textBoxHDDetails_Interface.Text = this_Computer.HardDrives[i].DriveInterface;
 
-              
+
 
             }
         }
@@ -513,13 +521,22 @@ namespace TrendWinForm
         {
             newFPSubForm = new Create_ForensicProcess();
 
-            newFPSubForm.SelectableAssociatedComputers = CaseComputers;
-            newFPSubForm.SelectableAssociatedHardDrives = CaseHardDrives;
+            if (CaseComputers.Any() || CaseHardDrives.Any())
+            {
+                newFPSubForm.SelectableAssociatedComputers = CaseComputers;
+                newFPSubForm.SelectableAssociatedHardDrives = CaseHardDrives;
+
+                newFPSubForm.OnDataAvailable += this.AddForensicProcessTolist;
+                newFPSubForm.FormClosed += this.UpdateFormEvent;
+                newFPSubForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("It is not useful to create a Foresnsic Process before either A computer or Hard Drive exists");
+            }
 
 
-            newFPSubForm.OnDataAvailable += this.AddForensicProcessTolist;
-            newFPSubForm.FormClosed += this.UpdateFormEvent;
-            newFPSubForm.Show();
+
         }
 
         private void AddForensicProcessTolist(object sender, EventArgs e)
@@ -538,7 +555,7 @@ namespace TrendWinForm
                 var i = listViewForensicProcesses.SelectedItems[0].Index;
                 this_ForensicProcess = CaseForensicProcesses[i];
 
-                
+
                 ListViewToDetailsFields.ForensicProcesseslistViewToDetailFields(i, CaseForensicProcesses, this);
                 EntitiesToListView.FillDestinationMediaListViewDetailView(CaseForensicProcesses[i].DestinationMediae, listViewFPDestinationMediae);
 
@@ -554,15 +571,74 @@ namespace TrendWinForm
         private Create_ActiveUserFile newActiveUserFileSubForm = null;
         private void buttonAddActiveUserFiles_Click(object sender, EventArgs e)
         {
-            this.newActiveUserFileSubForm = new Create_ActiveUserFile();
 
+            if (CaseComputers.Any())
+            {
+                newActiveUserFileSubForm = new Create_ActiveUserFile();
+                newActiveUserFileSubForm.ReferenceComputers = CaseComputers;
+                newActiveUserFileSubForm.OnDataAvailable += AddActiveUserFilesToList;
+                newActiveUserFileSubForm.FormClosed += UpdateFormEvent;
+                newActiveUserFileSubForm.MdiParent = MdiParent;
+                newActiveUserFileSubForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("You need to have Computers associated with the Case, before you can add any Active User Files.");
+            }
+        }
 
-            newActiveUserFileSubForm.ReferenceComputers = CaseComputers;
+        private void buttonViewActiveUserFile_Click(object sender, EventArgs e)
+        {
+            if (listViewAUFActiveUserFiles.SelectedItems.Count == 1)
+            {
 
+            }
+            else
+            {
+                MessageBox.Show("Please Select which Active User File, to view");
+            }
+        }
 
-            newActiveUserFileSubForm.OnDataAvailable += AddActiveUserFilesToList;
-            newActiveUserFileSubForm.FormClosed += UpdateFormEvent;
-            newActiveUserFileSubForm.Show();
+        private void buttonEditActiveUserFile_Click(object sender, EventArgs e)
+        {
+            if (listViewAUFActiveUserFiles.SelectedItems.Count == 1)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Please Select which Active User File, to edit");
+            }
+        }
+
+        private void buttonRemoveActiveUserFile_Click(object sender, EventArgs e)
+        {
+            if (listViewAUFActiveUserFiles.SelectedItems.Count == 1 && formEditMode != "view")
+            {
+
+                var aufId = listViewAUFActiveUserFiles.SelectedItems[0].Tag;
+
+                var aufToRemove = new ActiveUserFile();
+                if (aufId.GetType() == typeof(ActiveUserFile))
+                {
+                    aufToRemove = (ActiveUserFile)aufId;
+                }
+                else
+                {
+                    aufId = new Guid(aufId.ToString());
+                    aufToRemove = CaseActiveUserFiles.SingleOrDefault(x => x.Id == (Guid)aufId);
+                    DeleteSingleEntityById.DeleteActiveUserFileById((Guid)aufId);
+                }
+
+                CaseActiveUserFiles.Remove(aufToRemove);
+
+                EntitiesToListView.FillActiveUserFilesListViewDetailView(CaseActiveUserFiles, listViewAUFActiveUserFiles);
+
+            }
+            else
+            {
+                MessageBox.Show("Please Select which Active User File to remove");
+            }
         }
 
         private void AddActiveUserFilesToList(object sender, EventArgs e)
@@ -572,6 +648,12 @@ namespace TrendWinForm
             EntitiesToListView.FillActiveUserFilesListViewDetailView(CaseActiveUserFiles, listViewAUFActiveUserFiles);
         }
         #endregion
+
+
+
+
+
+
 
         #region[Notes & Conclusion Tab]
         //pull in cdf employees

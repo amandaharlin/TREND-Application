@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label firm_idLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Create_FirmContact));
             this.trendDataSet = new TrendWinForm.TrendDataSet();
-            this.firmContactBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.firmContactBindingSource = new System.Windows.Forms.BindingSource();
             this.firmContactTableAdapter = new TrendWinForm.TrendDataSetTableAdapters.FirmContactTableAdapter();
             this.tableAdapterManager = new TrendWinForm.TrendDataSetTableAdapters.TableAdapterManager();
             this.AddFirm = new System.Windows.Forms.Button();
@@ -40,7 +39,6 @@
             this.phoneUserControl1 = new TrendCustromControls.PhoneUserControl();
             this.groupBoxSelectedfirmDetails = new System.Windows.Forms.GroupBox();
             this.textBoxNotes = new System.Windows.Forms.TextBox();
-            this.textBoxPhoneNumber = new System.Windows.Forms.TextBox();
             this.textBoxZipCode = new System.Windows.Forms.TextBox();
             this.textBoxState = new System.Windows.Forms.TextBox();
             this.textBoxCity = new System.Windows.Forms.TextBox();
@@ -51,9 +49,17 @@
             this.positionTextbox = new System.Windows.Forms.TextBox();
             this.notesTextbox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.firmBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.firmBindingSource = new System.Windows.Forms.BindingSource();
             this.firmTableAdapter = new TrendWinForm.TrendDataSetTableAdapters.FirmTableAdapter();
             this.firm_idComboBox = new System.Windows.Forms.ComboBox();
+            this.textboxAreaCode = new System.Windows.Forms.MaskedTextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxPhoneFirstThree = new System.Windows.Forms.MaskedTextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBoxPhoneLastFour = new System.Windows.Forms.MaskedTextBox();
+            this.textBoxExtension = new System.Windows.Forms.TextBox();
+            this.lblExtension = new System.Windows.Forms.Label();
             firm_idLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trendDataSet)).BeginInit();
@@ -129,15 +135,22 @@
             this.phoneUserControl1.Extension = "";
             this.phoneUserControl1.Location = new System.Drawing.Point(221, 172);
             this.phoneUserControl1.Name = "phoneUserControl1";
-            //this.phoneUserControl1.Number = 0;
+            this.phoneUserControl1.Number = 0;
             this.phoneUserControl1.Size = new System.Drawing.Size(358, 91);
             this.phoneUserControl1.TabIndex = 9;
             this.phoneUserControl1.Type = "Mobile";
             // 
             // groupBoxSelectedfirmDetails
             // 
+            this.groupBoxSelectedfirmDetails.Controls.Add(this.textBoxExtension);
+            this.groupBoxSelectedfirmDetails.Controls.Add(this.lblExtension);
+            this.groupBoxSelectedfirmDetails.Controls.Add(this.textBoxPhoneLastFour);
+            this.groupBoxSelectedfirmDetails.Controls.Add(this.label5);
+            this.groupBoxSelectedfirmDetails.Controls.Add(this.textBoxPhoneFirstThree);
+            this.groupBoxSelectedfirmDetails.Controls.Add(this.textboxAreaCode);
+            this.groupBoxSelectedfirmDetails.Controls.Add(this.label3);
+            this.groupBoxSelectedfirmDetails.Controls.Add(this.label4);
             this.groupBoxSelectedfirmDetails.Controls.Add(this.textBoxNotes);
-            this.groupBoxSelectedfirmDetails.Controls.Add(this.textBoxPhoneNumber);
             this.groupBoxSelectedfirmDetails.Controls.Add(this.textBoxZipCode);
             this.groupBoxSelectedfirmDetails.Controls.Add(this.textBoxState);
             this.groupBoxSelectedfirmDetails.Controls.Add(this.textBoxCity);
@@ -159,27 +172,17 @@
             this.textBoxNotes.Name = "textBoxNotes";
             this.textBoxNotes.ReadOnly = true;
             this.textBoxNotes.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBoxNotes.Size = new System.Drawing.Size(178, 49);
+            this.textBoxNotes.Size = new System.Drawing.Size(184, 49);
             this.textBoxNotes.TabIndex = 13;
-            // 
-            // textBoxPhoneNumber
-            // 
-            this.textBoxPhoneNumber.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBoxPhoneNumber.Location = new System.Drawing.Point(5, 117);
-            this.textBoxPhoneNumber.Name = "textBoxPhoneNumber";
-            this.textBoxPhoneNumber.ReadOnly = true;
-            this.textBoxPhoneNumber.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBoxPhoneNumber.Size = new System.Drawing.Size(100, 20);
-            this.textBoxPhoneNumber.TabIndex = 12;
             // 
             // textBoxZipCode
             // 
             this.textBoxZipCode.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBoxZipCode.Location = new System.Drawing.Point(149, 91);
+            this.textBoxZipCode.Location = new System.Drawing.Point(147, 91);
             this.textBoxZipCode.Name = "textBoxZipCode";
             this.textBoxZipCode.ReadOnly = true;
             this.textBoxZipCode.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBoxZipCode.Size = new System.Drawing.Size(47, 20);
+            this.textBoxZipCode.Size = new System.Drawing.Size(43, 20);
             this.textBoxZipCode.TabIndex = 11;
             // 
             // textBoxState
@@ -285,6 +288,80 @@
             this.firm_idComboBox.TabIndex = 5;
             this.firm_idComboBox.SelectionChangeCommitted += new System.EventHandler(this.firm_idComboBox_SelectionChangeCommitted);
             // 
+            // textboxAreaCode
+            // 
+            this.textboxAreaCode.Location = new System.Drawing.Point(12, 117);
+            this.textboxAreaCode.Mask = "000";
+            this.textboxAreaCode.Name = "textboxAreaCode";
+            this.textboxAreaCode.PromptChar = ' ';
+            this.textboxAreaCode.Size = new System.Drawing.Size(30, 20);
+            this.textboxAreaCode.TabIndex = 16;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(-2, 114);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(19, 26);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "(";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(37, 114);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(19, 26);
+            this.label4.TabIndex = 15;
+            this.label4.Text = ")";
+            // 
+            // textBoxPhoneFirstThree
+            // 
+            this.textBoxPhoneFirstThree.Location = new System.Drawing.Point(53, 117);
+            this.textBoxPhoneFirstThree.Mask = "000";
+            this.textBoxPhoneFirstThree.Name = "textBoxPhoneFirstThree";
+            this.textBoxPhoneFirstThree.PromptChar = ' ';
+            this.textBoxPhoneFirstThree.Size = new System.Drawing.Size(29, 20);
+            this.textBoxPhoneFirstThree.TabIndex = 17;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(79, 113);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(21, 29);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "-";
+            // 
+            // textBoxPhoneLastFour
+            // 
+            this.textBoxPhoneLastFour.Location = new System.Drawing.Point(100, 117);
+            this.textBoxPhoneLastFour.Mask = "0000";
+            this.textBoxPhoneLastFour.Name = "textBoxPhoneLastFour";
+            this.textBoxPhoneLastFour.PromptChar = ' ';
+            this.textBoxPhoneLastFour.Size = new System.Drawing.Size(32, 20);
+            this.textBoxPhoneLastFour.TabIndex = 19;
+            // 
+            // textBoxExtension
+            // 
+            this.textBoxExtension.Location = new System.Drawing.Point(157, 117);
+            this.textBoxExtension.MaxLength = 7;
+            this.textBoxExtension.Name = "textBoxExtension";
+            this.textBoxExtension.Size = new System.Drawing.Size(33, 20);
+            this.textBoxExtension.TabIndex = 21;
+            // 
+            // lblExtension
+            // 
+            this.lblExtension.AutoSize = true;
+            this.lblExtension.Location = new System.Drawing.Point(131, 121);
+            this.lblExtension.Name = "lblExtension";
+            this.lblExtension.Size = new System.Drawing.Size(25, 13);
+            this.lblExtension.TabIndex = 20;
+            this.lblExtension.Text = "Ext.";
+            // 
             // Create_FirmContact
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -344,11 +421,18 @@
         private System.Windows.Forms.Label notes;
         private System.Windows.Forms.ComboBox firm_idComboBox;
         private System.Windows.Forms.TextBox textBoxNotes;
-        private System.Windows.Forms.TextBox textBoxPhoneNumber;
         private System.Windows.Forms.TextBox textBoxZipCode;
         private System.Windows.Forms.TextBox textBoxState;
         private System.Windows.Forms.TextBox textBoxCity;
         private System.Windows.Forms.TextBox textBoxStreet2;
         private System.Windows.Forms.TextBox textBoxStreet1;
+        private System.Windows.Forms.MaskedTextBox textboxAreaCode;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.MaskedTextBox textBoxPhoneFirstThree;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.MaskedTextBox textBoxPhoneLastFour;
+        private System.Windows.Forms.TextBox textBoxExtension;
+        private System.Windows.Forms.Label lblExtension;
     }
 }
