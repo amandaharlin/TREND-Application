@@ -18,8 +18,6 @@ namespace TrendWinForm
 {
     public partial class View_CaseBrowser : Form
     {
-
-
         IList<Case> casesFromDatabase;
         private ListViewColumnSorter lvwColumnSorter;
         private Guid currentlySelectedGuid = Guid.Empty;
@@ -39,7 +37,6 @@ namespace TrendWinForm
         private Guid caseRequesterFilterGuid = Guid.Empty;
         private Guid caseExaminerFilterGuid = Guid.Empty;
 
-
         public View_CaseBrowser()
         {
             InitializeComponent();
@@ -52,10 +49,6 @@ namespace TrendWinForm
             lvwColumnSorter.Order = SortOrder.Descending;
             lvwColumnSorter.SortColumn = 1;
             listViewListOfCases.Sort();
-
-
-            //PopulateComboBoxesWithEntities();
-
         }
 
         private void View_CaseBrowser_Load(object sender, EventArgs e)
@@ -64,18 +57,7 @@ namespace TrendWinForm
             EntitiesToComboBox.FillFirmComboBox(firm_idComboBox, true);
             EntitiesToComboBox.FillFirmContactComboBox(requester_idComboBox, true);
 
-
-
         }
-
-
-        private void PopulateComboBoxesWithEntities()
-        {
-
-
-        }
-
-
         private void QueryDatabaseForCases(int numberOfCasesToTake, int pageNumber)
         {
             var factory = SessionConfig.SessionFactory;
@@ -84,12 +66,9 @@ namespace TrendWinForm
             {
                 using (var transaction = session.BeginTransaction())
                 {
-
                     ICriteria caseQuery = session.CreateCriteria(typeof(Case))
                         
-
                         //TODO: fix Fetch Mode stuff
-
                         //.SetFetchMode("Computers", FetchMode.Lazy)
                         //.CreateAlias("Computers", "c")
                         //.SetFetchMode("c.WhoShutDown", FetchMode.Lazy)
@@ -134,12 +113,9 @@ namespace TrendWinForm
                         caseQuery.Add(Restrictions.Where<Case>(x => x.Examiner.Id == new Guid(examiner_idComboBox.SelectedValue.ToString())));
                     }
 
-                    
-
                     cases = caseQuery.List<Case>();
                     transaction.Commit();
                 }
-
 
                 EntitiesToListView.FillCasesListViewDetailView(cases, listViewListOfCases);
                 casesFromDatabase = cases;
@@ -173,7 +149,17 @@ namespace TrendWinForm
 
         private void buttonSearchButton_Click(object sender, EventArgs e)
         {
-            caseMatterFilterString = textBoxMatterFilter.Text.ToString();
+            Search();
+        }
+
+        private void handleCaseUpdateOrCreated(object sender, EventArgs e)
+        {
+            Search();
+        }
+
+        private void Search()
+        {
+            caseMatterFilterString = textBoxMatterFilter.Text;
             caseStartDateEndFilterString = dateTimePickerStartDateEnd.Value;
             caseStartDateBeginFilterString = dateTimePickerStartDateBegin.Value;
             caseNumberFilterString = textBoxCaseNumber.Text;
@@ -205,37 +191,29 @@ namespace TrendWinForm
             {
                 caseExaminerFilterGuid = new Guid(examiner_idComboBox.SelectedValue.ToString());
             }
-
-
             QueryDatabaseForCases(numberOfResults, resultsPage);
-
-
         }
-
-       
 
         private void listViewListOfCases_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewListOfCases.SelectedItems.Count == 1)
             {
-
                 currentlySelectedGuid = new Guid(listViewListOfCases.SelectedItems[0].Tag.ToString());
-
-
             }
         }
 
         
         /////////////////////////////////////////////////////////////////////
         // CRUD BUTTONS
-        //.......add
+        //Add
         private void buttonAddNewCase_Click(object sender, EventArgs e)
         {
             Create_Case createCase_childForm = new Create_Case();
-            createCase_childForm.MdiParent = this.MdiParent;
+            createCase_childForm.MdiParent = MdiParent;
+            createCase_childForm.CaseUpdatedOrCreated += handleCaseUpdateOrCreated;
             createCase_childForm.Show();
         }
-        //.......view
+        //View
         private void buttonViewCase_Click(object sender, EventArgs e)
         {
             if (listViewListOfCases.SelectedItems.Count == 1 && currentlySelectedGuid != Guid.Empty)
@@ -253,11 +231,11 @@ namespace TrendWinForm
                     }
                 }
 
-                viewCase_childForm.MdiParent = this.MdiParent;
+                viewCase_childForm.MdiParent = MdiParent;
                 viewCase_childForm.Show();
             }
         }
-        //.......edit
+        //Edit
         private void buttonEditCase_Click(object sender, EventArgs e)
         {
 
@@ -276,12 +254,13 @@ namespace TrendWinForm
                     }
                 }
 
-                editCase_childForm.MdiParent = this.MdiParent;
+                editCase_childForm.MdiParent = MdiParent;
+                editCase_childForm.CaseUpdatedOrCreated += handleCaseUpdateOrCreated;
                 editCase_childForm.Show();
             }
         }
 
-        //.......delete
+        //Delete
         private void buttonDeleteCase_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("You will Remove this Case, and all its associations from the database forever.", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -298,9 +277,10 @@ namespace TrendWinForm
                     }
                 }
             }
+            Search();
+            EntitiesToListView.FillCasesListViewDetailView(casesFromDatabase, listViewListOfCases);
         }
 
-        
     }
 
 

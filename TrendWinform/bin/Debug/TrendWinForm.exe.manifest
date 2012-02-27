@@ -136,14 +136,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TrendWinForm.exe" size="883200">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TrendWinForm.exe" size="887296">
       <assemblyIdentity name="TrendWinForm" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>0g57VNLNKWwrqZlhhQEg1we9/MY=</dsig:DigestValue>
+        <dsig:DigestValue>vs+SpxOQYXAYmwV7s7QufpIqNRU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

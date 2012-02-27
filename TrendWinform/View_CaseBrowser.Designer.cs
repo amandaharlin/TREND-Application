@@ -155,7 +155,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(5, 139);
+            this.label1.Location = new System.Drawing.Point(5, 138);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 24);
             this.label1.TabIndex = 157;
@@ -177,7 +177,7 @@
             this.buttonPageBack.Enabled = false;
             this.buttonPageBack.ForeColor = System.Drawing.SystemColors.ControlText;
             this.buttonPageBack.Image = global::TrendWinForm.Properties.Resources.icon_forward_16;
-            this.buttonPageBack.Location = new System.Drawing.Point(81, 139);
+            this.buttonPageBack.Location = new System.Drawing.Point(81, 138);
             this.buttonPageBack.Name = "buttonPageBack";
             this.buttonPageBack.Size = new System.Drawing.Size(24, 24);
             this.buttonPageBack.TabIndex = 163;
@@ -190,7 +190,7 @@
             this.buttonPageForward.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.buttonPageForward.ForeColor = System.Drawing.SystemColors.ControlText;
             this.buttonPageForward.Image = ((System.Drawing.Image)(resources.GetObject("buttonPageForward.Image")));
-            this.buttonPageForward.Location = new System.Drawing.Point(107, 139);
+            this.buttonPageForward.Location = new System.Drawing.Point(107, 138);
             this.buttonPageForward.Name = "buttonPageForward";
             this.buttonPageForward.Size = new System.Drawing.Size(24, 24);
             this.buttonPageForward.TabIndex = 162;
@@ -202,7 +202,7 @@
             this.buttonDeleteCase.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonDeleteCase.BackgroundImage")));
             this.buttonDeleteCase.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonDeleteCase.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonDeleteCase.Location = new System.Drawing.Point(962, 140);
+            this.buttonDeleteCase.Location = new System.Drawing.Point(962, 138);
             this.buttonDeleteCase.Name = "buttonDeleteCase";
             this.buttonDeleteCase.Size = new System.Drawing.Size(24, 24);
             this.buttonDeleteCase.TabIndex = 161;
@@ -215,7 +215,7 @@
             this.buttonEditCase.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonEditCase.BackgroundImage")));
             this.buttonEditCase.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonEditCase.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonEditCase.Location = new System.Drawing.Point(992, 140);
+            this.buttonEditCase.Location = new System.Drawing.Point(992, 138);
             this.buttonEditCase.Name = "buttonEditCase";
             this.buttonEditCase.Size = new System.Drawing.Size(24, 24);
             this.buttonEditCase.TabIndex = 160;
@@ -228,7 +228,7 @@
             this.buttonViewCase.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonViewCase.BackgroundImage")));
             this.buttonViewCase.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonViewCase.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonViewCase.Location = new System.Drawing.Point(1022, 140);
+            this.buttonViewCase.Location = new System.Drawing.Point(1022, 138);
             this.buttonViewCase.Name = "buttonViewCase";
             this.buttonViewCase.Size = new System.Drawing.Size(24, 24);
             this.buttonViewCase.TabIndex = 159;
@@ -241,7 +241,7 @@
             this.buttonAddNewCase.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonAddNewCase.BackgroundImage")));
             this.buttonAddNewCase.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonAddNewCase.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonAddNewCase.Location = new System.Drawing.Point(1052, 140);
+            this.buttonAddNewCase.Location = new System.Drawing.Point(1052, 138);
             this.buttonAddNewCase.Name = "buttonAddNewCase";
             this.buttonAddNewCase.Size = new System.Drawing.Size(24, 24);
             this.buttonAddNewCase.TabIndex = 158;

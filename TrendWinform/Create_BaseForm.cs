@@ -16,13 +16,13 @@ namespace TrendWinForm
         public Create_BaseForm()
         {
             InitializeComponent();
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
             errorProvider.Clear();
-            this.Close();
+            Close();
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
@@ -31,7 +31,7 @@ namespace TrendWinForm
             {
                 OnSave(e);
                 if (OnDataAvailable != null) { OnDataAvailable(this, EventArgs.Empty); }
-                this.Close();
+                Close();
             }
         }
 

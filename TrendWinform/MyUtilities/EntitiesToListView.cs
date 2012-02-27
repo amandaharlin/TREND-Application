@@ -15,6 +15,9 @@ namespace TrendWinForm.MyUtilities
 {
     class EntitiesToListView
     {
+
+        ////////////////////
+        /// Computers
         public static void FillComputersListview(IList<Computer> computers, ListView target)
         {
             target.Items.Clear();
@@ -41,11 +44,18 @@ namespace TrendWinForm.MyUtilities
                 item.SubItems.Add(comp.SvcTag);
                 item.SubItems.Add(comp.Type);
 
+                //set Image
                 if (comp.Type == "Desktop") { item.ImageIndex = 0; }
                 else if (comp.Type == "Laptop") { item.ImageIndex = 1; }
                 else if (comp.Type == "Server") { item.ImageIndex = 2; }
                 else if (comp.Type == "Mobile") { item.ImageIndex = 3; }
                 else { item.ImageIndex = 4; }
+
+                // Tag Entity
+                if (comp.Id != Guid.Empty) { item.Tag = comp.Id; }
+                else { item.Tag = comp; }
+
+
                 target.Items.Add(item);
                 target.TileSize = new System.Drawing.Size(140, 52);
             }
@@ -58,6 +68,10 @@ namespace TrendWinForm.MyUtilities
             target.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             target.Columns[target.Columns.Count - 1].Width = -2;
         }
+
+
+        ////////////////////
+        /// Hard Drives
 
         public static void FillHardDrivesListView(IList<HardDrive> hardDrives, ListView target)
         {
@@ -87,25 +101,21 @@ namespace TrendWinForm.MyUtilities
                                        item.SubItems.Add(hd.DriveInterface);
                                        item.SubItems.Add(hd.DrivePosition);
 
+                                       // Set image
                                        if (hd.Type == "Disk Drive") { item.ImageIndex = 0; }
                                        else { item.ImageIndex = 1; }
+
+                                       //tag Entity
+                                       if (hd.Id != Guid.Empty) { item.Tag = hd.Id; }
+                                       else { item.Tag = hd; }
+
                                        target.Items.Add(item);
                                    });
             target.TileSize = new System.Drawing.Size(140, 52);
         }
 
-        public static void FillHardDrivesListViewDetailView(IList<HardDrive> hardDrives, ListView target)
-        {
-            FillHardDrivesListView(hardDrives, target);
-            target.View = View.Details;
-            target.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-            target.Columns[target.Columns.Count - 1].Width = -2;
-        }
-
-
         public static void FillHardDrivesListViewMinimalDetailView(IList<HardDrive> hardDrives, ListView target)
         {
-
             target.Items.Clear();
             target.Columns.Clear();
             target.Columns.Add("Make");
@@ -124,8 +134,15 @@ namespace TrendWinForm.MyUtilities
                 item.SubItems.Add(hd.Model);
                 item.SubItems.Add(hd.Serial);
                 item.SubItems.Add(hd.SizeInGB.ToString());
+
+                // Set Image
                 if (hd.Type == "Disk Drive") { item.ImageIndex = 0; }
                 else { item.ImageIndex = 1; }
+
+                //Tag Entity
+                if (hd.Id != Guid.Empty) { item.Tag = hd.Id; }
+                else { item.Tag = hd; }
+
                 target.Items.Add(item);
             });
             target.TileSize = new System.Drawing.Size(140, 52);
@@ -134,8 +151,18 @@ namespace TrendWinForm.MyUtilities
             target.Columns[target.Columns.Count - 1].Width = -2;
         }
 
+        public static void FillHardDrivesListViewDetailView(IList<HardDrive> hardDrives, ListView target)
+        {
+            FillHardDrivesListView(hardDrives, target);
+            target.View = View.Details;
+            target.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            target.Columns[target.Columns.Count - 1].Width = -2;
+        }
 
 
+
+        //////////////////////
+        //Raid
         public static void FillRaidsListView(IList<Raid> raids, ListView target)
         {
             target.Items.Clear();
@@ -148,7 +175,7 @@ namespace TrendWinForm.MyUtilities
             {
                 var item = new ListViewItem(r.RaidLevel);
                 item.Text = r.RaidLevel;
-                if (r.SoftwareOrHardware == TrendWinForm.Domain.Entities.RaidType.Hardware)
+                if (r.SoftwareOrHardware == RaidType.Hardware)
                 {
                     item.SubItems.Add("Hardware");
                 }
@@ -157,6 +184,7 @@ namespace TrendWinForm.MyUtilities
                     item.SubItems.Add("Software");
                 }
                 item.SubItems.Add(r.RaidType);
+
                 target.Items.Add(item);
             });
         }
@@ -168,6 +196,9 @@ namespace TrendWinForm.MyUtilities
             target.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             target.Columns[target.Columns.Count - 1].Width = -2;
         }
+
+        //////////////////////
+        //Forensic Process
 
         public static void FillForensicProcessListView(IList<ForensicProcess> forensicProcesses, ListView target)
         {
@@ -190,8 +221,16 @@ namespace TrendWinForm.MyUtilities
                                               item.SubItems.Add(fp.ProcessingPerformed);
                                               item.SubItems.Add(fp.Software);
 
-
+                                              // Set Image
                                               item.ImageIndex = 0;
+
+                                              //Tag Entity
+                                              if (fp.Id != Guid.Empty) { item.Tag = fp.Id; }
+                                              else { item.Tag = fp; }
+
+                                              // Set Tooltip
+                                              item.ToolTipText = fp.CollectionLocation + " :: " + fp.RoomNumber;
+
                                               target.Items.Add(item);
                                           }
 
@@ -207,6 +246,8 @@ namespace TrendWinForm.MyUtilities
             target.Columns[target.Columns.Count - 1].Width = -2;
         }
 
+        //////////////////////
+        //Destination Media
 
         public static void FillDestinationMediaListView(IList<DestinationMedia> destinationMediae, ListView target)
         {
@@ -232,39 +273,26 @@ namespace TrendWinForm.MyUtilities
                                               item.Text = dm.Type;
                                               item.SubItems.Add(dm.Brand);
                                               item.SubItems.Add(dm.Size.ToString());
-                                              if (item.Text == "Hard Drive")
-                                              {
-                                                  item.ImageIndex = 0;
-                                              }
-                                              else if (item.Text == "External Drive")
-                                              {
-                                                  item.ImageIndex = 1;
-                                              }
-                                              else if (item.Text == "DVD")
-                                              {
-                                                  item.ImageIndex = 2;
-                                              }
-                                              else if (item.Text == "CD")
-                                              {
-                                                  item.ImageIndex = 3;
-                                              }
-                                              else if (item.Text == "SAN")
-                                              {
-                                                  item.ImageIndex = 4;
-                                              }
-                                              else if (item.Text == "Floppy")
-                                              {
-                                                  item.ImageIndex = 5;
-                                              }
-                                              else
-                                              {
-                                                  item.ImageIndex = 6;
-                                              }
-                                             
+
+                                              // set image
+                                              if (item.Text == "Hard Drive") { item.ImageIndex = 0; }
+                                              else if (item.Text == "External Drive") { item.ImageIndex = 1; }
+                                              else if (item.Text == "DVD") { item.ImageIndex = 2; }
+                                              else if (item.Text == "CD") { item.ImageIndex = 3; }
+                                              else if (item.Text == "SAN") { item.ImageIndex = 4; }
+                                              else if (item.Text == "Floppy") { item.ImageIndex = 5; }
+                                              else { item.ImageIndex = 6; }
+
+                                              //tag Entity
+                                              if (dm.Id != Guid.Empty) { item.Tag = dm.Id; }
+                                              else { item.Tag = dm; }
+
+                                              // Set tooltip
+                                              item.ToolTipText = dm.Brand + " [" + dm.Type + "]";
+
                                               target.Items.Add(item);
                                           }
                 );
-
         }
 
         public static void FillDestinationMediaListViewDetailView(IList<DestinationMedia> destinationMediae, ListView target)
@@ -275,31 +303,8 @@ namespace TrendWinForm.MyUtilities
             target.Columns[target.Columns.Count - 1].Width = -2;
         }
 
-        public static void PopulateListViewImages(IList<String> resourceLocations, ListView target)
-        {
-            target.View = View.Tile;
-
-            ImageList smallImagelist = new ImageList();
-            smallImagelist.ImageSize = new System.Drawing.Size(32, 32);
-            smallImagelist.ColorDepth = ColorDepth.Depth32Bit;
-            ImageList largeImagelist = new ImageList();
-            largeImagelist.ImageSize = new System.Drawing.Size(48, 48);
-            largeImagelist.ColorDepth = ColorDepth.Depth32Bit;
-            foreach (var image in resourceLocations)
-            {
-                Assembly myAssembly = Assembly.GetExecutingAssembly();
-                Stream myStream = myAssembly.GetManifestResourceStream(image);
-                Bitmap img = new Bitmap(myStream);
-
-                largeImagelist.Images.Add(img);
-                smallImagelist.Images.Add(img);
-            }
-
-            target.LargeImageList = largeImagelist;
-            target.SmallImageList = smallImagelist;
-
-
-        }
+        //////////////////////
+        //Active user Files
 
         public static void FillActiveUserFilesListView(IList<ActiveUserFile> activeUserFiles, ListView target)
         {
@@ -322,14 +327,16 @@ namespace TrendWinForm.MyUtilities
                 item.SubItems.Add(auf.MemoryUsage.ToString());
                 item.SubItems.Add(auf.CpuUsage.ToString());
                 item.SubItems.Add(auf.Description);
+
+                // Set image
                 item.ImageIndex = 0;
-                if (auf.Id != Guid.Empty)
-                {
-                    item.Tag = auf.Id;
-                }else
-                {
-                    item.Tag = auf;
-                }
+
+                //Tag Entity
+                if (auf.Id != Guid.Empty) { item.Tag = auf.Id; }
+                else { item.Tag = auf; }
+
+                // Set ToolTip
+                item.ToolTipText = auf.Description;
 
                 target.Items.Add(item);
             });
@@ -344,13 +351,14 @@ namespace TrendWinForm.MyUtilities
             target.Columns[target.Columns.Count - 1].Width = -2;
         }
 
-
+        //////////////////////
+        //CASES
 
         public static void FillCasesListView(IList<Case> cases, ListView target)
         {
             target.Items.Clear();
             target.Columns.Clear();
-            
+
             target.Columns.Add("Case Matter");
             target.Columns.Add("Date");
             target.Columns.Add("Case Number");
@@ -372,30 +380,32 @@ namespace TrendWinForm.MyUtilities
             {
                 var item = new ListViewItem(x.Id.ToString());
 
-                
-                
                 item.Text = x.Matter;
                 item.SubItems.Add(x.StartDate.ToString());
-
 
                 item.SubItems.Add(Math.Truncate(x.CaseNumber).ToString());
                 item.SubItems.Add(x.ItemNumber.ToString());
                 item.SubItems.Add(x.Firm.FirmName.ToString());
-                item.SubItems.Add(x.Requester.Name.LastName.ToString() +" , " +x.Requester.Name.FirstName.ToString());
+                item.SubItems.Add(x.Requester.Name.LastName.ToString() + " , " + x.Requester.Name.FirstName.ToString());
                 item.SubItems.Add(x.Examiner.EmployeeName.LastName.ToString() + " , " + x.Examiner.EmployeeName.FirstName.ToString());
                 item.SubItems.Add(x.Computers.Count().ToString());
                 item.SubItems.Add(x.HardDrives.Count().ToString());
                 item.SubItems.Add(x.ForensicProcesses.Count().ToString());
                 item.SubItems.Add(x.ActiveUserFiles.Count().ToString());
 
-                item.Tag = x.Id;
-
+                // set Image
                 item.ImageIndex = 1;
+
+                //Tag Entity
+                if (x.Id != Guid.Empty) { item.Tag = x.Id; }
+                else { item.Tag = x; }
+
+                // Set ToolTip
                 item.ToolTipText = x.NotesAndConclusion.Notes;
+
                 target.Items.Add(item);
             });
         }
-
 
         public static void FillCasesListViewDetailView(IList<Case> cases, ListView target)
         {
@@ -406,6 +416,31 @@ namespace TrendWinForm.MyUtilities
         }
 
 
+        /// <summary>
+        /// Enity To List view Utilities
+        /// </summary>
+
+        public static void PopulateListViewImages(IList<String> resourceLocations, ListView target)
+        {
+            target.View = View.Tile;
+
+            ImageList smallImagelist = new ImageList();
+            smallImagelist.ImageSize = new System.Drawing.Size(32, 32);
+            smallImagelist.ColorDepth = ColorDepth.Depth32Bit;
+            ImageList largeImagelist = new ImageList();
+            largeImagelist.ImageSize = new System.Drawing.Size(48, 48);
+            largeImagelist.ColorDepth = ColorDepth.Depth32Bit;
+            foreach (var image in resourceLocations)
+            {
+                Assembly myAssembly = Assembly.GetExecutingAssembly();
+                Stream myStream = myAssembly.GetManifestResourceStream(image);
+                Bitmap img = new Bitmap(myStream);
+                largeImagelist.Images.Add(img);
+                smallImagelist.Images.Add(img);
+            }
+            target.LargeImageList = largeImagelist;
+            target.SmallImageList = smallImagelist;
+        }
 
     }
 }

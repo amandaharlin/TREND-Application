@@ -2561,6 +2561,7 @@
             this.buttonDeleteHardDrives.Size = new System.Drawing.Size(24, 24);
             this.buttonDeleteHardDrives.TabIndex = 165;
             this.buttonDeleteHardDrives.UseVisualStyleBackColor = true;
+            this.buttonDeleteHardDrives.Click += new System.EventHandler(this.buttonDeleteHardDrives_Click);
             // 
             // buttonEditHardDrives
             // 
@@ -2572,6 +2573,7 @@
             this.buttonEditHardDrives.Size = new System.Drawing.Size(24, 24);
             this.buttonEditHardDrives.TabIndex = 164;
             this.buttonEditHardDrives.UseVisualStyleBackColor = true;
+            this.buttonEditHardDrives.Click += new System.EventHandler(this.buttonEditHardDrives_Click);
             // 
             // buttonViewHardDrives
             // 
@@ -2583,6 +2585,7 @@
             this.buttonViewHardDrives.Size = new System.Drawing.Size(24, 24);
             this.buttonViewHardDrives.TabIndex = 163;
             this.buttonViewHardDrives.UseVisualStyleBackColor = true;
+            this.buttonViewHardDrives.Click += new System.EventHandler(this.buttonViewHardDrives_Click);
             // 
             // buttonAddHardDrives
             // 
@@ -3350,7 +3353,6 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Case";
             this.Shown += new System.EventHandler(this.Create_Case_Shown);
-            this.Click += new System.EventHandler(this.Create_Case_Click);
             ((System.ComponentModel.ISupportInitialize)(this.caseBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trendDataSet)).EndInit();
             this.groupBox1.ResumeLayout(false);

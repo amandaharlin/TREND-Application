@@ -24,14 +24,13 @@ namespace TrendWinForm
         public IList<ForensicProcess> CaseForensicProcesses = new List<ForensicProcess>();
         public IList<ActiveUserFile> CaseActiveUserFiles = new List<ActiveUserFile>();
 
+        public event EventHandler CaseUpdatedOrCreated;
         private string formEditMode = "create";
 
-
-
+        #region [Constructors and Initialization]
         public Create_Case()
         {
             InitializeComponent();
-
         }
 
         public Create_Case(Case incomingCase, string _formEditMode)
@@ -40,8 +39,10 @@ namespace TrendWinForm
             formEditMode = _formEditMode;
             NewCase = incomingCase;
         }
+
         private void Create_Case_Shown(object sender, EventArgs e)
         {
+            
             UpdateDataBoundControls();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
@@ -60,24 +61,12 @@ namespace TrendWinForm
                     t.Enabled = false;
                     t.BorderStyle = BorderStyle.None;
                 });
-
             }
             else
             {
-
                 FormTitleHelper.SetFormFormattingByEditMode(formEditMode, this);
             }
         }
-
-        private void Create_Case_Click(object sender, EventArgs e)
-        {
-            //if (formEditMode == "edit")
-            //{
-            //    PopulateFormwithCase(NewCase);
-            //}
-        }
-
-
         private void PopulateFormwithCase(Case incomingCase)
         {
             var factory = SessionConfig.SessionFactory;
@@ -123,41 +112,6 @@ namespace TrendWinForm
             UpdateDataBoundControls();
         }
 
-        #region[validation]
-
-
-        private void caseNumberTextBox_Validating(object sender, CancelEventArgs e)
-        {
-            errorProvider1.SetError(caseNumberTextBox, string.Empty);
-            if (caseNumberTextBox.Text == "")
-            {
-                errorProvider1.SetError(caseNumberTextBox, "This must have a value.");
-                e.Cancel = true;
-            }
-        }
-
-        private void matterTextBox_Validating(object sender, CancelEventArgs e)
-        {
-            errorProvider1.SetError(matterTextBox, string.Empty);
-            if (matterTextBox.Text == "")
-            {
-                errorProvider1.SetError(matterTextBox, "This must have a value.");
-                e.Cancel = true;
-            }
-        }
-
-        private void itemNumberTextBox_Validating(object sender, CancelEventArgs e)
-        {
-            errorProvider1.SetError(itemNumberTextBox, string.Empty);
-            if (itemNumberTextBox.Text == "")
-            {
-                errorProvider1.SetError(itemNumberTextBox, "This must have a value.");
-                e.Cancel = true;
-            }
-        }
-        #endregion
-
-
         //Comboboxes, etc.
         public void UpdateDataBoundControls()
         {
@@ -166,7 +120,6 @@ namespace TrendWinForm
 
         public void UpdateComboBoxes()
         {
-
             EntitiesToComboBox.FillEmployeeComboBox(examiner_idComboBox);
             EntitiesToComboBox.FillFirmComboBox(firm_idComboBox);
             EntitiesToComboBox.FillEmployeeComboBox(comboBoxCdfInfoTech);
@@ -176,28 +129,21 @@ namespace TrendWinForm
                 var firmGuid = new Guid(firm_idComboBox.SelectedValue.ToString());
                 EntitiesToComboBox.FillFirmContactComboBoxByFirm(firmGuid, requester_idComboBox);
             }
-
-
-
-            // EntitiesToComboBox.FillReferenceComputersComboBox();
-            //shouldn't there be a requester entities to combobox here? like fillfirmcontactcombobox or fillfirmcontactcomboboxbyfirm
         }
 
-        //Change LISTVIEW Views
-        private void buttonViewTileComputerListView_Click(object sender, EventArgs e) { listViewAssociatedComputerList.View = View.Tile; }
-        private void buttonViewDetailsComputerListView_Click(object sender, EventArgs e) { listViewAssociatedComputerList.View = View.SmallIcon; }
-        private void buttonViewTileForensicProcessListView_Click(object sender, EventArgs e) { listViewForensicProcesses.View = View.Tile; }
-        private void buttonViewSmallIconForensicProcessListView_Click(object sender, EventArgs e) { listViewForensicProcesses.View = View.SmallIcon; }
-        private void buttonViewTileHardDriveListView_Click(object sender, EventArgs e) { listViewHardDrivesOnHardDrivePage.View = View.Tile; }
-        private void buttonViewDetailsHardDriveListView_Click(object sender, EventArgs e) { listViewHardDrivesOnHardDrivePage.View = View.SmallIcon; }
+        #endregion
 
+        #region [Create Case Header Events]
 
+        // Header Events.
+        private void firm_idComboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
 
+            var selectedfirm = new Guid(firm_idComboBox.SelectedValue.ToString());
+            EntitiesToComboBox.FillFirmContactComboBoxByFirm(selectedfirm, requester_idComboBox);
+        }
 
-
-        #region [add buttons]
-
-        //Add Entity BUttons
+        //Header Add Entity BUttons
         private void AddFirm_Click(object sender, EventArgs e)
         {
             Create_Firm newFirmForm = new Create_Firm();
@@ -218,11 +164,8 @@ namespace TrendWinForm
             newEmployeeForm.FormClosed += this.UpdateFormEvent;
             newEmployeeForm.Show();
         }
-        #endregion
 
-        #region[view buttons]
-
-        //View Form Buttons
+        //Header View Buttons
         private void ViewFirm_Click(object sender, EventArgs e)
         {
             if (firm_idComboBox.SelectedValue != null)
@@ -251,199 +194,28 @@ namespace TrendWinForm
         }
         #endregion
 
-        #region [ Save & Cancel Buttons ]
-
-        // Save and Cancel Buttons
-        private void SaveButton_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Are you sure you wish to save? Your changes to this Case will be applied to the daabase, and this form will close.", "Confirm Save", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-
-                var factory = SessionConfig.SessionFactory;
-                using (var session = factory.OpenSession())
-                {
-
-                    var caseFirm = SelectSingleEntityById.SelectFirmById(new Guid(firm_idComboBox.SelectedValue.ToString()));
-
-                    var caseRequester = SelectSingleEntityById.SelectFirmContactById(new Guid(requester_idComboBox.SelectedValue.ToString()));
-
-                    var caseExmployee = SelectSingleEntityById.SelectEmployeeById(new Guid(examiner_idComboBox.SelectedValue.ToString()));
-
-                    var caseNotesAndConclusion = new NotesAndConclusion()
-                                                      {
-                                                          Notes = textBoxNACNotes.Text,
-                                                          Conclusion = textBoxConclusion.Text,
-                                                          CdfInfo = new CdfInfo()
-                                                                        {
-                                                                            TechExaminer = SelectSingleEntityById.SelectEmployeeById(new Guid(comboBoxCdfInfoTech.SelectedValue.ToString())),
-                                                                            IsFinishDate = true,
-                                                                            Cdfdate = dateTimePickerCDFDate.Value,
-                                                                        }
-
-                                                      };
-                    if (formEditMode.ToLower() == "create")
-                    {
-                        NewCase = new Case()
-                        {
-                            CaseNumber = Convert.ToInt32(caseNumberTextBox.Text),
-                            Matter = matterTextBox.Text,
-                            ItemNumber = Convert.ToInt32(itemNumberTextBox.Text),
-                            StartDate = startDateDateTimePicker.Value,
-                            Barcode = barcodeTextBox.Text,
-                            BarcodeDateVerified = barcodeDateVerifiedDateTimePicker.Value,
-                            Firm = caseFirm,
-                            Requester = caseRequester,
-                            Examiner = caseExmployee,
-
-                            Computers = CaseComputers,
-                            HardDrives = CaseHardDrives,
-                            ForensicProcesses = CaseForensicProcesses,
-                            ActiveUserFiles = CaseActiveUserFiles,
-                            NotesAndConclusion = caseNotesAndConclusion,
-                        };
-                    }
-                    else if (formEditMode.ToLower() == "edit")
-                    {
-                        NewCase.CaseNumber = Convert.ToDecimal(caseNumberTextBox.Text);
-                        NewCase.Matter = matterTextBox.Text;
-                        NewCase.ItemNumber = Convert.ToInt32(itemNumberTextBox.Text);
-                        NewCase.StartDate = startDateDateTimePicker.Value;
-                        NewCase.Barcode = barcodeTextBox.Text;
-                        NewCase.BarcodeDateVerified = barcodeDateVerifiedDateTimePicker.Value;
-                        NewCase.Firm = caseFirm;
-                        NewCase.Requester = caseRequester;
-                        NewCase.Examiner = caseExmployee;
-                        NewCase.Computers = CaseComputers;
-                        NewCase.HardDrives = CaseHardDrives;
-                        NewCase.ForensicProcesses = CaseForensicProcesses;
-                        NewCase.ActiveUserFiles = CaseActiveUserFiles;
-                        NewCase.NotesAndConclusion = caseNotesAndConclusion;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid Form Edit Mode : Please Restart Appliction.");
-                    }
-
-                    NewCase.NotesAndConclusion.ReferenceCase = NewCase;
-
-                    using (var transaction = session.BeginTransaction())
-                    {
-                        if (formEditMode.ToLower() == "create")
-                        {
-                            session.Save(NewCase);
-                        }
-                        else if (formEditMode.ToLower() == "edit")
-                        {
-                            session.Update(NewCase);
-                        }
-
-                        transaction.Commit();
-                    }
-                }
-                Close();
-            }
-        }
-
-        private void CancelButton_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Are you sure you wish to exit? Your changes to this Case will be dicarded.", "Confirm Close", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                errorProvider1.Clear();
-                Close();
-            }
-        }
-
-        #endregion
-
-
-        private void firm_idComboBox_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-
-            var selectedfirm = new Guid(firm_idComboBox.SelectedValue.ToString());
-            EntitiesToComboBox.FillFirmContactComboBoxByFirm(selectedfirm, requester_idComboBox);
-        }
-
-        #region [ CRUD ]
-
-        private void buttonViewComputer_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("View computer with GUid at selected index");
-
-        }
-
-        private void buttonEditComputer_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Edit computer with GUid at selected index");
-        }
-
-        private void buttonDeleteComputer_Click(object sender, EventArgs e)
-        {
-            //If computer has other associated cases, you should remove the computer fromt eh box, but not the potatobase
-            // Otherwise, delete the entire computer.
-            MessageBox.Show("Delete computer with GUid at selected index");
-        }
-
-
-        #endregion
-
-        private void DisplayStatsOfcurrentlySelectedComputer()
-        {
-
-        }
-
-
-
-
-
         #region [ Computer Tab ]
 
         ////////////////////////////////////////
         ///COMPUTER TAB!!!!!
-        /// 
-        /// 
         /// <summary>manage computers associated with case and thier associated hard drives. all entities are transient until save button is clicked.</summary>
         ///////////////////////////////////////
 
+        /////////////////////s
+        //Comp List CRUD
+
+        //Add
         private Create_Computer newCompSubform = null;
         private void buttonAddComputer_Click(object sender, EventArgs e)
         {
-            this.newCompSubform = new Create_Computer();
-            newCompSubform.OnDataAvailable += this.AddComputerTolist;
-            newCompSubform.FormClosed += this.UpdateFormEvent;
+            newCompSubform = new Create_Computer();
+            newCompSubform.OnDataAvailable += AddComputerTolist; // ....Add Computer Entity From SubForm
+            newCompSubform.FormClosed += UpdateFormEvent;
+            newCompSubform.MdiParent = MdiParent;
             newCompSubform.Show();
         }
 
-
-
-
-        //....CompTab: Map Computer Data to Fields
-
-        private Computer this_Computer;
-        private void listViewAssociatedComputerList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listViewAssociatedComputerList.SelectedItems.Count == 1)
-            {
-                var i = listViewAssociatedComputerList.SelectedItems[0].Index;
-
-                this_Computer = CaseComputers[i];
-                //Puts computer info in fields
-                ListViewToDetailsFields.ComputerlistViewToDetailFields(i, CaseComputers, this);
-
-                //puts the hard drives in their listView.
-                EntitiesToListView.FillHardDrivesListView(CaseComputers[i].HardDrives, listViewComputerAssociatedHardDrives);
-                listViewComputerAssociatedHardDrives.View = View.LargeIcon;
-
-                listViewAssociatedRaids.Clear();
-                if (CaseComputers[i].Raids.Count > 0)
-                {
-                    EntitiesToListView.FillHardRaidsListViewDetailView(CaseComputers[i].Raids, listViewAssociatedRaids);
-                }
-
-                groupBoxDriveDetails.Controls.OfType<TextBox>().ForEach(x => x.Text = "");
-
-            }
-        }
-
+        // ....Add Computer Entity From SubForm
         private void AddComputerTolist(object sender, EventArgs e)
         {
             var computer = newCompSubform.NewComputer;
@@ -453,20 +225,110 @@ namespace TrendWinForm
             EntitiesToListView.FillHardDrivesListView(CaseHardDrives, listViewHardDrivesOnHardDrivePage);
         }
 
+        //View
+        private void buttonViewComputer_Click(object sender, EventArgs e)
+        {
+            if (listViewAssociatedComputerList.SelectedItems.Count == 1)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Please Select a Computer from the List to View");
+            }
+        }
+        //edit
+        private void buttonEditComputer_Click(object sender, EventArgs e)
+        {
+            if (listViewAssociatedComputerList.SelectedItems.Count == 1)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Please Select a Computer from the List to Edit");
+            }
+        }
+        //Delete
+        private void buttonDeleteComputer_Click(object sender, EventArgs e)
+        {
+            if (listViewAssociatedComputerList.SelectedItems.Count == 1)
+            {
+                if (MessageBox.Show("Really delete this Computer and its Hard Drives?", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    var compId = listViewAssociatedComputerList.SelectedItems[0].Tag;
+                    if (compId.GetType() == typeof(Computer))
+                    {
+                        thisComputer = (Computer)compId;
+                    }
+                    else
+                    {
+                        compId = new Guid(compId.ToString());
+                        thisComputer = CaseComputers.SingleOrDefault(x => x.Id == (Guid)compId);
+                        DeleteSingleEntityById.DeleteComputerById((Guid)compId);
+                    }
+                    if (thisComputer.HardDrives.Any())
+                    {
+                        thisComputer.HardDrives.ForEach(hd => CaseHardDrives.Remove(hd));
+                    }
+
+                    CaseComputers.Remove(thisComputer);
+                    EntitiesToListView.FillComputersListview(CaseComputers, listViewAssociatedComputerList);
+                    EntitiesToListView.FillHardDrivesListView(CaseHardDrives, listViewHardDrivesOnHardDrivePage);
+                    listViewComputerAssociatedHardDrives.Items.Clear();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please Select a Computer from the List to Delete");
+            }
+        }
+
+        //Map Computer + Computer Data to Fields
+        private Computer thisComputer = new Computer(); //outside closure to Hd's can see it
+        private void listViewAssociatedComputerList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewAssociatedComputerList.SelectedItems.Count == 1)
+            {
+
+                //Select Item
+                var compId = listViewAssociatedComputerList.SelectedItems[0].Tag;
+                if (compId.GetType() == typeof(Computer))
+                {
+                    thisComputer = (Computer)compId;
+                }
+                else
+                {
+                    compId = new Guid(compId.ToString());
+                    thisComputer = CaseComputers.SingleOrDefault(x => x.Id == (Guid)compId);
+                }
+
+                if (thisComputer != null)
+                {
+                    groupBoxDriveDetails.Controls.OfType<TextBox>().ForEach(x => x.Text = "");
+                    //Puts computer info in fields
+                    ListViewToDetailsFields.ComputerlistViewToDetailFields(thisComputer, this);
+                    //puts the hard drives in their listView.
+                    EntitiesToListView.FillHardDrivesListView(thisComputer.HardDrives, listViewComputerAssociatedHardDrives);
+                    listViewComputerAssociatedHardDrives.View = View.LargeIcon;
+                }
+                listViewAssociatedRaids.Clear();
+                if (thisComputer.Raids.Any())
+                {
+                    EntitiesToListView.FillHardRaidsListViewDetailView(thisComputer.Raids, listViewAssociatedRaids);
+                }
+            }
+        }
+
         private void listViewComputerAssociatedHardDrives_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewComputerAssociatedHardDrives.SelectedItems.Count == 1)
             {
-
                 var i = listViewComputerAssociatedHardDrives.SelectedItems[0].Index;
-
-                textBoxHDDetails_Make.Text = this_Computer.HardDrives[i].Make;
-                textBoxHDDetails_Model.Text = this_Computer.HardDrives[i].Model;
-                textBoxHDDetails_Serial.Text = this_Computer.HardDrives[i].Serial;
-                textBoxHDDetails_Interface.Text = this_Computer.HardDrives[i].DriveInterface;
-
-
-
+                textBoxHDDetails_Make.Text = thisComputer.HardDrives[i].Make;
+                textBoxHDDetails_Model.Text = thisComputer.HardDrives[i].Model;
+                textBoxHDDetails_Serial.Text = thisComputer.HardDrives[i].Serial;
+                textBoxHDDetails_Interface.Text = thisComputer.HardDrives[i].DriveInterface;
             }
         }
         #endregion
@@ -483,26 +345,106 @@ namespace TrendWinForm
         private void buttonAddHardDrives_Click(object sender, EventArgs e)
         {
             newHardDriveSubForm = new Create_HardDrive();
-            newHardDriveSubForm.OnDataAvailable += AddHardDriveTolist;
+            newHardDriveSubForm.OnDataAvailable += AddHardDriveTolist; //Add HD to List
             newHardDriveSubForm.FormClosed += UpdateFormEvent;
+            newHardDriveSubForm.MdiParent = MdiParent;
             newHardDriveSubForm.Show();
 
         }
+        ///////////////////
+        //CRUD buttons
 
+        //Add HD to List
         private void AddHardDriveTolist(object sender, EventArgs e)
         {
             CaseHardDrives.Add(newHardDriveSubForm.NewHardDrive);
             EntitiesToListView.FillHardDrivesListView(CaseHardDrives, listViewHardDrivesOnHardDrivePage);
         }
 
+        //Delete
+        private void buttonDeleteHardDrives_Click(object sender, EventArgs e)
+        {
+            if (listViewHardDrivesOnHardDrivePage.SelectedItems.Count == 1 && formEditMode != "view")
+            {
+                if (MessageBox.Show("Really delete this Hard Drive?", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    var hdId = listViewHardDrivesOnHardDrivePage.SelectedItems[0].Tag;
+                    var hdToRemove = new HardDrive();
+                    if (hdId.GetType() == typeof(HardDrive))
+                    {
+                        hdToRemove = (HardDrive)hdId;
+                    }
+                    else
+                    {
+                        hdId = new Guid(hdId.ToString());
+                        hdToRemove = CaseHardDrives.SingleOrDefault(x => x.Id == (Guid)hdId);
+
+                        if(hdToRemove.ReferenceComputer == null)
+                        {
+                            DeleteSingleEntityById.DeleteHardDriveById((Guid)hdId);
+                        }
+
+                    }
+                    if (hdToRemove.ReferenceComputer == null)
+                    {
+                        CaseHardDrives.Remove(hdToRemove);
+                    }else
+                    {
+                        MessageBox.Show("Delete or Edit the Associated Computer to this Hard Drive");
+                    }
+
+                    EntitiesToListView.FillComputersListview(CaseComputers, listViewAssociatedComputerList);
+                    EntitiesToListView.FillHardDrivesListView(CaseHardDrives, listViewHardDrivesOnHardDrivePage);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please Select which Hard Drive to remove");
+            }
+        }
+        // Edit
+        private void buttonEditHardDrives_Click(object sender, EventArgs e)
+        {
+            if (listViewHardDrivesOnHardDrivePage.SelectedItems.Count == 1)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Please Select which Hard Drive to Edit");
+            }
+        }
+        // View
+        private void buttonViewHardDrives_Click(object sender, EventArgs e)
+        {
+            if (listViewHardDrivesOnHardDrivePage.SelectedItems.Count == 1)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Please Select which Hard Drive to View");
+            }
+        }
+
+
         //....HDtab: Map HD Data to Fields
         private void listViewHardDrivesOnHardDrivePage_Click(object sender, EventArgs e)
         {
             if (listViewHardDrivesOnHardDrivePage.SelectedItems.Count == 1)
             {
-                var i = listViewHardDrivesOnHardDrivePage.SelectedItems[0].Index;
-
-                ListViewToDetailsFields.HardDrivelistViewToDetailFields(i, CaseHardDrives, this);
+                var hdId = listViewHardDrivesOnHardDrivePage.SelectedItems[0].Tag;
+                var thisHardDrive = new HardDrive();
+                if (hdId.GetType() == typeof(HardDrive))
+                {
+                    thisHardDrive = (HardDrive)hdId;
+                }
+                else
+                {
+                    hdId = new Guid(hdId.ToString());
+                    thisHardDrive = CaseHardDrives.SingleOrDefault(x => x.Id == (Guid)hdId);
+                }
+                ListViewToDetailsFields.HardDrivelistViewToDetailFields(thisHardDrive, this);
 
             }
         }
@@ -615,25 +557,23 @@ namespace TrendWinForm
         {
             if (listViewAUFActiveUserFiles.SelectedItems.Count == 1 && formEditMode != "view")
             {
-
-                var aufId = listViewAUFActiveUserFiles.SelectedItems[0].Tag;
-
-                var aufToRemove = new ActiveUserFile();
-                if (aufId.GetType() == typeof(ActiveUserFile))
+                if (MessageBox.Show("Really delete this Active User file?", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    aufToRemove = (ActiveUserFile)aufId;
+                    var aufId = listViewAUFActiveUserFiles.SelectedItems[0].Tag;
+                    var aufToRemove = new ActiveUserFile();
+                    if (aufId.GetType() == typeof(ActiveUserFile))
+                    {
+                        aufToRemove = (ActiveUserFile)aufId;
+                    }
+                    else
+                    {
+                        aufId = new Guid(aufId.ToString());
+                        aufToRemove = CaseActiveUserFiles.SingleOrDefault(x => x.Id == (Guid)aufId);
+                        DeleteSingleEntityById.DeleteActiveUserFileById((Guid)aufId);
+                    }
+                    CaseActiveUserFiles.Remove(aufToRemove);
+                    EntitiesToListView.FillActiveUserFilesListViewDetailView(CaseActiveUserFiles, listViewAUFActiveUserFiles);
                 }
-                else
-                {
-                    aufId = new Guid(aufId.ToString());
-                    aufToRemove = CaseActiveUserFiles.SingleOrDefault(x => x.Id == (Guid)aufId);
-                    DeleteSingleEntityById.DeleteActiveUserFileById((Guid)aufId);
-                }
-
-                CaseActiveUserFiles.Remove(aufToRemove);
-
-                EntitiesToListView.FillActiveUserFilesListViewDetailView(CaseActiveUserFiles, listViewAUFActiveUserFiles);
-
             }
             else
             {
@@ -649,16 +589,165 @@ namespace TrendWinForm
         }
         #endregion
 
-
-
-
-
-
-
         #region[Notes & Conclusion Tab]
         //pull in cdf employees
 
         #endregion
+
+        #region [ Save & Cancel Buttons ]
+
+        // Save and Cancel Buttons
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            if (ValidateChildren())
+            {
+                if (MessageBox.Show("Are you sure you wish to save? Your changes to this Case will be applied to the daabase, and this form will close.", "Confirm Save", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    var factory = SessionConfig.SessionFactory;
+                    using (var session = factory.OpenSession())
+                    {
+                        var caseFirm = SelectSingleEntityById.SelectFirmById(new Guid(firm_idComboBox.SelectedValue.ToString()));
+                        var caseRequester = SelectSingleEntityById.SelectFirmContactById(new Guid(requester_idComboBox.SelectedValue.ToString()));
+                        var caseExmployee = SelectSingleEntityById.SelectEmployeeById(new Guid(examiner_idComboBox.SelectedValue.ToString()));
+                        var caseNotesAndConclusion = new NotesAndConclusion()
+                        {
+                            Notes = textBoxNACNotes.Text,
+                            Conclusion = textBoxConclusion.Text,
+                            CdfInfo = new CdfInfo()
+                            {
+                                TechExaminer = SelectSingleEntityById.SelectEmployeeById(new Guid(comboBoxCdfInfoTech.SelectedValue.ToString())),
+                                IsFinishDate = true,
+                                Cdfdate = dateTimePickerCDFDate.Value,
+                            }
+                        };
+                        if (formEditMode.ToLower() == "create")
+                        {
+                            NewCase = new Case()
+                            {
+                                CaseNumber = Convert.ToInt32(caseNumberTextBox.Text),
+                                Matter = matterTextBox.Text,
+                                ItemNumber = Convert.ToInt32(itemNumberTextBox.Text),
+                                StartDate = startDateDateTimePicker.Value,
+                                Barcode = barcodeTextBox.Text,
+                                BarcodeDateVerified = barcodeDateVerifiedDateTimePicker.Value,
+                                Firm = caseFirm,
+                                Requester = caseRequester,
+                                Examiner = caseExmployee,
+
+                                Computers = CaseComputers,
+                                HardDrives = CaseHardDrives,
+                                ForensicProcesses = CaseForensicProcesses,
+                                ActiveUserFiles = CaseActiveUserFiles,
+                                NotesAndConclusion = caseNotesAndConclusion,
+                            };
+                        }
+                        else if (formEditMode.ToLower() == "edit")
+                        {
+                            NewCase.CaseNumber = Convert.ToDecimal(caseNumberTextBox.Text);
+                            NewCase.Matter = matterTextBox.Text;
+                            NewCase.ItemNumber = Convert.ToInt32(itemNumberTextBox.Text);
+                            NewCase.StartDate = startDateDateTimePicker.Value;
+                            NewCase.Barcode = barcodeTextBox.Text;
+                            NewCase.BarcodeDateVerified = barcodeDateVerifiedDateTimePicker.Value;
+                            NewCase.Firm = caseFirm;
+                            NewCase.Requester = caseRequester;
+                            NewCase.Examiner = caseExmployee;
+                            NewCase.Computers = CaseComputers;
+                            NewCase.HardDrives = CaseHardDrives;
+                            NewCase.ForensicProcesses = CaseForensicProcesses;
+                            NewCase.ActiveUserFiles = CaseActiveUserFiles;
+                            NewCase.NotesAndConclusion = caseNotesAndConclusion;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid Form Edit Mode : Please Restart Appliction.");
+                        }
+
+                        NewCase.NotesAndConclusion.ReferenceCase = NewCase;
+                        using (var transaction = session.BeginTransaction())
+                        {
+                            if (formEditMode.ToLower() == "create")
+                            {
+                                session.Save(NewCase);
+                            }
+                            else if (formEditMode.ToLower() == "edit")
+                            {
+                                session.Update(NewCase);
+                            }
+                            transaction.Commit();
+                        }
+                    }
+
+                    if (CaseUpdatedOrCreated != null)
+                    {
+                        CaseUpdatedOrCreated(this, EventArgs.Empty);
+                    }
+                    
+                    Close();
+                }
+            }
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you wish to exit? Your changes to this Case will be dicarded.", "Confirm Close", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                errorProvider1.Clear();
+                Close();
+            }
+        }
+
+        #endregion
+
+        #region [Form Utilities]
+        //Change LISTVIEW Views
+        private void buttonViewTileComputerListView_Click(object sender, EventArgs e) { listViewAssociatedComputerList.View = View.Tile; }
+        private void buttonViewDetailsComputerListView_Click(object sender, EventArgs e) { listViewAssociatedComputerList.View = View.SmallIcon; }
+        private void buttonViewTileForensicProcessListView_Click(object sender, EventArgs e) { listViewForensicProcesses.View = View.Tile; }
+        private void buttonViewSmallIconForensicProcessListView_Click(object sender, EventArgs e) { listViewForensicProcesses.View = View.SmallIcon; }
+        private void buttonViewTileHardDriveListView_Click(object sender, EventArgs e) { listViewHardDrivesOnHardDrivePage.View = View.Tile; }
+        private void buttonViewDetailsHardDriveListView_Click(object sender, EventArgs e) { listViewHardDrivesOnHardDrivePage.View = View.SmallIcon; }
+
+
+        #endregion
+
+        #region[validation]
+
+
+        private void caseNumberTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            errorProvider1.SetError(caseNumberTextBox, string.Empty);
+            if (caseNumberTextBox.Text == "")
+            {
+                errorProvider1.SetError(caseNumberTextBox, "This must have a value.");
+                e.Cancel = true;
+            }
+        }
+
+        private void matterTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            errorProvider1.SetError(matterTextBox, string.Empty);
+            if (matterTextBox.Text == "")
+            {
+                errorProvider1.SetError(matterTextBox, "This must have a value.");
+                e.Cancel = true;
+            }
+        }
+
+        private void itemNumberTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            errorProvider1.SetError(itemNumberTextBox, string.Empty);
+            if (itemNumberTextBox.Text == "")
+            {
+                errorProvider1.SetError(itemNumberTextBox, "This must have a value.");
+                e.Cancel = true;
+            }
+        }
+        #endregion
+
+
+
+        
 
     }
 }
