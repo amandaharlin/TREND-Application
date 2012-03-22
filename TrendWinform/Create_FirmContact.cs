@@ -85,19 +85,10 @@ namespace TrendWinForm
                 textBoxZipCode.Text = firm.Address.ZipCode;
                 textboxAreaCode.Text = firm.PhoneNumber.AreaCode.ToString();
 
-                textBoxPhoneFirstThree.Text = 
-                
-                //textBoxPhoneFirstThree.Text = firm.PhoneNumber.FirstThreeDigits.ToString();
-                //textBoxPhoneLastFour.Text = firm.PhoneNumber.LastFourDigits.ToString();
-                
+                textBoxPhoneNumber.Text = firm.PhoneNumber.Number.ToString();
                 
                 textBoxExtension.Text = firm.PhoneNumber.Extension.ToString();
 
-
-                //textBoxPhoneNumber.Text = string.Format(firm.PhoneNumber.AreaCode + firm.PhoneNumber.Number + " [" + firm.PhoneNumber.Extension + "]");
-                //textBoxPhoneNumber.Text = firm.PhoneNumber.AreaCode + firm.PhoneNumber.FirstThreeDigits + " - " + firm.PhoneNumber.LastFourDigits + "[" + firm.PhoneNumber.Extension + "]";
-                
-                
                 textBoxNotes.Text = firm.FirmDescription;
                 groupBoxSelectedfirmDetails.Text = firm.FirmName;
             }
@@ -109,8 +100,7 @@ namespace TrendWinForm
                 textBoxState.Text = "";
                 textBoxZipCode.Text = "";
                 textboxAreaCode.Text = "";
-                textBoxPhoneFirstThree.Text = "";
-                textBoxPhoneLastFour.Text = "";
+                textBoxPhoneNumber.Text = "";
                 textBoxExtension.Text = "";
                 textBoxNotes.Text = "";
                 groupBoxSelectedfirmDetails.Text = "";
