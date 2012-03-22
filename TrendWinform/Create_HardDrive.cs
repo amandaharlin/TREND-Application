@@ -44,8 +44,8 @@ namespace TrendWinForm
 
 
 
-            addMakeHelper = new UtilityListFormHelper("Hard_Drive_Make", comboBoxHDMake);
-            addModelHelper = new UtilityListFormHelper("Hard_Drive_Model", comboBoxHDModel);
+            addMakeHelper = new UtilityListFormHelper("Hard_Drive_Make", comboBoxHDMake, this);
+            addModelHelper = new UtilityListFormHelper("Hard_Drive_Model", comboBoxHDModel, this);
 
             PopulateFormComboBoxes();
             IntializeRadioButtons();
@@ -82,6 +82,7 @@ namespace TrendWinForm
         {
             Create_Employee newEmployeeForm = new Create_Employee();
             newEmployeeForm.FormClosed += this.UpdateFormEvent;
+            newEmployeeForm.MdiParent = MdiParent;
             newEmployeeForm.Show();
         }
 

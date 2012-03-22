@@ -17,6 +17,7 @@ namespace TrendWinForm
         public Create_Firm()
         {
             InitializeComponent();
+            firmDescriptionRichTextBox.Text = "";
         }
 
         private void firmBindingNavigatorSaveItem_Click(object sender, EventArgs e)

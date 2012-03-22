@@ -3086,6 +3086,7 @@
             this.buttonDeleteForensicProcess.Size = new System.Drawing.Size(24, 24);
             this.buttonDeleteForensicProcess.TabIndex = 171;
             this.buttonDeleteForensicProcess.UseVisualStyleBackColor = true;
+            this.buttonDeleteForensicProcess.Click += new System.EventHandler(this.buttonDeleteForensicProcess_Click);
             // 
             // buttonEditForensicProcess
             // 
@@ -3097,6 +3098,7 @@
             this.buttonEditForensicProcess.Size = new System.Drawing.Size(24, 24);
             this.buttonEditForensicProcess.TabIndex = 170;
             this.buttonEditForensicProcess.UseVisualStyleBackColor = true;
+            this.buttonEditForensicProcess.Click += new System.EventHandler(this.buttonEditForensicProcess_Click);
             // 
             // buttonViewForensicProcess
             // 
@@ -3108,6 +3110,7 @@
             this.buttonViewForensicProcess.Size = new System.Drawing.Size(24, 24);
             this.buttonViewForensicProcess.TabIndex = 169;
             this.buttonViewForensicProcess.UseVisualStyleBackColor = true;
+            this.buttonViewForensicProcess.Click += new System.EventHandler(this.buttonViewForensicProcess_Click);
             // 
             // buttonAddForensicProcess
             // 
@@ -3265,6 +3268,7 @@
             this.AddEmployee2.Size = new System.Drawing.Size(24, 24);
             this.AddEmployee2.TabIndex = 201;
             this.AddEmployee2.UseVisualStyleBackColor = true;
+            this.AddEmployee2.Click += new System.EventHandler(this.AddEmployee2_Click);
             // 
             // comboBoxCdfInfoTech
             // 

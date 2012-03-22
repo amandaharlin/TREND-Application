@@ -50,6 +50,7 @@
             this.labelDrivesinraid = new System.Windows.Forms.Label();
             this.Label45 = new System.Windows.Forms.Label();
             this.labelComputerRaid = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.panel2.SuspendLayout();
             this.groupBoxRaidLevel.SuspendLayout();
             this.groupBoxHardwareOrSoftware.SuspendLayout();
@@ -302,12 +303,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.CancelButton;
             this.ClientSize = new System.Drawing.Size(581, 306);
             this.Controls.Add(this.panel2);
             this.Name = "Create_Raid";
             this.Text = "Create_Raid";
             this.Load += new System.EventHandler(this.Create_Raid_Load);
             this.Controls.SetChildIndex(this.panel2, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.groupBoxRaidLevel.ResumeLayout(false);

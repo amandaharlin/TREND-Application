@@ -233,7 +233,6 @@
     <Compile Include="MyUtilities\RadioButtonListUtilities.cs" />
     <Compile Include="MyUtilities\SelectSingleEntityById.cs" />
     <Compile Include="MyUtilities\UserContolToValueObject.cs" />
-    <Compile Include="MyUtilities\UserControlToEntity.cs" />
     <Compile Include="MyUtilities\UtilityListFormHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

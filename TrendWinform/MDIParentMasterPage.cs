@@ -23,12 +23,6 @@ namespace TrendWinForm
         public MDIParentMasterPage()
         {
             InitializeComponent();
-
-
-            
-
-
-
         }
 
         private void ShowNewForm(object sender, EventArgs e)
@@ -70,7 +64,7 @@ namespace TrendWinForm
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void CutToolStripMenuItem_Click(object sender, EventArgs e)

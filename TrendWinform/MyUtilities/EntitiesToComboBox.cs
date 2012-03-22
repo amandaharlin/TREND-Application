@@ -145,8 +145,11 @@ namespace TrendWinForm.MyUtilities
         {
             if (blankValueAtTop == null)
             {
+                blankValueAtTop = true;
+            }
+            else
+            {
                 blankValueAtTop = false;
-
             }
 
             var factory = SessionConfig.SessionFactory;

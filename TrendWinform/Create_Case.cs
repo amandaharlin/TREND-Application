@@ -44,16 +44,16 @@ namespace TrendWinForm
         {
             
             UpdateDataBoundControls();
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
 
             if (formEditMode.ToLower() == "edit")
             {
-                PopulateFormwithCase(NewCase);
+                PopulateFormWithCase(NewCase);
                 FormTitleHelper.SetFormFormattingByEditMode(formEditMode, this, NewCase.Matter.ToString());
             }
             else if (formEditMode.ToLower() == "view")
             {
-                PopulateFormwithCase(NewCase);
+                PopulateFormWithCase(NewCase);
                 FormTitleHelper.SetFormFormattingByEditMode(formEditMode, this, NewCase.Matter.ToString());
                 var formTextBoxes = UtilityQueries.GetAllControlsOfTypeFromParent(this, typeof(TextBox)).AsEnumerable().Cast<TextBox>();
                 formTextBoxes.ForEach(t =>
@@ -67,7 +67,7 @@ namespace TrendWinForm
                 FormTitleHelper.SetFormFormattingByEditMode(formEditMode, this);
             }
         }
-        private void PopulateFormwithCase(Case incomingCase)
+        private void PopulateFormWithCase(Case incomingCase)
         {
             var factory = SessionConfig.SessionFactory;
             using (var session = factory.OpenSession())
@@ -148,6 +148,7 @@ namespace TrendWinForm
         {
             Create_Firm newFirmForm = new Create_Firm();
             newFirmForm.FormClosed += this.UpdateFormEvent;
+            newFirmForm.MdiParent = MdiParent;
             newFirmForm.Show();
         }
 
@@ -155,6 +156,7 @@ namespace TrendWinForm
         {
             Create_FirmContact newFirmContactForm = new Create_FirmContact();
             newFirmContactForm.FormClosed += this.UpdateFormEvent;
+            newFirmContactForm.MdiParent = MdiParent;
             newFirmContactForm.Show();
         }
 
@@ -162,6 +164,7 @@ namespace TrendWinForm
         {
             Create_Employee newEmployeeForm = new Create_Employee();
             newEmployeeForm.FormClosed += this.UpdateFormEvent;
+            newEmployeeForm.MdiParent = MdiParent;
             newEmployeeForm.Show();
         }
 
@@ -238,17 +241,53 @@ namespace TrendWinForm
             }
         }
         //edit
+        Create_Computer editCompSubform;
+        private Computer _editComputer;
         private void buttonEditComputer_Click(object sender, EventArgs e)
         {
             if (listViewAssociatedComputerList.SelectedItems.Count == 1)
             {
+                var compId = listViewAssociatedComputerList.SelectedItems[0].Tag;
+                if (compId.GetType() == typeof(Computer))
+                {
+                    _editComputer = (Computer)compId;
+                }
+                else
+                {
+                    compId = new Guid(compId.ToString());
+                    _editComputer = CaseComputers.SingleOrDefault(x => x.Id == (Guid)compId);
+                }
+                if (editCompSubform != null)
+                {
+                    editCompSubform.Close();
+                }
 
+                editCompSubform = new Create_Computer(_editComputer, "edit");
+                editCompSubform.MdiParent = MdiParent;
+                editCompSubform.OnDataAvailable += UpdateComputerInList;
+                editCompSubform.FormClosed += UpdateFormEvent;
+                editCompSubform.Show();
             }
             else
             {
                 MessageBox.Show("Please Select a Computer from the List to Edit");
             }
         }
+
+        private void UpdateComputerInList(object sender, EventArgs e)
+        {
+            var computer = editCompSubform.NewComputer;
+
+            _editComputer.HardDrives.ForEach(hd => CaseHardDrives.Remove(hd));
+            computer.HardDrives.ForEach(hd => CaseHardDrives.Add(hd));
+            CaseComputers.Remove(_editComputer);
+            CaseComputers.Add(computer);
+            
+            EntitiesToListView.FillComputersListview(CaseComputers, listViewAssociatedComputerList);
+            EntitiesToListView.FillHardDrivesListView(CaseHardDrives, listViewHardDrivesOnHardDrivePage);
+        }
+
+
         //Delete
         private void buttonDeleteComputer_Click(object sender, EventArgs e)
         {
@@ -319,7 +358,7 @@ namespace TrendWinForm
                 }
             }
         }
-
+        // Map Hd data to details area
         private void listViewComputerAssociatedHardDrives_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewComputerAssociatedHardDrives.SelectedItems.Count == 1)
@@ -459,6 +498,7 @@ namespace TrendWinForm
         /// <summary>forensic summary here.</summary>
         ///////////////////////////////////////
         private Create_ForensicProcess newFPSubForm = null;
+        // Add FP
         private void buttonAddForensicProcess_Click(object sender, EventArgs e)
         {
             newFPSubForm = new Create_ForensicProcess();
@@ -467,49 +507,108 @@ namespace TrendWinForm
             {
                 newFPSubForm.SelectableAssociatedComputers = CaseComputers;
                 newFPSubForm.SelectableAssociatedHardDrives = CaseHardDrives;
-
-                newFPSubForm.OnDataAvailable += this.AddForensicProcessTolist;
-                newFPSubForm.FormClosed += this.UpdateFormEvent;
+                newFPSubForm.OnDataAvailable += AddForensicProcessTolist;
+                newFPSubForm.FormClosed += UpdateFormEvent;
                 newFPSubForm.Show();
             }
             else
             {
                 MessageBox.Show("It is not useful to create a Foresnsic Process before either A computer or Hard Drive exists");
             }
-
-
-
         }
 
         private void AddForensicProcessTolist(object sender, EventArgs e)
         {
             var forensicprocess = newFPSubForm.NewForensicProcess;
             CaseForensicProcesses.Add(forensicprocess);
-
             EntitiesToListView.FillForensicProcessListView(CaseForensicProcesses, listViewForensicProcesses);
         }
 
+        //View FP
+        private void buttonViewForensicProcess_Click(object sender, EventArgs e)
+        {
+            if (listViewForensicProcesses.SelectedItems.Count == 1)
+            {
+
+            }
+        }
+
+        //Edit FP
+        private void buttonEditForensicProcess_Click(object sender, EventArgs e)
+        {
+            if (listViewForensicProcesses.SelectedItems.Count == 1)
+            {
+
+            }
+        }
+
+
+        
+
+        //Delete FP
+        private void buttonDeleteForensicProcess_Click(object sender, EventArgs e)
+        {
+            if (listViewForensicProcesses.SelectedItems.Count == 1)
+            {
+                if (MessageBox.Show("Really delete this Forensic Process?", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    var fpId = listViewForensicProcesses.SelectedItems[0].Tag;
+                    var this_ForensicProcess = new ForensicProcess();
+                    if (fpId.GetType() == typeof(ForensicProcess))
+                    {
+                        this_ForensicProcess = (ForensicProcess)fpId;
+                    }
+                    else
+                    {
+                        fpId = new Guid(fpId.ToString());
+                        this_ForensicProcess = CaseForensicProcesses.SingleOrDefault(x => x.Id == (Guid)fpId);
+                        DeleteSingleEntityById.DeleteForensicProcessById((Guid)fpId);
+                    }
+                    CaseForensicProcesses.Remove(this_ForensicProcess);
+
+                    EntitiesToListView.FillForensicProcessListView(CaseForensicProcesses, listViewForensicProcesses);
+                }
+
+            }
+
+            else
+            {
+                MessageBox.Show("You must select a Forensic Process to Delete");
+            }
+        }
+
+       
+        
+        
         private ForensicProcess this_ForensicProcess;
         private void listViewForensicProcesses_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewForensicProcesses.SelectedItems.Count == 1)
             {
-                var i = listViewForensicProcesses.SelectedItems[0].Index;
-                this_ForensicProcess = CaseForensicProcesses[i];
+                var fpId = listViewForensicProcesses.SelectedItems[0].Tag;
 
+                //var this_ForensicProcess = new ForensicProcess();
+                if (fpId.GetType() == typeof(ForensicProcess))
+                {
+                    this_ForensicProcess = (ForensicProcess)fpId;
+                }
+                else
+                {
+                    fpId = new Guid(fpId.ToString());
+                    this_ForensicProcess = CaseForensicProcesses.SingleOrDefault(x => x.Id == (Guid)fpId);
+                }
 
-                ListViewToDetailsFields.ForensicProcesseslistViewToDetailFields(i, CaseForensicProcesses, this);
-                EntitiesToListView.FillDestinationMediaListViewDetailView(CaseForensicProcesses[i].DestinationMediae, listViewFPDestinationMediae);
-
-                EntitiesToListView.FillHardDrivesListViewDetailView(CaseForensicProcesses[i].ReferenceHardDrives, listViewFPAssociatedHardDrives);
-                EntitiesToListView.FillComputersListViewDetailView(CaseForensicProcesses[i].ReferenceComputers, listViewFPAssociatedComputers);
+                ListViewToDetailsFields.ForensicProcesseslistViewToDetailFields(this_ForensicProcess, this);
+                EntitiesToListView.FillDestinationMediaListViewDetailView(this_ForensicProcess.DestinationMediae, listViewFPDestinationMediae);
+                EntitiesToListView.FillHardDrivesListViewDetailView(this_ForensicProcess.ReferenceHardDrives, listViewFPAssociatedHardDrives);
+                EntitiesToListView.FillComputersListViewDetailView(this_ForensicProcess.ReferenceComputers, listViewFPAssociatedComputers);
 
             }
         }
         #endregion
 
         #region [Active User File Tab]
-
+        // Add AUF
         private Create_ActiveUserFile newActiveUserFileSubForm = null;
         private void buttonAddActiveUserFiles_Click(object sender, EventArgs e)
         {
@@ -528,7 +627,7 @@ namespace TrendWinForm
                 MessageBox.Show("You need to have Computers associated with the Case, before you can add any Active User Files.");
             }
         }
-
+        // View AUF
         private void buttonViewActiveUserFile_Click(object sender, EventArgs e)
         {
             if (listViewAUFActiveUserFiles.SelectedItems.Count == 1)
@@ -540,7 +639,7 @@ namespace TrendWinForm
                 MessageBox.Show("Please Select which Active User File, to view");
             }
         }
-
+        // Edit AUF
         private void buttonEditActiveUserFile_Click(object sender, EventArgs e)
         {
             if (listViewAUFActiveUserFiles.SelectedItems.Count == 1)
@@ -552,7 +651,7 @@ namespace TrendWinForm
                 MessageBox.Show("Please Select which Active User File, to edit");
             }
         }
-
+        // Delete AUF
         private void buttonRemoveActiveUserFile_Click(object sender, EventArgs e)
         {
             if (listViewAUFActiveUserFiles.SelectedItems.Count == 1 && formEditMode != "view")
@@ -579,6 +678,19 @@ namespace TrendWinForm
             {
                 MessageBox.Show("Please Select which Active User File to remove");
             }
+        }
+
+        //add cdf employee
+        private void AddEmployee2_Click(object sender, EventArgs e)
+        {
+            AddEmployeeToDatabase();
+        }
+
+        private void AddEmployeeToDatabase()
+        {
+            Create_Employee newEmployeeForm = new Create_Employee();
+            newEmployeeForm.FormClosed += this.UpdateFormEvent;
+            newEmployeeForm.Show();
         }
 
         private void AddActiveUserFilesToList(object sender, EventArgs e)
@@ -744,10 +856,6 @@ namespace TrendWinForm
             }
         }
         #endregion
-
-
-
-        
 
     }
 }

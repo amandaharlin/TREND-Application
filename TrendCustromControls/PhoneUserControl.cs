@@ -41,7 +41,7 @@ namespace TrendCustromControls
         {
             get
             {
-                string phone = textBoxPhoneFirstThree.Text + " - " + textBoxPhoneLastFour.Text;
+                string phone = textBoxPhoneFirstThree.Text + textBoxPhoneLastFour.Text;
                 int phoneNumber;
                 int.TryParse(phone, out phoneNumber);
                 return phoneNumber;

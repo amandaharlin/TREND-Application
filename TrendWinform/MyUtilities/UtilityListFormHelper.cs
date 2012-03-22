@@ -13,6 +13,7 @@ namespace TrendWinForm.MyUtilities
         public string SummonList { set; get; }
         public ComboBox FormComboBox { set; get; }
 
+        private Create_BaseForm CallingPage { set; get; }
 
         public UtilityListFormHelper()
         {
@@ -20,10 +21,11 @@ namespace TrendWinForm.MyUtilities
         }
 
     
-        public UtilityListFormHelper(string summonList, ComboBox formCombobox)
+        public UtilityListFormHelper(string summonList, ComboBox formCombobox, Create_BaseForm callingPage)
         {
             SummonList = summonList;
             FormComboBox = formCombobox;
+            CallingPage = callingPage;
         }
 
 
@@ -32,6 +34,7 @@ namespace TrendWinForm.MyUtilities
             Edit_UtilityLists newEditUtilityLists = new Edit_UtilityLists();
             newEditUtilityLists.ListToEdit = SummonList;
             newEditUtilityLists.ListEditingComplete += FillComboBox;
+            newEditUtilityLists.MdiParent = CallingPage.MdiParent;
             newEditUtilityLists.Show();
         }
 

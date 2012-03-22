@@ -29,10 +29,8 @@ namespace TrendWinForm
 
         private void buttonAddItemToList_Click(object sender, EventArgs e)
         {
-
             AddTextTolistBox();
         }
-
 
         private void AddTextTolistBox()
         {
@@ -74,11 +72,7 @@ namespace TrendWinForm
 
                     labelLengthOfList.Text = ListValues.Count().ToString();
                 }
-
-
             }
-
-
         }
 
 
@@ -91,7 +85,6 @@ namespace TrendWinForm
         {
             return incomingtitle.Replace("_", " ");
         }
-
 
         private void Edit_UtilityLists_Shown(object sender, EventArgs e)
         {
@@ -171,6 +164,8 @@ namespace TrendWinForm
         {
             Close();
         }
+
+      
 
        
     }

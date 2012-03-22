@@ -64,22 +64,22 @@ namespace TrendWinForm.MyUtilities
 
                 case 1:
                     return Color.Lime;
-                    break;
+
                 case 2:
                     return Color.Red;
-                    break;
+
                 case 3:
                     return Color.Aqua;
-                    break;
+
                 case 4:
                     return Color.Yellow;
-                    break;
+
                 case 5:
                     return Color.FromArgb(64, 64, 64);
-                    break;
+
                 default:
                     return Color.White;
-                    break;
+
             }
 
         }
@@ -228,29 +228,29 @@ namespace TrendWinForm.MyUtilities
 
 
 
-        public static void ForensicProcesseslistViewToDetailFields(int i, IList<ForensicProcess> caseForensicProcess, Create_Case createCaseFormInstance)
+        public static void ForensicProcesseslistViewToDetailFields(ForensicProcess this_ForensicProcess, Create_Case createCaseFormInstance)
         {
 
             //collection information
-            createCaseFormInstance.textBoxFPCollectionLocationOutput.Text = caseForensicProcess[i].CollectionLocation.ToString();
-            createCaseFormInstance.textBoxFPRoomNumber.Text = caseForensicProcess[i].RoomNumber.ToString();
-            createCaseFormInstance.textBoxFPCustodianOrUser.Text = caseForensicProcess[i].CustodianOrUser.ToString();
-            createCaseFormInstance.textBoxFPPhotosTaken.Text = caseForensicProcess[i].PhotoWasTaken.ToString();
-            createCaseFormInstance.textBoxFPImageOnly.Text = caseForensicProcess[i].WasImageOnly.ToString();
-            createCaseFormInstance.textBoxFPHardDriveOnly.Text = caseForensicProcess[i].WasHardDriveOnly.ToString();
+            createCaseFormInstance.textBoxFPCollectionLocationOutput.Text = this_ForensicProcess.CollectionLocation;
+            createCaseFormInstance.textBoxFPRoomNumber.Text = this_ForensicProcess.RoomNumber;
+            createCaseFormInstance.textBoxFPCustodianOrUser.Text = this_ForensicProcess.CustodianOrUser;
+            createCaseFormInstance.textBoxFPPhotosTaken.Text = this_ForensicProcess.PhotoWasTaken.ToString();
+            createCaseFormInstance.textBoxFPImageOnly.Text = this_ForensicProcess.WasImageOnly.ToString();
+            createCaseFormInstance.textBoxFPHardDriveOnly.Text = this_ForensicProcess.WasHardDriveOnly.ToString();
 
             //processing information
-            createCaseFormInstance.textBoxFPProcessPerformed.Text = caseForensicProcess[i].ProcessingPerformed.ToString();
-            createCaseFormInstance.textBoxFPDeviceUsed.Text = caseForensicProcess[i].ForensicDeviceUsed.ToString();
-            createCaseFormInstance.textBoxFPSoftware.Text = caseForensicProcess[i].Software.ToString();
+            createCaseFormInstance.textBoxFPProcessPerformed.Text = this_ForensicProcess.ProcessingPerformed;
+            createCaseFormInstance.textBoxFPDeviceUsed.Text = this_ForensicProcess.ForensicDeviceUsed;
+            createCaseFormInstance.textBoxFPSoftware.Text = this_ForensicProcess.Software;
 
             //image information
-            createCaseFormInstance.textBoxFPImagesMade.Text = caseForensicProcess[i].ImagesMade.ToString();
-            createCaseFormInstance.textBoxFPImagesVerifiedBy.Text = caseForensicProcess[i].ImagesVerifiedBy.ToString();
+            createCaseFormInstance.textBoxFPImagesMade.Text = this_ForensicProcess.ImagesMade;
+            createCaseFormInstance.textBoxFPImagesVerifiedBy.Text = this_ForensicProcess.ImagesVerifiedBy;
 
             //cdf info
-            createCaseFormInstance.textBoxFPCDFTechExaminer.Text = caseForensicProcess[i].CdfInfo.TechExaminer.EmployeeName.FirstName.ToString() + " " + caseForensicProcess[i].CdfInfo.TechExaminer.EmployeeName.LastName.ToString();
-            createCaseFormInstance.textBoxFPFinishDateTime.Text = caseForensicProcess[i].CdfInfo.Cdfdate.ToString();
+            createCaseFormInstance.textBoxFPCDFTechExaminer.Text = this_ForensicProcess.CdfInfo.TechExaminer.EmployeeName.FirstName + " " + this_ForensicProcess.CdfInfo.TechExaminer.EmployeeName.LastName;
+            createCaseFormInstance.textBoxFPFinishDateTime.Text = this_ForensicProcess.CdfInfo.Cdfdate.ToString();
         }
 
         public static void listViewFPDestinationMediae(int i, IList<DestinationMedia> caseDestinationMedia, Create_Case createCaseFormInstance)

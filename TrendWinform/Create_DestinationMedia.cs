@@ -30,7 +30,7 @@ namespace TrendWinForm
 
 
             InitializeComponent();
-            addBrandType = new UtilityListFormHelper("Brand_Type", comboBoxBrandOutput);
+            addBrandType = new UtilityListFormHelper("Brand_Type", comboBoxBrandOutput, this);
 
 
             

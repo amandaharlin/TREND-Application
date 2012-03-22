@@ -803,6 +803,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.CancelButton;
             this.ClientSize = new System.Drawing.Size(584, 741);
             this.Controls.Add(this.AddEmployee2);
             this.Controls.Add(this.comboBoxCdfInfoTech);
@@ -828,6 +829,7 @@
             this.Controls.Add(this.panel4);
             this.Name = "Create_Computer";
             this.Text = "Create_Computer";
+            this.Shown += new System.EventHandler(this.Create_Computer_Shown);
             this.Controls.SetChildIndex(this.panel4, 0);
             this.Controls.SetChildIndex(this.labelSystemInformation, 0);
             this.Controls.SetChildIndex(this.buttonAddHardDrive, 0);

@@ -10,96 +10,143 @@ using TrendWinForm;
 using TrendWinForm.Domain.Entities;
 using TrendWinForm.Domain.ValueObjects;
 using TrendWinForm.MyUtilities;
+using NHibernate.Criterion;
 
 namespace TrendWinForm
 {
-
-
     public partial class Create_Computer : Create_BaseForm
     {
-
         public Computer NewComputer { get; set; }
 
         public IList<HardDrive> ComputerHardDrives = new List<HardDrive>();
         public IList<Raid> ComputerRaids = new List<Raid>();
+
 
         private UtilityListFormHelper addMakeHelper;
         private UtilityListFormHelper addModelHelper;
         private UtilityListFormHelper addSetupkeystrokeHelper;
         private UtilityListFormHelper addTimeProvidedByHelper;
         private UtilityListFormHelper addServerType;
-       
 
+
+        private string formEditMode = "create";
+
+        #region [constructors and intialization]
         public Create_Computer()
         {
             InitializeComponent();
+            
+            
+            
+        }
 
+        public Create_Computer(Computer incomingComputer, string _formEditMode)
+        {
+            InitializeComponent();
+           
+            
+            
+
+            formEditMode = _formEditMode;
+            NewComputer = incomingComputer;
+        }
+
+        private void Create_Computer_Shown(object sender, EventArgs e)
+        {
+            
+            SetupFormComboBoxes();
+            PopulateFormComboBoxes();
+            InitForm();
+
+            if (formEditMode.ToLower() == "edit")
+            {
+                PopulateFormWithComputer(NewComputer);
+                FormTitleHelper.SetFormFormattingByEditMode(formEditMode, this, NewComputer.Make + " " + NewComputer.Model);
+            }
+            else if (formEditMode.ToLower() == "view")
+            {
+                PopulateFormWithComputer(NewComputer);
+                FormTitleHelper.SetFormFormattingByEditMode(formEditMode, this, NewComputer.Make + " " + NewComputer.Model);
+            }
+        }
+
+        private void PopulateFormWithComputer(Computer incomingComputer)
+        {
+            var factory = SessionConfig.SessionFactory;
+            using (var session = factory.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+
+                    if (incomingComputer.Id != Guid.Empty)
+                    {
+                        incomingComputer = session.CreateCriteria(typeof(Computer))
+                       .Add(Restrictions.Eq("Id", incomingComputer.Id))
+                       .UniqueResult<Computer>();
+                    }
+
+                    comboBoxMake.Text = incomingComputer.Make;
+                    comboBoxModel.Text = incomingComputer.Model;
+                    comboBoxType.Text = incomingComputer.Type;
+                    txtSerialNum.Text = incomingComputer.SerialNumber;
+                    txtSvcTag.Text = incomingComputer.SvcTag;
+                    dateTimePickerCMOS.Value = incomingComputer.CmosDate;
+                    dateTimePickerActualDate.Value = incomingComputer.CurrentDate;
+                    comboBoxTimeProvidedBy.Text = incomingComputer.ActualTimeProvidedBy;
+                    comboBoxSetupKeystroke.Text = incomingComputer.KeystrokeForCmosSetup;
+                    checkBoxCmosChanged.Checked = incomingComputer.CmosWasChanged;
+                    txtCMOSChangesMade.Text = incomingComputer.DescriptionOfCmosChanges;
+                    checkBoxSystemWasRunning.Checked = incomingComputer.SystemWasRunning;
+                    checkBoxPlugWasPulled.Checked = incomingComputer.PlugWasPulled;
+                    checkBoxSystemWasPoweredOn.Checked = incomingComputer.WasPoweredOn;
+                    checkBoxSystemWasServer.Checked = incomingComputer.WasServer;
+                    checkBoxWasVirtualMachine.Checked = incomingComputer.WasVirtualMachine;
+                    checkBoxWasHostedSystem.Checked = incomingComputer.WasHostedSystem;
+                    comboBoxServerType.Text = incomingComputer.ServerType;
+                    textBoxHostname.Text = incomingComputer.Hostname;
+
+                    NewComputer = incomingComputer;
+                    ComputerHardDrives = incomingComputer.HardDrives;
+                    ComputerRaids = incomingComputer.Raids;
+
+                    EntitiesToListView.FillHardDrivesListViewDetailView(ComputerHardDrives, listViewCreateComputerHardDrives);
+                    EntitiesToListView.FillHardRaidsListViewDetailView(ComputerRaids, listViewCreateComputerRaid);
+
+                    transaction.Commit();
+                }
+            }
+        }
+
+
+
+
+        private void InitForm()
+        {
             checkBoxSystemWasServer.Enabled = false;
             comboBoxServerType.Enabled = false;
             textBoxHostname.Enabled = false;
             txtCMOSChangesMade.Enabled = false;
-
-            addMakeHelper = new UtilityListFormHelper("Computer_Make", comboBoxMake);
-            addModelHelper = new UtilityListFormHelper("Computer_Model", comboBoxModel);
-            addSetupkeystrokeHelper = new UtilityListFormHelper("Computer_Setup_Keystroke", comboBoxSetupKeystroke);
-            addTimeProvidedByHelper = new UtilityListFormHelper("Computer_Time_Provider", comboBoxTimeProvidedBy);
-            addServerType = new UtilityListFormHelper("Computer_Server_Type", comboBoxServerType);
-
-
-            PopulateFormComboBoxes();
-        }
-
-        //General functions
-        private void UpdateFormEvent(object sender, EventArgs e)
-        {
-            var comboBoxesList = UtilityQueries.ReturnDictionaryOfComboBoxes(this);
-            PopulateFormComboBoxes();
-            comboBoxesList.ToList().ForEach(c =>{c.Key.SelectedIndex = c.Key.FindStringExact(c.Value);});
         
         }
 
 
-        private void checkBoxWasHostedSystem_CheckedChanged(object sender, EventArgs e)
+        //General functions
+        private void UpdateFormEvent(object sender, EventArgs e)
         {
-            if (checkBoxWasHostedSystem.Checked)
-            {
-                textBoxHostname.Enabled = true;
-                textBoxHostname.Focus();
-            }
-            else
-            {
-                textBoxHostname.Clear();
-                textBoxHostname.Enabled = false;
-            }
+            //Prevents wiping out combo boxes, if lists are edited.
+            var comboBoxesList = UtilityQueries.ReturnDictionaryOfComboBoxes(this);
+            PopulateFormComboBoxes();
+            comboBoxesList.ToList().ForEach(c => { c.Key.SelectedIndex = c.Key.FindStringExact(c.Value); });
         }
 
-        private void checkBoxCmosChanged_CheckedChanged(object sender, EventArgs e)
+        private void SetupFormComboBoxes()
         {
-            if (checkBoxCmosChanged.Checked)
-            {
-                txtCMOSChangesMade.Enabled = true;
-                txtCMOSChangesMade.Focus();
-            }
-            else
-            {
-                txtCMOSChangesMade.Clear();
-                txtCMOSChangesMade.Enabled = false;
-            }
+            addMakeHelper = new UtilityListFormHelper("Computer_Make", comboBoxMake, this);
+            addModelHelper = new UtilityListFormHelper("Computer_Model", comboBoxModel, this);
+            addSetupkeystrokeHelper = new UtilityListFormHelper("Computer_Setup_Keystroke", comboBoxSetupKeystroke, this);
+            addTimeProvidedByHelper = new UtilityListFormHelper("Computer_Time_Provider", comboBoxTimeProvidedBy, this);
+            addServerType = new UtilityListFormHelper("Computer_Server_Type", comboBoxServerType, this);
         }
-
-        //i want to make the checkbox 'systemwasserver' checked, and the combobox 'servertype' enabled, if the comp type is a server
-        //private void comboBoxType_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    if (comboBoxType.SelectedIndex == 2)
-        //    {
-        //        checkBoxSystemWasServer.Checked = true;
-        //        comboBoxServerType.Enabled = true;
-        //    }
-        //    else
-        //    {
-        //        //
-        //    }
-        //}
 
 
         private void PopulateFormComboBoxes()
@@ -112,6 +159,7 @@ namespace TrendWinForm
             addModelHelper.PopulateComboBoxWithUtilityStrings();
             addSetupkeystrokeHelper.PopulateComboBoxWithUtilityStrings();
             addTimeProvidedByHelper.PopulateComboBoxWithUtilityStrings();
+            addServerType.PopulateComboBoxWithUtilityStrings();
 
             comboBoxType.Items.Clear();
             comboBoxType.Items.Add("Desktop");
@@ -119,34 +167,19 @@ namespace TrendWinForm
             comboBoxType.Items.Add("Server");
             comboBoxType.Items.Add("Mobile");
             comboBoxType.Items.Add("Other");
-
-            
         }
 
-        private void AddEmployee_Click(object sender, EventArgs e)
-        {
-            AddEmployeeToDatabase();
-        }
+        #endregion
 
-        private void AddEmployee2_Click(object sender, EventArgs e)
-        {
-            AddEmployeeToDatabase();
-        }
-
-        private void AddEmployeeToDatabase()
-        {
-            Create_Employee newEmployeeForm = new Create_Employee();
-            newEmployeeForm.FormClosed += this.UpdateFormEvent;
-            newEmployeeForm.Show();
-        }
-
+        #region [HD Crud]
         //Create HD fucntions
         private Create_HardDrive newHardDriveSubForm = null;
         private void buttonAddHardDrive_Click(object sender, EventArgs e)
         {
-            this.newHardDriveSubForm = new Create_HardDrive();
+            newHardDriveSubForm = new Create_HardDrive();
             newHardDriveSubForm.OnDataAvailable += new EventHandler(AddHardDriveToList);
             newHardDriveSubForm.FormClosed += this.UpdateFormEvent;
+            newHardDriveSubForm.MdiParent = MdiParent;
             newHardDriveSubForm.Show();
         }
 
@@ -155,8 +188,6 @@ namespace TrendWinForm
             var harddrive = newHardDriveSubForm.NewHardDrive;
             ComputerHardDrives.Add(harddrive);
             EntitiesToListView.FillHardDrivesListViewDetailView(ComputerHardDrives, listViewCreateComputerHardDrives);
-
-
         }
 
         private void buttonEditHardDrive_Click(object sender, EventArgs e)
@@ -170,32 +201,11 @@ namespace TrendWinForm
         }
 
 
-        //Create Raid Functions
-        private Create_Raid newRaidForm = null;
-        private void buttonAddRaid_Click(object sender, EventArgs e)
-        {
-            if(ComputerHardDrives.Any())
-            {
-                this.newRaidForm = new Create_Raid();
-                newRaidForm.SelectableHardDrives = ComputerHardDrives;
-                newRaidForm.OnDataAvailable += new EventHandler(AddRaidToList);
-                newRaidForm.FormClosed += this.UpdateFormEvent;
-                newRaidForm.Show();
-            }
-            else
-            {
-                MessageBox.Show("An existing Hard Drive is required before any RAIDS can be added.\r\nPlease add a Hard Drive before reattemtping.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //errorProvider.SetError(listViewCreateComputerHardDrives, string.Empty);
-                ////errorProvider.SetIconPadding(listViewCreateComputerHardDrives, 25);
-                //if (listViewCreateComputerHardDrives.Text == null)
-                //{
-                //    errorProvider.SetError(listViewCreateComputerRaid, "You must associate a Hard Drive with this RAID");
-                //}
-                ////CancelButton.PerformClick();
-                ////e.Cancel = true;
-            }
-        }
 
+        #endregion
+
+        #region [Raid Crud]
+        //Add
         private void AddRaidToList(object sender, EventArgs e)
         {
             var raid = newRaidForm.NewRaid;
@@ -203,17 +213,43 @@ namespace TrendWinForm
             EntitiesToListView.FillHardRaidsListViewDetailView(ComputerRaids, listViewCreateComputerRaid);
         }
 
+        //Create Raid Functions
+        private Create_Raid newRaidForm = null;
+        private void buttonAddRaid_Click(object sender, EventArgs e)
+        {
+            if (ComputerHardDrives.Any())
+            {
+                this.newRaidForm = new Create_Raid();
+                newRaidForm.SelectableHardDrives = ComputerHardDrives;
+                newRaidForm.OnDataAvailable += new EventHandler(AddRaidToList);
+                newRaidForm.FormClosed += this.UpdateFormEvent;
+                newRaidForm.MdiParent = MdiParent;
+                newRaidForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("An existing Hard Drive is required before any RAIDS can be added.\r\nPlease add a Hard Drive before reattemtping.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        //View
 
+
+        //Edit
         private void buttonEditRaid_Click(object sender, EventArgs e)
         {
 
         }
 
+        //Delete
         private void buttonDeleteRaid_Click(object sender, EventArgs e)
         {
 
         }
 
+
+        #endregion
+
+        #region [onSave]
 
         public override void OnSave(EventArgs e)
         {
@@ -223,54 +259,50 @@ namespace TrendWinForm
         private void MakeComputer()
         {
             NewComputer = new Computer()
-                                  {
+            {
+                //General Info
+                Make = comboBoxMake.Text,
+                Model = comboBoxModel.Text,
+                Type = comboBoxType.Text,
+                SerialNumber = txtSerialNum.Text,
+                SvcTag = txtSvcTag.Text,
 
-                                      //General Info
-                                      Make = comboBoxMake.Text,
-                                      Model = comboBoxModel.Text,
-                                      Type = comboBoxType.Text,
-                                      SerialNumber = txtSerialNum.Text,
-                                      SvcTag = txtSvcTag.Text,
+                //CMOS
+                CmosDate = dateTimePickerCMOS.Value,
+                CurrentDate = dateTimePickerActualDate.Value,
+                ActualTimeProvidedBy = comboBoxTimeProvidedBy.Text,
+                KeystrokeForCmosSetup = comboBoxSetupKeystroke.Text,
+                CmosWasChanged = checkBoxCmosChanged.Checked,
+                DescriptionOfCmosChanges = txtCMOSChangesMade.Text,
 
-                                      //CMOS
-                                      CmosDate = dateTimePickerCMOS.Value,
-                                      CurrentDate = dateTimePickerActualDate.Value,
-                                      ActualTimeProvidedBy = comboBoxTimeProvidedBy.Text,
-                                      KeystrokeForCmosSetup = comboBoxSetupKeystroke.Text,
-                                      CmosWasChanged = checkBoxCmosChanged.Checked,
-                                      DescriptionOfCmosChanges = txtCMOSChangesMade.Text,
+                //System Info
+                SystemWasRunning = checkBoxSystemWasRunning.Checked,
+                PlugWasPulled = checkBoxPlugWasPulled.Checked,
+                AppsWereRunning = checkBoxAppsWereRunning.Checked,
+                WhoShutDown = SelectSingleEntityById.SelectEmployeeById(new Guid(comboBoxShutDownBy.SelectedValue.ToString())),
+                WasPoweredOn = checkBoxSystemWasPoweredOn.Checked,
+                WasServer = checkBoxSystemWasServer.Checked,
+                ServerType = comboBoxServerType.Text,
+                WasVirtualMachine = checkBoxWasVirtualMachine.Checked,
+                WasHostedSystem = checkBoxWasHostedSystem.Checked,
+                Hostname = textBoxHostname.Text,
+                //HD + Raid
+                HardDrives = ComputerHardDrives,
+                Raids = ComputerRaids,
 
-                                      //System Info
-                                      SystemWasRunning = checkBoxSystemWasRunning.Checked,
-                                      PlugWasPulled = checkBoxPlugWasPulled.Checked,
-                                      AppsWereRunning = checkBoxAppsWereRunning.Checked,
-                                      WhoShutDown = SelectSingleEntityById.SelectEmployeeById(new Guid(comboBoxShutDownBy.SelectedValue.ToString())),
-                                      WasPoweredOn = checkBoxSystemWasPoweredOn.Checked,
-                                      WasServer = checkBoxSystemWasServer.Checked,
-                                      ServerType = comboBoxServerType.Text,
-                                      WasVirtualMachine = checkBoxWasVirtualMachine.Checked,
-                                      WasHostedSystem = checkBoxWasHostedSystem.Checked,
-                                      Hostname = textBoxHostname.Text,
-                                      //HD + Raid
-                                      HardDrives = ComputerHardDrives,
-                                      Raids = ComputerRaids,
-
-                                      //CdfInfo
-                                      CdfInfo = new CdfInfo()
-                                                      {
-                                                          IsFinishDate = true,
-                                                          Cdfdate = dateTimePickerCDFDate.Value,
-                                                          TechExaminer = SelectSingleEntityById.SelectEmployeeById(new Guid(comboBoxCdfInfoTech.SelectedValue.ToString()))
-                                                      },
-                                  };
+                //CdfInfo
+                CdfInfo = new CdfInfo()
+                {
+                    IsFinishDate = true,
+                    Cdfdate = dateTimePickerCDFDate.Value,
+                    TechExaminer = SelectSingleEntityById.SelectEmployeeById(new Guid(comboBoxCdfInfoTech.SelectedValue.ToString()))
+                },
+            };
             ComputerHardDrives.ToList().ForEach(hd => hd.ReferenceComputer = NewComputer);
-
-
         }
-
+        #endregion
 
         #region [Validating]
-
         private void comboBoxMake_Validating(object sender, CancelEventArgs e)
         {
             errorProvider.SetError(comboBoxMake, string.Empty);
@@ -287,7 +319,7 @@ namespace TrendWinForm
         {
             errorProvider.SetError(comboBoxModel, string.Empty);
             errorProvider.SetIconPadding(comboBoxModel, 25);
-            
+
 
             if (comboBoxModel.Text == "")
             {
@@ -302,7 +334,7 @@ namespace TrendWinForm
             if (comboBoxType.Text == "")
             {
                 errorProvider.SetError(comboBoxType, "You must indicate the type of Computer.");
-             
+
                 e.Cancel = true;
             }
         }
@@ -348,10 +380,9 @@ namespace TrendWinForm
             }
         }
 
-       
-
         #endregion
 
+        #region [listHelpers]
         private void buttonAddCompModel_Click(object sender, EventArgs e)
         {
             addModelHelper.SummonUtilityList();
@@ -377,6 +408,11 @@ namespace TrendWinForm
             addServerType.SummonUtilityList();
         }
 
+        #endregion
+
+        #region [utilities]
+
+        //form Automation stuff
         private void comboBoxType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxType.SelectedIndex == 2)
@@ -394,7 +430,56 @@ namespace TrendWinForm
             }
         }
 
-      
+        private void checkBoxWasHostedSystem_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxWasHostedSystem.Checked)
+            {
+                textBoxHostname.Enabled = true;
+                textBoxHostname.Focus();
+            }
+            else
+            {
+                textBoxHostname.Clear();
+                textBoxHostname.Enabled = false;
+            }
+        }
+
+        private void checkBoxCmosChanged_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxCmosChanged.Checked)
+            {
+                txtCMOSChangesMade.Enabled = true;
+                txtCMOSChangesMade.Focus();
+            }
+            else
+            {
+                txtCMOSChangesMade.Clear();
+                txtCMOSChangesMade.Enabled = false;
+            }
+        }
+
+        //CDF info stuff
+        private void AddEmployee_Click(object sender, EventArgs e)
+        {
+            AddEmployeeToDatabase();
+        }
+
+        private void AddEmployee2_Click(object sender, EventArgs e)
+        {
+            AddEmployeeToDatabase();
+        }
+
+        private void AddEmployeeToDatabase()
+        {
+            Create_Employee newEmployeeForm = new Create_Employee();
+            newEmployeeForm.FormClosed += this.UpdateFormEvent;
+            newEmployeeForm.MdiParent = MdiParent;
+            newEmployeeForm.Show();
+        }
+
+        #endregion
+
+
 
 
 

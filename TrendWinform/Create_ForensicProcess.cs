@@ -35,11 +35,11 @@ namespace TrendWinForm
             InitializeComponent();
 
 
-            addProcessPerformedHelper = new UtilityListFormHelper("Process_Performed", comboBoxProcessPerformed);
-            addDeviceUsedHelper = new UtilityListFormHelper("Device_Used", comboBoxDeviceUsed);
-            addSoftwareHelper = new UtilityListFormHelper("Software_Used", comboBoxSoftwareProcessing);
-            addImagesMadeHelper = new UtilityListFormHelper("Images_Made", comboBoxImagesMade);
-            addImagesVerifiedByHelper = new UtilityListFormHelper("Images_Verified_By", comboBoxImagesVerifiedBy);
+            addProcessPerformedHelper = new UtilityListFormHelper("Process_Performed", comboBoxProcessPerformed, this);
+            addDeviceUsedHelper = new UtilityListFormHelper("Device_Used", comboBoxDeviceUsed, this);
+            addSoftwareHelper = new UtilityListFormHelper("Software_Used", comboBoxSoftwareProcessing, this);
+            addImagesMadeHelper = new UtilityListFormHelper("Images_Made", comboBoxImagesMade, this);
+            addImagesVerifiedByHelper = new UtilityListFormHelper("Images_Verified_By", comboBoxImagesVerifiedBy, this);
 
             PopulateFormComboBoxes();
         }
