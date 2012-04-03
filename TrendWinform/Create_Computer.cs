@@ -1,34 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using TrendWinForm;
 using TrendWinForm.Domain.Entities;
-using TrendWinForm.Domain.ValueObjects;
 using TrendWinForm.MyUtilities;
 
 namespace TrendWinForm
 {
-
-
     public partial class Create_Computer : Create_BaseForm
     {
-
         public Computer NewComputer { get; set; }
 
         public IList<HardDrive> ComputerHardDrives = new List<HardDrive>();
         public IList<Raid> ComputerRaids = new List<Raid>();
 
-        private UtilityListFormHelper addMakeHelper;
-        private UtilityListFormHelper addModelHelper;
-        private UtilityListFormHelper addSetupkeystrokeHelper;
-        private UtilityListFormHelper addTimeProvidedByHelper;
-        private UtilityListFormHelper addServerType;
-       
+        private readonly UtilityListFormHelper addMakeHelper;
+        private readonly UtilityListFormHelper addModelHelper;
+        private readonly UtilityListFormHelper addSetupkeystrokeHelper;
+        private readonly UtilityListFormHelper addTimeProvidedByHelper;
+        private readonly UtilityListFormHelper addServerType;
+
 
         public Create_Computer()
         {
@@ -52,10 +44,9 @@ namespace TrendWinForm
         //General functions
         private void UpdateFormEvent(object sender, EventArgs e)
         {
-            var comboBoxesList = UtilityQueries.ReturnDictionaryOfComboBoxes(this);
+            Dictionary<ComboBox, string> comboBoxesList = UtilityQueries.ReturnDictionaryOfComboBoxes(this);
             PopulateFormComboBoxes();
-            comboBoxesList.ToList().ForEach(c =>{c.Key.SelectedIndex = c.Key.FindStringExact(c.Value);});
-        
+            comboBoxesList.ToList().ForEach(c => { c.Key.SelectedIndex = c.Key.FindStringExact(c.Value); });
         }
 
 
@@ -119,8 +110,6 @@ namespace TrendWinForm
             comboBoxType.Items.Add("Server");
             comboBoxType.Items.Add("Mobile");
             comboBoxType.Items.Add("Other");
-
-            
         }
 
         private void AddEmployee_Click(object sender, EventArgs e)
@@ -135,56 +124,56 @@ namespace TrendWinForm
 
         private void AddEmployeeToDatabase()
         {
-            Create_Employee newEmployeeForm = new Create_Employee();
-            newEmployeeForm.FormClosed += this.UpdateFormEvent;
+            var newEmployeeForm = new Create_Employee();
+            newEmployeeForm.FormClosed += UpdateFormEvent;
             newEmployeeForm.Show();
         }
 
         //Create HD fucntions
-        private Create_HardDrive newHardDriveSubForm = null;
+        private Create_HardDrive newHardDriveSubForm;
+
         private void buttonAddHardDrive_Click(object sender, EventArgs e)
         {
-            this.newHardDriveSubForm = new Create_HardDrive();
-            newHardDriveSubForm.OnDataAvailable += new EventHandler(AddHardDriveToList);
-            newHardDriveSubForm.FormClosed += this.UpdateFormEvent;
+            newHardDriveSubForm = new Create_HardDrive();
+            newHardDriveSubForm.OnDataAvailable += AddHardDriveToList;
+            newHardDriveSubForm.FormClosed += UpdateFormEvent;
             newHardDriveSubForm.Show();
         }
 
         private void AddHardDriveToList(object sender, EventArgs e)
         {
-            var harddrive = newHardDriveSubForm.NewHardDrive;
+            HardDrive harddrive = newHardDriveSubForm.NewHardDrive;
             ComputerHardDrives.Add(harddrive);
             EntitiesToListView.FillHardDrivesListViewDetailView(ComputerHardDrives, listViewCreateComputerHardDrives);
-
-
         }
 
         private void buttonEditHardDrive_Click(object sender, EventArgs e)
         {
-
         }
 
         private void buttonDeleteHardDrive_Click(object sender, EventArgs e)
         {
-
         }
 
 
         //Create Raid Functions
-        private Create_Raid newRaidForm = null;
+        private Create_Raid newRaidForm;
+
         private void buttonAddRaid_Click(object sender, EventArgs e)
         {
-            if(ComputerHardDrives.Any())
+            if (ComputerHardDrives.Any())
             {
-                this.newRaidForm = new Create_Raid();
+                newRaidForm = new Create_Raid();
                 newRaidForm.SelectableHardDrives = ComputerHardDrives;
-                newRaidForm.OnDataAvailable += new EventHandler(AddRaidToList);
-                newRaidForm.FormClosed += this.UpdateFormEvent;
+                newRaidForm.OnDataAvailable += AddRaidToList;
+                newRaidForm.FormClosed += UpdateFormEvent;
                 newRaidForm.Show();
             }
             else
             {
-                MessageBox.Show("An existing Hard Drive is required before any RAIDS can be added.\r\nPlease add a Hard Drive before reattemtping.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "An existing Hard Drive is required before any RAIDS can be added.\r\nPlease add a Hard Drive before reattemtping.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //errorProvider.SetError(listViewCreateComputerHardDrives, string.Empty);
                 ////errorProvider.SetIconPadding(listViewCreateComputerHardDrives, 25);
                 //if (listViewCreateComputerHardDrives.Text == null)
@@ -198,7 +187,7 @@ namespace TrendWinForm
 
         private void AddRaidToList(object sender, EventArgs e)
         {
-            var raid = newRaidForm.NewRaid;
+            Raid raid = newRaidForm.NewRaid;
             ComputerRaids.Add(raid);
             EntitiesToListView.FillHardRaidsListViewDetailView(ComputerRaids, listViewCreateComputerRaid);
         }
@@ -206,12 +195,10 @@ namespace TrendWinForm
 
         private void buttonEditRaid_Click(object sender, EventArgs e)
         {
-
         }
 
         private void buttonDeleteRaid_Click(object sender, EventArgs e)
         {
-
         }
 
 
@@ -222,52 +209,49 @@ namespace TrendWinForm
 
         private void MakeComputer()
         {
-            NewComputer = new Computer()
-                                  {
-
-                                      //General Info
-                                      Make = comboBoxMake.Text,
-                                      Model = comboBoxModel.Text,
-                                      Type = comboBoxType.Text,
-                                      SerialNumber = txtSerialNum.Text,
-                                      SvcTag = txtSvcTag.Text,
-
-                                      //CMOS
-                                      CmosDate = dateTimePickerCMOS.Value,
-                                      CurrentDate = dateTimePickerActualDate.Value,
-                                      ActualTimeProvidedBy = comboBoxTimeProvidedBy.Text,
-                                      KeystrokeForCmosSetup = comboBoxSetupKeystroke.Text,
-                                      CmosWasChanged = checkBoxCmosChanged.Checked,
-                                      DescriptionOfCmosChanges = txtCMOSChangesMade.Text,
-
-                                      //System Info
-                                      SystemWasRunning = checkBoxSystemWasRunning.Checked,
-                                      PlugWasPulled = checkBoxPlugWasPulled.Checked,
-                                      AppsWereRunning = checkBoxAppsWereRunning.Checked,
-                                      WhoShutDown = SelectSingleEntityById.SelectEmployeeById(new Guid(comboBoxShutDownBy.SelectedValue.ToString())),
-                                      WasPoweredOn = checkBoxSystemWasPoweredOn.Checked,
-                                      WasServer = checkBoxSystemWasServer.Checked,
-                                      ServerType = comboBoxServerType.Text,
-                                      WasVirtualMachine = checkBoxWasVirtualMachine.Checked,
-                                      WasHostedSystem = checkBoxWasHostedSystem.Checked,
-                                      Hostname = textBoxHostname.Text,
-                                      //HD + Raid
-                                      HardDrives = ComputerHardDrives,
-                                      Raids = ComputerRaids,
-
-                                      //CdfInfo
-                                      CdfInfo = new CdfInfo()
-                                                      {
-                                                          IsFinishDate = true,
-                                                          Cdfdate = dateTimePickerCDFDate.Value,
-                                                          TechExaminer = SelectSingleEntityById.SelectEmployeeById(new Guid(comboBoxCdfInfoTech.SelectedValue.ToString()))
-                                                      },
-                                  };
+            NewComputer = new Computer
+                              {
+                                  //General Info
+                                  Make = comboBoxMake.Text,
+                                  Model = comboBoxModel.Text,
+                                  Type = comboBoxType.Text,
+                                  SerialNumber = txtSerialNum.Text,
+                                  SvcTag = txtSvcTag.Text,
+                                  //CMOS
+                                  CmosDate = dateTimePickerCMOS.Value,
+                                  CurrentDate = dateTimePickerActualDate.Value,
+                                  ActualTimeProvidedBy = comboBoxTimeProvidedBy.Text,
+                                  KeystrokeForCmosSetup = comboBoxSetupKeystroke.Text,
+                                  CmosWasChanged = checkBoxCmosChanged.Checked,
+                                  DescriptionOfCmosChanges = txtCMOSChangesMade.Text,
+                                  //System Info
+                                  SystemWasRunning = checkBoxSystemWasRunning.Checked,
+                                  PlugWasPulled = checkBoxPlugWasPulled.Checked,
+                                  AppsWereRunning = checkBoxAppsWereRunning.Checked,
+                                  WhoShutDown =
+                                      SelectSingleEntityById.SelectEmployeeById(
+                                          new Guid(comboBoxShutDownBy.SelectedValue.ToString())),
+                                  WasPoweredOn = checkBoxSystemWasPoweredOn.Checked,
+                                  WasServer = checkBoxSystemWasServer.Checked,
+                                  ServerType = comboBoxServerType.Text,
+                                  WasVirtualMachine = checkBoxWasVirtualMachine.Checked,
+                                  WasHostedSystem = checkBoxWasHostedSystem.Checked,
+                                  Hostname = textBoxHostname.Text,
+                                  //HD + Raid
+                                  HardDrives = ComputerHardDrives,
+                                  Raids = ComputerRaids,
+                                  //CdfInfo
+                                  CdfInfo = new CdfInfo
+                                                {
+                                                    IsFinishDate = true,
+                                                    Cdfdate = dateTimePickerCDFDate.Value,
+                                                    TechExaminer =
+                                                        SelectSingleEntityById.SelectEmployeeById(
+                                                            new Guid(comboBoxCdfInfoTech.SelectedValue.ToString()))
+                                                },
+                              };
             ComputerHardDrives.ToList().ForEach(hd => hd.ReferenceComputer = NewComputer);
-
-
         }
-
 
         #region [Validating]
 
@@ -287,7 +271,7 @@ namespace TrendWinForm
         {
             errorProvider.SetError(comboBoxModel, string.Empty);
             errorProvider.SetIconPadding(comboBoxModel, 25);
-            
+
 
             if (comboBoxModel.Text == "")
             {
@@ -302,7 +286,7 @@ namespace TrendWinForm
             if (comboBoxType.Text == "")
             {
                 errorProvider.SetError(comboBoxType, "You must indicate the type of Computer.");
-             
+
                 e.Cancel = true;
             }
         }
@@ -337,6 +321,7 @@ namespace TrendWinForm
                 e.Cancel = true;
             }
         }
+
         private void comboBoxShutDownBy_Validating(object sender, CancelEventArgs e)
         {
             errorProvider.SetError(comboBoxShutDownBy, string.Empty);
@@ -347,8 +332,6 @@ namespace TrendWinForm
                 e.Cancel = true;
             }
         }
-
-       
 
         #endregion
 
@@ -393,10 +376,5 @@ namespace TrendWinForm
                 comboBoxServerType.Enabled = false;
             }
         }
-
-      
-
-
-
     }
 }

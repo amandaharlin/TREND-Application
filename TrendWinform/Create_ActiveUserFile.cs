@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using TrendWinForm.Domain.Entities;
 using TrendWinForm.MyUtilities;
@@ -20,16 +17,14 @@ namespace TrendWinForm
         public Create_ActiveUserFile()
         {
             InitializeComponent();
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         private void Create_ActiveUserFile_Shown(object sender, EventArgs e)
         {
             var comboDictionaryOfComputers = new Dictionary<string, Computer>();
-            ReferenceComputers.ToList().ForEach(x =>
-            {
-                comboDictionaryOfComputers.Add((x.Make + " " + x.Model + " [" + x.SerialNumber + "]"), x);
-            });
+            ReferenceComputers.ToList().ForEach(
+                x => { comboDictionaryOfComputers.Add((x.Make + " " + x.Model + " [" + x.SerialNumber + "]"), x); });
 
             comboBoxAUFReferenceComputer.DataSource = new BindingSource(comboDictionaryOfComputers, null);
             comboBoxAUFReferenceComputer.DisplayMember = "Key";
@@ -46,32 +41,40 @@ namespace TrendWinForm
         //Create Entity Event
         private void MakeActiveUserFile()
         {
-            NewActiveUserFile = new ActiveUserFile()
+            NewActiveUserFile = new ActiveUserFile
                                     {
-                                        ReferenceComputer = (Computer)comboBoxAUFReferenceComputer.SelectedValue,
+                                        ReferenceComputer = (Computer) comboBoxAUFReferenceComputer.SelectedValue,
                                         FileName = textBoxAUFFileName.Text,
                                         Description = textBoxAUFDescription.Text,
-                                        MemoryUsage = decimal.Parse(textBoxAUFMemoryUsage.Text == String.Empty ? "0" : textBoxAUFMemoryUsage.Text),
-                                        CpuUsage = decimal.Parse(textBoxAUFCPUUsage.Text == String.Empty ? "0" : textBoxAUFCPUUsage.Text),
-                                        CdfInfo = new CdfInfo()
-                                        {
-                                            TechExaminer = SelectSingleEntityById.SelectEmployeeById(new Guid(comboBoxCdfInfoTech.SelectedValue.ToString())),
-                                            IsFinishDate = true,
-                                            Cdfdate = dateTimePickerCDFDate.Value,
-                                        }
+                                        MemoryUsage =
+                                            decimal.Parse(textBoxAUFMemoryUsage.Text == String.Empty
+                                                              ? "0"
+                                                              : textBoxAUFMemoryUsage.Text),
+                                        CpuUsage =
+                                            decimal.Parse(textBoxAUFCPUUsage.Text == String.Empty
+                                                              ? "0"
+                                                              : textBoxAUFCPUUsage.Text),
+                                        CdfInfo = new CdfInfo
+                                                      {
+                                                          TechExaminer =
+                                                              SelectSingleEntityById.SelectEmployeeById(
+                                                                  new Guid(comboBoxCdfInfoTech.SelectedValue.ToString())),
+                                                          IsFinishDate = true,
+                                                          Cdfdate = dateTimePickerCDFDate.Value,
+                                                      }
                                     };
         }
 
-       
+
         //Control Special Events
         private void trackBarMemoryUsage_ValueChanged(object sender, EventArgs e)
         {
-            textBoxAUFMemoryUsage.Text = (trackBarMemoryUsage.Value * 0.1).ToString();
+            textBoxAUFMemoryUsage.Text = (trackBarMemoryUsage.Value*0.1).ToString();
         }
 
         private void trackBarCpuUsage_ValueChanged(object sender, EventArgs e)
         {
-            textBoxAUFCPUUsage.Text = (trackBarCpuUsage.Value * 0.1).ToString();
+            textBoxAUFCPUUsage.Text = (trackBarCpuUsage.Value*0.1).ToString();
         }
 
         private void textBoxAUFMemoryUsage_KeyPress(object sender, KeyPressEventArgs e)
@@ -99,14 +102,15 @@ namespace TrendWinForm
         }
 
 
-         //Validation
-        
+        //Validation
+
         private void comboBoxAUFReferenceComputer_Validating(object sender, CancelEventArgs e)
         {
             errorProvider.SetError(comboBoxAUFReferenceComputer, string.Empty);
             if (comboBoxAUFReferenceComputer.Text == "")
             {
-                errorProvider.SetError(comboBoxAUFReferenceComputer, "You must associate a computer with this active user file.");
+                errorProvider.SetError(comboBoxAUFReferenceComputer,
+                                       "You must associate a computer with this active user file.");
 
                 e.Cancel = true;
             }
@@ -121,15 +125,6 @@ namespace TrendWinForm
 
                 e.Cancel = true;
             }
-
         }
-
-        
-
-     
-
-
-
-
     }
 }

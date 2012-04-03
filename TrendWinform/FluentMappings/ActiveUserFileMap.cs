@@ -16,6 +16,7 @@ namespace TrendWinForm.FluentMappings
            Map(x => x.CpuUsage);
            Map(x => x.FileName);
            Map(x => x.Description).Length(10000);
+           Map(x => x.FileType);
            References(x => x.CdfInfo).Cascade.All().Not.LazyLoad();
            References(x => x.ReferenceComputer).Not.LazyLoad();
   

@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using TrendWinForm.Domain.Entities;
-using TrendWinForm.Domain.ValueObjects;
 using TrendWinForm.MyUtilities;
 
 namespace TrendWinForm
@@ -22,12 +16,11 @@ namespace TrendWinForm
         public IList<Computer> SelectableAssociatedComputers { get; set; }
         public IList<HardDrive> SelectableAssociatedHardDrives { get; set; }
 
-        private UtilityListFormHelper addProcessPerformedHelper;
-        private UtilityListFormHelper addDeviceUsedHelper;
-        private UtilityListFormHelper addSoftwareHelper;
-        private UtilityListFormHelper addImagesMadeHelper;
-        private UtilityListFormHelper addImagesVerifiedByHelper;
-
+        private readonly UtilityListFormHelper addProcessPerformedHelper;
+        private readonly UtilityListFormHelper addDeviceUsedHelper;
+        private readonly UtilityListFormHelper addSoftwareHelper;
+        private readonly UtilityListFormHelper addImagesMadeHelper;
+        private readonly UtilityListFormHelper addImagesVerifiedByHelper;
 
 
         public Create_ForensicProcess()
@@ -46,8 +39,15 @@ namespace TrendWinForm
 
         private void Create_ForensicProcess_Shown(object sender, EventArgs e)
         {
-            var displayComputers = SelectableAssociatedComputers.ToDictionary(comp => comp, comp => comp.Make + " | " + comp.Model);
-            var displayHardDrives = SelectableAssociatedHardDrives.ToDictionary(hd => hd, hd => hd.Make + " | " + hd.Model);
+            Dictionary<Computer, string> displayComputers = SelectableAssociatedComputers.ToDictionary(comp => comp,
+                                                                                                       comp =>
+                                                                                                       comp.Make + " | " +
+                                                                                                       comp.Model);
+            Dictionary<HardDrive, string> displayHardDrives = SelectableAssociatedHardDrives.ToDictionary(hd => hd,
+                                                                                                          hd =>
+                                                                                                          hd.Make +
+                                                                                                          " | " +
+                                                                                                          hd.Model);
 
             if (displayComputers.Any())
             {
@@ -65,7 +65,7 @@ namespace TrendWinForm
 
         private void UpdateFormEvent(object sender, EventArgs e)
         {
-            var comboBoxesList = UtilityQueries.ReturnDictionaryOfComboBoxes(this);
+            Dictionary<ComboBox, string> comboBoxesList = UtilityQueries.ReturnDictionaryOfComboBoxes(this);
             PopulateFormComboBoxes();
             comboBoxesList.ToList().ForEach(c => { c.Key.SelectedIndex = c.Key.FindStringExact(c.Value); });
         }
@@ -120,6 +120,7 @@ namespace TrendWinForm
             //comboBoxImagesVerifiedBy.Items.Add("Not Verified");
             //comboBoxImagesVerifiedBy.Items.Add("Other");
         }
+
         public override void OnSave(EventArgs e)
         {
             MakeForensicProcess();
@@ -127,63 +128,57 @@ namespace TrendWinForm
 
         private void MakeForensicProcess()
         {
-
             IList<HardDrive> selectedHardDrives = new List<HardDrive>();
             IList<Computer> selectedComputers = new List<Computer>();
 
-            foreach (var item in checkedListBoxAssociatedhardDrives.CheckedItems)
+            foreach (object item in checkedListBoxAssociatedhardDrives.CheckedItems)
             {
                 int i = checkedListBoxAssociatedhardDrives.Items.IndexOf(item);
                 selectedHardDrives.Add(SelectableAssociatedHardDrives.ElementAt(i));
             }
 
-            foreach (var item in checkedListBoxAssociatedcomputers.CheckedItems)
+            foreach (object item in checkedListBoxAssociatedcomputers.CheckedItems)
             {
                 int i = checkedListBoxAssociatedcomputers.Items.IndexOf(item);
                 selectedComputers.Add(SelectableAssociatedComputers.ElementAt(i));
             }
 
 
-            NewForensicProcess = new ForensicProcess()
-            {
-                //collection onformation
-                CollectionLocation = textBoxCollectionLocation.Text,
-                RoomNumber = textBoxRoomNumber.Text,
-                CustodianOrUser = textBoxCustodianUser.Text,
-                PhotoWasTaken = checkBoxPhotosWereTaken.Checked,
-                WasImageOnly = checkBoxOnlyImageWasReceived.Checked,
-                WasHardDriveOnly = checkBoxOnlyHardDriveWasReceived.Checked,
-                ProcessingPerformed = comboBoxProcessPerformed.Text,
-                ForensicDeviceUsed = comboBoxDeviceUsed.Text,
-                Software = comboBoxSoftwareProcessing.Text,
-                ImagesMade = comboBoxImagesMade.Text,
-                ImagesVerifiedBy = comboBoxImagesVerifiedBy.Text,
-                CdfInfo = new CdfInfo()
-                {
-                    IsFinishDate = true,
-                    Cdfdate = dateTimePickerFPFinishDateTime.Value,
-                    TechExaminer = SelectSingleEntityById.SelectEmployeeById(new Guid(comboBoxCDFInfoTech.SelectedValue.ToString()))
-                },
-                DestinationMediae = ForensicProcessDestinationMediae,
-
-                ReferenceHardDrives = selectedHardDrives,
-                ReferenceComputers = selectedComputers,
-            };
+            NewForensicProcess = new ForensicProcess
+                                     {
+                                         //collection onformation
+                                         CollectionLocation = textBoxCollectionLocation.Text,
+                                         RoomNumber = textBoxRoomNumber.Text,
+                                         CustodianOrUser = textBoxCustodianUser.Text,
+                                         PhotoWasTaken = checkBoxPhotosWereTaken.Checked,
+                                         WasImageOnly = checkBoxOnlyImageWasReceived.Checked,
+                                         WasHardDriveOnly = checkBoxOnlyHardDriveWasReceived.Checked,
+                                         ProcessingPerformed = comboBoxProcessPerformed.Text,
+                                         ForensicDeviceUsed = comboBoxDeviceUsed.Text,
+                                         Software = comboBoxSoftwareProcessing.Text,
+                                         ImagesMade = comboBoxImagesMade.Text,
+                                         ImagesVerifiedBy = comboBoxImagesVerifiedBy.Text,
+                                         CdfInfo = new CdfInfo
+                                                       {
+                                                           IsFinishDate = true,
+                                                           Cdfdate = dateTimePickerFPFinishDateTime.Value,
+                                                           TechExaminer =
+                                                               SelectSingleEntityById.SelectEmployeeById(
+                                                                   new Guid(comboBoxCDFInfoTech.SelectedValue.ToString()))
+                                                       },
+                                         DestinationMediae = ForensicProcessDestinationMediae,
+                                         ReferenceHardDrives = selectedHardDrives,
+                                         ReferenceComputers = selectedComputers,
+                                     };
             ForensicProcessDestinationMediae.ToList().ForEach(dm => dm.SerialNumber = NewForensicProcess.ToString());
-
-
-
-
-
         }
 
 
-
-        private Create_DestinationMedia newDMSubForm = null;
+        private Create_DestinationMedia newDMSubForm;
 
         private void buttonAddDestinationMedia_Click(object sender, EventArgs e)
         {
-            this.newDMSubForm = new Create_DestinationMedia();
+            newDMSubForm = new Create_DestinationMedia();
             newDMSubForm.OnDataAvailable += AddDestinationMediaToList;
             newDMSubForm.FormClosed += UpdateFormEvent;
             newDMSubForm.Show();
@@ -191,19 +186,19 @@ namespace TrendWinForm
 
         private void AddDestinationMediaToList(object sender, EventArgs e)
         {
-            var newDestinationMedia = newDMSubForm.NewDestinationMedia;
+            DestinationMedia newDestinationMedia = newDMSubForm.NewDestinationMedia;
             ForensicProcessDestinationMediae.Add(newDestinationMedia);
-            EntitiesToListView.FillDestinationMediaListViewDetailView(ForensicProcessDestinationMediae, listViewDestinationMedia);
+            EntitiesToListView.FillDestinationMediaListViewDetailView(ForensicProcessDestinationMediae,
+                                                                      listViewDestinationMedia);
         }
 
         private void buttonDeleteDestinationMedia_Click(object sender, EventArgs e)
         {
-
         }
 
         private void AddEmployee_Click(object sender, EventArgs e)
         {
-            Create_Employee newEmployeeForm = new Create_Employee();
+            var newEmployeeForm = new Create_Employee();
             newEmployeeForm.FormClosed += UpdateFormEvent;
             newEmployeeForm.Show();
         }
@@ -234,15 +229,15 @@ namespace TrendWinForm
         }
 
 
-
-
         //Validation
         private void checkedListBoxAssociatedcomputers_Validating(object sender, CancelEventArgs e)
         {
             errorProvider.SetError(checkedListBoxAssociatedcomputers, string.Empty);
-            if (!(checkedListBoxAssociatedcomputers.CheckedItems.Count > 0) && !(checkedListBoxAssociatedhardDrives.CheckedItems.Count > 0))
+            if (!(checkedListBoxAssociatedcomputers.CheckedItems.Count > 0) &&
+                !(checkedListBoxAssociatedhardDrives.CheckedItems.Count > 0))
             {
-                errorProvider.SetError(labelAssociatedcomputers, "You must select something to associate with a Forensic Process.");
+                errorProvider.SetError(labelAssociatedcomputers,
+                                       "You must select something to associate with a Forensic Process.");
                 e.Cancel = true;
             }
         }
@@ -250,9 +245,11 @@ namespace TrendWinForm
         private void checkedListBoxAssociatedhardDrives_Validating(object sender, CancelEventArgs e)
         {
             errorProvider.SetError(checkedListBoxAssociatedhardDrives, string.Empty);
-            if (!(checkedListBoxAssociatedcomputers.CheckedItems.Count > 0) && !(checkedListBoxAssociatedhardDrives.CheckedItems.Count > 0))
+            if (!(checkedListBoxAssociatedcomputers.CheckedItems.Count > 0) &&
+                !(checkedListBoxAssociatedhardDrives.CheckedItems.Count > 0))
             {
-                errorProvider.SetError(labelAssociatedHardDrives, "You must select something to associate with a Forensic Process.");
+                errorProvider.SetError(labelAssociatedHardDrives,
+                                       "You must select something to associate with a Forensic Process.");
                 e.Cancel = true;
             }
         }
@@ -338,7 +335,8 @@ namespace TrendWinForm
             errorProvider.SetError(textBoxCollectionLocation, string.Empty);
             if (textBoxCollectionLocation.Text == "")
             {
-                errorProvider.SetError(textBoxCollectionLocation, "A location is required, or 'unknown' must be specified.");
+                errorProvider.SetError(textBoxCollectionLocation,
+                                       "A location is required, or 'unknown' must be specified.");
                 e.Cancel = true;
             }
         }

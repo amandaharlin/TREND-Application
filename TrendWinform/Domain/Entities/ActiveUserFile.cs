@@ -15,6 +15,7 @@ namespace TrendWinForm.Domain.Entities
        public virtual decimal MemoryUsage { get; set; }
        public virtual decimal CpuUsage { get; set; }
        public virtual CdfInfo CdfInfo { get; set; }
+       public virtual string FileType{ get; set; }
        //active user file list + cdfinfo
     }
 }

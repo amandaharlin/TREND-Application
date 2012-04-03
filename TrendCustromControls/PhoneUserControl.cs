@@ -1,18 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace TrendCustromControls
 {
     public partial class PhoneUserControl : UserControl
     {
-
-
         public string Type
         {
             get { return cmbboxPhoneType.SelectedValue.ToString(); }
@@ -70,8 +63,6 @@ namespace TrendCustromControls
         }
 
 
-
-
         private void PopulateTypeCombobox()
         {
             var types = new Dictionary<string, string>();
@@ -84,32 +75,27 @@ namespace TrendCustromControls
             cmbboxPhoneType.DataSource = new BindingSource(types, null);
             cmbboxPhoneType.DisplayMember = "Value";
             cmbboxPhoneType.ValueMember = "Key";
-
         }
-
 
 
         private void ueTxtAny_Enter(object sender, EventArgs e)
         {
             //This method will prevent the cursor from being positioned in the middle 
             //of a textbox when the user clicks in it.
-            MaskedTextBox textBox = sender as MaskedTextBox;
+            var textBox = sender as MaskedTextBox;
 
             if (textBox != null)
             {
-                this.BeginInvoke((MethodInvoker)delegate()
-                {
-                    int pos = textBox.SelectionStart;
+                BeginInvoke((MethodInvoker) delegate
+                                                {
+                                                    int pos = textBox.SelectionStart;
 
-                    if (pos > textBox.Text.Length)
-                        pos = textBox.Text.Length;
+                                                    if (pos > textBox.Text.Length)
+                                                        pos = textBox.Text.Length;
 
-                    textBox.Select(pos, 0);
-                });
+                                                    textBox.Select(pos, 0);
+                                                });
             }
         }
-
-
-
     }
 }

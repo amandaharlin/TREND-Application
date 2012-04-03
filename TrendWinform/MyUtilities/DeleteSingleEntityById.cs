@@ -1,20 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using NHibernate;
 using TrendWinForm.Domain.Entities;
 
 namespace TrendWinForm.MyUtilities
 {
-    class DeleteSingleEntityById
+    internal class DeleteSingleEntityById
     {
         public static void DeleteActiveUserFileById(Guid aufId)
         {
             ActiveUserFile auf;
-            var factory = SessionConfig.SessionFactory;
-            using (var session = factory.OpenSession())
+            ISessionFactory factory = SessionConfig.SessionFactory;
+            using (ISession session = factory.OpenSession())
             {
-                using (var transaction = session.BeginTransaction())
+                using (ITransaction transaction = session.BeginTransaction())
                 {
                     auf = session.Get<ActiveUserFile>(aufId);
                     if (auf != null)
@@ -24,7 +22,6 @@ namespace TrendWinForm.MyUtilities
                     transaction.Commit();
                 }
             }
-            
         }
     }
 }
