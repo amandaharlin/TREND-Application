@@ -63,6 +63,7 @@
             this.Label22 = new System.Windows.Forms.Label();
             this.Label23 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.buttonAddServerType = new System.Windows.Forms.Button();
             this.AddEmployee = new System.Windows.Forms.Button();
             this.comboBoxShutDownBy = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -93,7 +94,6 @@
             this.listViewCreateComputerRaid = new System.Windows.Forms.ListView();
             this.AddEmployee2 = new System.Windows.Forms.Button();
             this.comboBoxCdfInfoTech = new System.Windows.Forms.ComboBox();
-            this.buttonAddServerType = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -360,6 +360,7 @@
             this.comboBoxType.Name = "comboBoxType";
             this.comboBoxType.Size = new System.Drawing.Size(196, 21);
             this.comboBoxType.TabIndex = 177;
+            this.comboBoxType.SelectedIndexChanged += new System.EventHandler(this.comboBoxType_SelectedIndexChanged);
             this.comboBoxType.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxType_Validating);
             // 
             // labelType
@@ -483,6 +484,18 @@
             this.panel4.Size = new System.Drawing.Size(574, 107);
             this.panel4.TabIndex = 175;
             // 
+            // buttonAddServerType
+            // 
+            this.buttonAddServerType.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonAddServerType.BackgroundImage")));
+            this.buttonAddServerType.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.buttonAddServerType.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonAddServerType.Location = new System.Drawing.Point(351, 76);
+            this.buttonAddServerType.Name = "buttonAddServerType";
+            this.buttonAddServerType.Size = new System.Drawing.Size(24, 24);
+            this.buttonAddServerType.TabIndex = 196;
+            this.buttonAddServerType.UseVisualStyleBackColor = true;
+            this.buttonAddServerType.Click += new System.EventHandler(this.buttonAddServerType_Click);
+            // 
             // AddEmployee
             // 
             this.AddEmployee.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddEmployee.BackgroundImage")));
@@ -554,7 +567,6 @@
             this.checkBoxSystemWasServer.TabIndex = 191;
             this.checkBoxSystemWasServer.Text = "The System Was  A Server";
             this.checkBoxSystemWasServer.UseVisualStyleBackColor = true;
-            this.checkBoxSystemWasServer.CheckedChanged += new System.EventHandler(this.checkBoxSystemWasServer_CheckedChanged);
             // 
             // checkBoxSystemWasPoweredOn
             // 
@@ -786,18 +798,6 @@
             this.comboBoxCdfInfoTech.Size = new System.Drawing.Size(152, 21);
             this.comboBoxCdfInfoTech.TabIndex = 198;
             this.comboBoxCdfInfoTech.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxCdfInfoTech_Validating);
-            // 
-            // buttonAddServerType
-            // 
-            this.buttonAddServerType.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonAddServerType.BackgroundImage")));
-            this.buttonAddServerType.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonAddServerType.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonAddServerType.Location = new System.Drawing.Point(351, 76);
-            this.buttonAddServerType.Name = "buttonAddServerType";
-            this.buttonAddServerType.Size = new System.Drawing.Size(24, 24);
-            this.buttonAddServerType.TabIndex = 196;
-            this.buttonAddServerType.UseVisualStyleBackColor = true;
-            this.buttonAddServerType.Click += new System.EventHandler(this.buttonAddServerType_Click);
             // 
             // Create_Computer
             // 

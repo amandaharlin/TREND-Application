@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using TrendWinForm.Domain.Entities;
-using TrendWinForm.MyUtilities;
 using TrendWinForm.Domain.ValueObjects;
-using System.Text.RegularExpressions;
+using TrendWinForm.MyUtilities;
 
 namespace TrendWinForm
 {
@@ -18,30 +15,29 @@ namespace TrendWinForm
         public HardDrive NewHardDrive { get; set; }
 
 
-        private UtilityListFormHelper addMakeHelper;
-        private UtilityListFormHelper addModelHelper;
+        private readonly UtilityListFormHelper addMakeHelper;
+        private readonly UtilityListFormHelper addModelHelper;
 
-        private int GlobalJumperValue = 0;
-        private JumperDiagram jumperDiagram = new JumperDiagram()
-        {
-            Jumper_0 = 0,
-            Jumper_1 = 0,
-            Jumper_2 = 0,
-            Jumper_3 = 0,
-            Jumper_4 = 0,
-            Jumper_5 = 0,
-            Jumper_6 = 0,
-            Jumper_7 = 0,
-            Jumper_8 = 0,
-            Jumper_9 = 0
-        };
+        private int GlobalJumperValue;
 
+        private readonly JumperDiagram jumperDiagram = new JumperDiagram
+                                                           {
+                                                               Jumper_0 = 0,
+                                                               Jumper_1 = 0,
+                                                               Jumper_2 = 0,
+                                                               Jumper_3 = 0,
+                                                               Jumper_4 = 0,
+                                                               Jumper_5 = 0,
+                                                               Jumper_6 = 0,
+                                                               Jumper_7 = 0,
+                                                               Jumper_8 = 0,
+                                                               Jumper_9 = 0
+                                                           };
 
 
         public Create_HardDrive()
         {
             InitializeComponent();
-
 
 
             addMakeHelper = new UtilityListFormHelper("Hard_Drive_Make", comboBoxHDMake);
@@ -59,7 +55,6 @@ namespace TrendWinForm
             RadioButtonListUtilities.SelectFirstRadioInGroup(groupBoxDriveInterface);
             RadioButtonListUtilities.SelectFirstRadioInGroup(groupBoxDrivePostitionAsInstalled);
             RadioButtonListUtilities.SelectFirstRadioInGroup(groupBoxJumperSettings);
-
         }
 
         private void PopulateFormComboBoxes()
@@ -80,19 +75,16 @@ namespace TrendWinForm
 
         private void AddEmployee_Click(object sender, EventArgs e)
         {
-            Create_Employee newEmployeeForm = new Create_Employee();
-            newEmployeeForm.FormClosed += this.UpdateFormEvent;
+            var newEmployeeForm = new Create_Employee();
+            newEmployeeForm.FormClosed += UpdateFormEvent;
             newEmployeeForm.Show();
         }
 
         private void UpdateFormEvent(object sender, EventArgs e)
         {
-
-            var comboBoxesList = UtilityQueries.ReturnDictionaryOfComboBoxes(this);
+            Dictionary<ComboBox, string> comboBoxesList = UtilityQueries.ReturnDictionaryOfComboBoxes(this);
             PopulateFormComboBoxes();
             comboBoxesList.ToList().ForEach(c => { c.Key.SelectedIndex = c.Key.FindStringExact(c.Value); });
-
-
         }
 
         public override void OnSave(EventArgs e)
@@ -102,28 +94,32 @@ namespace TrendWinForm
 
         private void MakeHardDrive()
         {
-            NewHardDrive = new HardDrive()
+            NewHardDrive = new HardDrive
                                {
                                    //hard drive information
                                    Make = comboBoxHDMake.Text,
                                    Model = comboBoxHDModel.Text,
                                    Type = comboBoxHDType.Text,
                                    Serial = textBoxSerialNum.Text,
-                                   SizeInKilobytes = Convert.ToDecimal(textBoxSize.Text),
-                                   DriveInterface = RadioButtonListUtilities.ExtractTextFromRadioButtonGroup(groupBoxDriveInterface),
-                                   DrivePosition = RadioButtonListUtilities.ExtractTextFromRadioButtonGroup(groupBoxDrivePostitionAsInstalled),
-                                   JumperSetting = RadioButtonListUtilities.ExtractTextFromRadioButtonGroup(groupBoxJumperSettings),
+                                   SizeInGB = Convert.ToDecimal(textBoxSize.Text),
+                                   DriveInterface =
+                                       RadioButtonListUtilities.ExtractTextFromRadioButtonGroup(groupBoxDriveInterface),
+                                   DrivePosition =
+                                       RadioButtonListUtilities.ExtractTextFromRadioButtonGroup(
+                                           groupBoxDrivePostitionAsInstalled),
+                                   JumperSetting =
+                                       RadioButtonListUtilities.ExtractTextFromRadioButtonGroup(groupBoxJumperSettings),
                                    JumperDiagram = jumperDiagram,
-                                   CDFInfo = new CdfInfo()
+                                   CDFInfo = new CdfInfo
                                                  {
                                                      IsFinishDate = true,
                                                      Cdfdate = dateTimePickerCDFDate.Value,
-                                                     TechExaminer = SelectSingleEntityById.SelectEmployeeById(new Guid(comboBoxCdfInfoTech.SelectedValue.ToString())),
-
+                                                     TechExaminer =
+                                                         SelectSingleEntityById.SelectEmployeeById(
+                                                             new Guid(comboBoxCdfInfoTech.SelectedValue.ToString())),
                                                  }
                                };
         }
-
 
 
         private void buttonAddMake_Click(object sender, EventArgs e)
@@ -198,7 +194,6 @@ namespace TrendWinForm
         }
 
 
-
         private void buttonClearJumperSettings_Click(object sender, EventArgs e)
         {
             jumperDiagram.Jumper_0 = 0;
@@ -221,7 +216,6 @@ namespace TrendWinForm
             jumperPosition7.BackColor = Color.White;
             jumperPosition8.BackColor = Color.White;
             jumperPosition9.BackColor = Color.White;
-
         }
 
         //Jumper stuff
@@ -258,7 +252,6 @@ namespace TrendWinForm
         private void jumperPosition6_Click(object sender, EventArgs e)
         {
             setButtonColorAndJumperValue(jumperPosition6);
-
         }
 
         private void jumperPosition7_Click(object sender, EventArgs e)
@@ -281,7 +274,6 @@ namespace TrendWinForm
         {
             switch (GlobalJumperValue)
             {
-
                 case 1:
                     jumper.BackColor = Color.Lime;
                     break;
@@ -338,8 +330,6 @@ namespace TrendWinForm
                     MessageBox.Show("Jumper diagram error");
                     break;
             }
-
-
         }
 
         private void radioButtonGreenJumper_CheckedChanged(object sender, EventArgs e)
@@ -374,7 +364,6 @@ namespace TrendWinForm
 
         private void changeGlobalJumperValueAndIlluminateRadio(RadioButton radio)
         {
-
             resetRadioBackcolors();
             switch (radio.Name)
             {
@@ -493,11 +482,6 @@ namespace TrendWinForm
                 textBoxDrivePositionOther.Enabled = false;
             }
         }
-
-
-
-
-
     }
 }
 

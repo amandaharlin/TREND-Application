@@ -1,22 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using NHibernate;
 using TrendWinForm.Domain.Entities;
 
 namespace TrendWinForm.MyUtilities
 {
-    class SelectSingleEntityById
+    internal class SelectSingleEntityById
     {
         public static Firm SelectFirmById(Guid firmId)
         {
-
             Firm firm;
 
-            var factory = SessionConfig.SessionFactory;
-            using (var session = factory.OpenSession())
+            ISessionFactory factory = SessionConfig.SessionFactory;
+            using (ISession session = factory.OpenSession())
             {
-                using (var transaction = session.BeginTransaction())
+                using (ITransaction transaction = session.BeginTransaction())
                 {
                     firm = session.Get<Firm>(firmId);
                     transaction.Commit();
@@ -30,12 +27,12 @@ namespace TrendWinForm.MyUtilities
         public static FirmContact SelectFirmContactById(Guid requesterId)
         {
             FirmContact firmContact;
-            var factory = SessionConfig.SessionFactory;
-            using (var session = factory.OpenSession())
+            ISessionFactory factory = SessionConfig.SessionFactory;
+            using (ISession session = factory.OpenSession())
             {
-                using (var transaction = session.BeginTransaction())
+                using (ITransaction transaction = session.BeginTransaction())
                 {
-                    firmContact =  session.Get<FirmContact>(requesterId);
+                    firmContact = session.Get<FirmContact>(requesterId);
                     transaction.Commit();
                 }
             }
@@ -46,12 +43,12 @@ namespace TrendWinForm.MyUtilities
         public static Employee SelectEmployeeById(Guid employeeId)
         {
             Employee employee;
-            var factory = SessionConfig.SessionFactory;
-            using (var session = factory.OpenSession())
+            ISessionFactory factory = SessionConfig.SessionFactory;
+            using (ISession session = factory.OpenSession())
             {
-                using (var transaction = session.BeginTransaction())
+                using (ITransaction transaction = session.BeginTransaction())
                 {
-                    employee =  session.Get<Employee>(employeeId);
+                    employee = session.Get<Employee>(employeeId);
                     transaction.Commit();
                 }
             }
@@ -60,5 +57,20 @@ namespace TrendWinForm.MyUtilities
             return employee;
         }
 
+
+        public static ActiveUserFile SelectActiveUserFileById(Guid aufId)
+        {
+            ActiveUserFile auf;
+            ISessionFactory factory = SessionConfig.SessionFactory;
+            using (ISession session = factory.OpenSession())
+            {
+                using (ITransaction transaction = session.BeginTransaction())
+                {
+                    auf = session.Get<ActiveUserFile>(aufId);
+                    transaction.Commit();
+                }
+            }
+            return auf;
+        }
     }
 }

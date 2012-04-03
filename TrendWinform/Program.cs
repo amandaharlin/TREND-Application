@@ -18,8 +18,7 @@ namespace TrendWinForm
             SessionConfig.BeginNhProfiler();
             //SessionConfig.CreateDatabaseFromMappings();
 
-            
-            
+            SessionConfig.UpdateDatabaseFromMapping();
 
             //Form Setup
             Application.EnableVisualStyles();

@@ -16,7 +16,7 @@ namespace TrendWinForm.FluentMappings
             Map(x => x.Notes).Length(100000);
             Map(x => x.Conclusion).Length(100000);
             References(x => x.CdfInfo).Cascade.All().Not.LazyLoad();
-            References(x => x.ReferenceCase).Not.LazyLoad();
+            References(x => x.ReferenceCase).Cascade.All().Not.LazyLoad();
         }
     }
 }

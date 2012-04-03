@@ -1,0 +1,88 @@
+﻿<RecentFiles>
+  <RecentFiles>
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:UserContolToValueObject.cs" caret="419" fromTop="10" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_FirmContact.cs" caret="4791" fromTop="36" />
+<<<<<<< HEAD
+=======
+    <File id="80409D15-50E7-4E47-B7E7-0368E4305EA3/f:PhoneUserControl.cs" caret="1193" fromTop="13" />
+>>>>>>> f85ae81b4865abdcb1b317a05792b89bd4003381
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_ForensicProcess.Designer.cs" caret="25342" fromTop="12" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_BaseForm.cs" caret="951" fromTop="30" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:TrendDataSet.xsd" caret="2712" fromTop="16" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:TrendDataSet.Designer.cs" caret="435" fromTop="11" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:Entities/f:HardDrive.cs" caret="0" fromTop="0" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_HardDrive.cs" caret="3787" fromTop="22" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_DestinationMedia.Designer.cs" caret="0" fromTop="0" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:Domain/d:Entities/f:DestinationMedia.cs" caret="376" fromTop="12" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_DestinationMedia.cs" caret="5728" fromTop="18" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_ActiveUserFile.Designer.cs" caret="13105" fromTop="21" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:EntitiesToComboBox.cs" caret="329" fromTop="12" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_ForensicProcess.cs" caret="4669" fromTop="10" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.Designer.cs" caret="209963" fromTop="21" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Computer.cs" caret="11709" fromTop="33" />
+<<<<<<< HEAD
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:ListViewToDetailsFields.cs" caret="3983" fromTop="21" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:FluentMappings/f:HardDriveMap.cs" caret="850" fromTop="25" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Program.cs" caret="429" fromTop="18" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:FluentMappings/f:NotesAndConclusionMap.cs" caret="668" fromTop="22" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:View_CaseBrowser.cs" caret="6688" fromTop="25" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_ActiveUserFile.cs" caret="2692" fromTop="44" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:FluentMappings/f:ActiveUserFileMap.cs" caret="675" fromTop="26" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:FluentMappings/f:ComputerMap.cs" caret="1484" fromTop="29" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="23874" fromTop="36" />
+    <File id="E0095A5C-A1BD-4430-8D3B-476BE410A9D9/f:DeleteSingleEntityById.cs" caret="88" fromTop="3" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:SelectSingleEntityById.cs" caret="656" fromTop="25" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:FluentMappings/f:CaseMap.cs" caret="443" fromTop="16" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:EntitiesToListView.cs" caret="11889" fromTop="27" />
+=======
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:SelectSingleEntityById.cs" caret="1713" fromTop="57" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:ListViewToDetailsFields.cs" caret="3983" fromTop="21" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_ActiveUserFile.cs" caret="2692" fromTop="44" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:EntitiesToListView.cs" caret="15128" fromTop="22" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:FluentMappings/f:HardDriveMap.cs" caret="850" fromTop="25" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="25276" fromTop="18" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:FluentMappings/f:ActiveUserFileMap.cs" caret="661" fromTop="26" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:FluentMappings/f:ComputerMap.cs" caret="1484" fromTop="29" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:FluentMappings/f:CaseMap.cs" caret="479" fromTop="17" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Program.cs" caret="429" fromTop="18" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:FluentMappings/f:NotesAndConclusionMap.cs" caret="668" fromTop="22" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:View_CaseBrowser.cs" caret="6688" fromTop="25" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:DeleteSingleEntityById.cs" caret="178" fromTop="8" />
+>>>>>>> f85ae81b4865abdcb1b317a05792b89bd4003381
+  </RecentFiles>
+  <RecentEdits>
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_ActiveUserFile.cs" caret="1293" fromTop="20" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="26535" fromTop="20" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="26535" fromTop="15" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="26535" fromTop="22" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="26535" fromTop="33" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="26535" fromTop="21" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:SelectSingleEntityById.cs" caret="2262" fromTop="44" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:SelectSingleEntityById.cs" caret="2237" fromTop="34" />
+<<<<<<< HEAD
+=======
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:DeleteSingleEntityById.cs" caret="235" fromTop="10" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:DeleteSingleEntityById.cs" caret="818" fromTop="22" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:DeleteSingleEntityById.cs" caret="727" fromTop="22" />
+>>>>>>> f85ae81b4865abdcb1b317a05792b89bd4003381
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="26535" fromTop="26" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="26535" fromTop="32" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="25982" fromTop="32" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="26101" fromTop="35" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_ActiveUserFile.cs" caret="2230" fromTop="38" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="25856" fromTop="28" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="25856" fromTop="28" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="25856" fromTop="38" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="25856" fromTop="35" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:MyUtilities/f:EntitiesToListView.cs" caret="15165" fromTop="35" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="25856" fromTop="28" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="25856" fromTop="41" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="25471" fromTop="27" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="25768" fromTop="33" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="25856" fromTop="37" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Create_Case.cs" caret="25199" fromTop="17" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:FluentMappings/f:ActiveUserFileMap.cs" caret="551" fromTop="18" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/d:FluentMappings/f:NotesAndConclusionMap.cs" caret="629" fromTop="18" />
+    <File id="2ABDB8CC-D252-4AD4-AD2B-969E7EA28B24/f:Program.cs" caret="429" fromTop="18" />
+  </RecentEdits>
+</RecentFiles>
