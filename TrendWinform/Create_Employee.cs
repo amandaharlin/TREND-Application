@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using TrendWinForm.Domain;
+using NHibernate;
 using TrendWinForm.Domain.Entities;
 using TrendWinForm.Domain.ValueObjects;
 using TrendWinForm.MyUtilities;
@@ -18,61 +12,50 @@ namespace TrendWinForm
         public Create_Employee()
         {
             InitializeComponent();
-
         }
 
 
         private void employeeBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            this.Validate();
-            this.employeeBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.trendDataSet);
-
+            Validate();
+            employeeBindingSource.EndEdit();
+            tableAdapterManager.UpdateAll(trendDataSet);
         }
 
         private void Create_Employee_Load(object sender, EventArgs e)
         {
-
             // TODO: This line of code loads data into the 'trendDataSet.Employee' table. You can move, or remove it, as needed.
-            this.employeeTableAdapter.Fill(this.trendDataSet.Employee);
-            for (int i = 0; i < this.Controls.Count; i++)
+            employeeTableAdapter.Fill(trendDataSet.Employee);
+            for (int i = 0; i < Controls.Count; i++)
             {
-
-                if (this.Controls[i] is TextBox)
+                if (Controls[i] is TextBox)
                 {
-
-                    this.Controls[i].Text = "";
-
+                    Controls[i].Text = "";
                 }
-
             }
-            Random random = new Random();
+            var random = new Random();
             int randomNumber = random.Next(0, 10000);
 
-
             employeeNumberTextBox.Text = randomNumber.ToString();
-
         }
 
         public override void OnSave(EventArgs e)
         {
-
             SaveEmployee();
         }
 
 
-
         private void SaveEmployee()
         {
-            var factory = SessionConfig.SessionFactory;
-            using (var session = factory.OpenSession())
+            ISessionFactory factory = SessionConfig.SessionFactory;
+            using (ISession session = factory.OpenSession())
             {
-                using (var transaction = session.BeginTransaction())
+                using (ITransaction transaction = session.BeginTransaction())
                 {
                     PhoneNumber _number = UserContolToValueObject.ReturnPhoneNumber(phoneUserControl1);
                     Name _name = UserContolToValueObject.ReturnName(nameUserControl1);
 
-                    var newEmployee = new Employee()
+                    var newEmployee = new Employee
                                           {
                                               EmployeeNumber = int.Parse(employeeNumberTextBox.Text),
                                               EmployeeTitle = employeeTitleTextBox.Text,
@@ -87,7 +70,6 @@ namespace TrendWinForm
 
         private void nameUserControl1_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

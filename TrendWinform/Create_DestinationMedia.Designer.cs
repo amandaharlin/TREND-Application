@@ -30,32 +30,32 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Create_DestinationMedia));
             this.panel11 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.comboBoxBrandOutput = new System.Windows.Forms.ComboBox();
+            this.buttonAddBrandType = new System.Windows.Forms.Button();
+            this.pictureBox_DestinationMedia = new System.Windows.Forms.PictureBox();
             this.comboBoxDestinationMedia = new System.Windows.Forms.ComboBox();
             this.textBoxSerialNumber = new System.Windows.Forms.TextBox();
             this.labelDestinationMediaSeroalNum = new System.Windows.Forms.Label();
             this.textBoxSizeOutput = new System.Windows.Forms.TextBox();
             this.labelDestinationMediaSize = new System.Windows.Forms.Label();
-            this.textBoxBrandOutput = new System.Windows.Forms.TextBox();
             this.labelDestinationMediaBrand = new System.Windows.Forms.Label();
             this.labelDestinationMedia = new System.Windows.Forms.Label();
             this.labelDestinationMediaInfo = new System.Windows.Forms.Label();
-            this.buttonAddBrandType = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.panel11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_DestinationMedia)).BeginInit();
             this.SuspendLayout();
             // 
             // panel11
             // 
+            this.panel11.Controls.Add(this.comboBoxBrandOutput);
             this.panel11.Controls.Add(this.buttonAddBrandType);
-            this.panel11.Controls.Add(this.pictureBox1);
+            this.panel11.Controls.Add(this.pictureBox_DestinationMedia);
             this.panel11.Controls.Add(this.comboBoxDestinationMedia);
             this.panel11.Controls.Add(this.textBoxSerialNumber);
             this.panel11.Controls.Add(this.labelDestinationMediaSeroalNum);
             this.panel11.Controls.Add(this.textBoxSizeOutput);
             this.panel11.Controls.Add(this.labelDestinationMediaSize);
-            this.panel11.Controls.Add(this.textBoxBrandOutput);
             this.panel11.Controls.Add(this.labelDestinationMediaBrand);
             this.panel11.Controls.Add(this.labelDestinationMedia);
             this.panel11.Controls.Add(this.labelDestinationMediaInfo);
@@ -64,13 +64,35 @@
             this.panel11.Size = new System.Drawing.Size(566, 141);
             this.panel11.TabIndex = 208;
             // 
-            // pictureBox1
+            // comboBoxBrandOutput
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(444, 37);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(105, 92);
-            this.pictureBox1.TabIndex = 212;
-            this.pictureBox1.TabStop = false;
+            this.comboBoxBrandOutput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBrandOutput.FormattingEnabled = true;
+            this.comboBoxBrandOutput.Location = new System.Drawing.Point(108, 61);
+            this.comboBoxBrandOutput.Name = "comboBoxBrandOutput";
+            this.comboBoxBrandOutput.Size = new System.Drawing.Size(270, 21);
+            this.comboBoxBrandOutput.TabIndex = 214;
+            this.comboBoxBrandOutput.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxBrandOutput_Validating);
+            // 
+            // buttonAddBrandType
+            // 
+            this.buttonAddBrandType.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonAddBrandType.BackgroundImage")));
+            this.buttonAddBrandType.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.buttonAddBrandType.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonAddBrandType.Location = new System.Drawing.Point(384, 59);
+            this.buttonAddBrandType.Name = "buttonAddBrandType";
+            this.buttonAddBrandType.Size = new System.Drawing.Size(24, 24);
+            this.buttonAddBrandType.TabIndex = 213;
+            this.buttonAddBrandType.UseVisualStyleBackColor = true;
+            this.buttonAddBrandType.Click += new System.EventHandler(this.buttonAddBrand_Click);
+            // 
+            // pictureBox_DestinationMedia
+            // 
+            this.pictureBox_DestinationMedia.Location = new System.Drawing.Point(431, 7);
+            this.pictureBox_DestinationMedia.Name = "pictureBox_DestinationMedia";
+            this.pictureBox_DestinationMedia.Size = new System.Drawing.Size(128, 128);
+            this.pictureBox_DestinationMedia.TabIndex = 212;
+            this.pictureBox_DestinationMedia.TabStop = false;
             // 
             // comboBoxDestinationMedia
             // 
@@ -78,14 +100,16 @@
             this.comboBoxDestinationMedia.FormattingEnabled = true;
             this.comboBoxDestinationMedia.Location = new System.Drawing.Point(107, 37);
             this.comboBoxDestinationMedia.Name = "comboBoxDestinationMedia";
-            this.comboBoxDestinationMedia.Size = new System.Drawing.Size(331, 21);
+            this.comboBoxDestinationMedia.Size = new System.Drawing.Size(301, 21);
             this.comboBoxDestinationMedia.TabIndex = 201;
+            this.comboBoxDestinationMedia.SelectedIndexChanged += new System.EventHandler(this.comboBoxDestinationMedia_SelectedIndexChanged);
+            this.comboBoxDestinationMedia.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxDestinationMedia_Validating);
             // 
             // textBoxSerialNumber
             // 
             this.textBoxSerialNumber.Location = new System.Drawing.Point(107, 109);
             this.textBoxSerialNumber.Name = "textBoxSerialNumber";
-            this.textBoxSerialNumber.Size = new System.Drawing.Size(331, 20);
+            this.textBoxSerialNumber.Size = new System.Drawing.Size(301, 20);
             this.textBoxSerialNumber.TabIndex = 204;
             // 
             // labelDestinationMediaSeroalNum
@@ -101,7 +125,7 @@
             // 
             this.textBoxSizeOutput.Location = new System.Drawing.Point(107, 84);
             this.textBoxSizeOutput.Name = "textBoxSizeOutput";
-            this.textBoxSizeOutput.Size = new System.Drawing.Size(331, 20);
+            this.textBoxSizeOutput.Size = new System.Drawing.Size(301, 20);
             this.textBoxSizeOutput.TabIndex = 203;
             this.textBoxSizeOutput.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxSizeOutput_Validating);
             // 
@@ -110,16 +134,9 @@
             this.labelDestinationMediaSize.AutoSize = true;
             this.labelDestinationMediaSize.Location = new System.Drawing.Point(6, 90);
             this.labelDestinationMediaSize.Name = "labelDestinationMediaSize";
-            this.labelDestinationMediaSize.Size = new System.Drawing.Size(27, 13);
+            this.labelDestinationMediaSize.Size = new System.Drawing.Size(51, 13);
             this.labelDestinationMediaSize.TabIndex = 203;
-            this.labelDestinationMediaSize.Text = "Size";
-            // 
-            // textBoxBrandOutput
-            // 
-            this.textBoxBrandOutput.Location = new System.Drawing.Point(107, 60);
-            this.textBoxBrandOutput.Name = "textBoxBrandOutput";
-            this.textBoxBrandOutput.Size = new System.Drawing.Size(301, 20);
-            this.textBoxBrandOutput.TabIndex = 202;
+            this.labelDestinationMediaSize.Text = "Size (GB)";
             // 
             // labelDestinationMediaBrand
             // 
@@ -149,18 +166,6 @@
             this.labelDestinationMediaInfo.TabIndex = 198;
             this.labelDestinationMediaInfo.Text = "Destination Media Info";
             // 
-            // buttonAddBrandType
-            // 
-            this.buttonAddBrandType.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonAddBrandType.BackgroundImage")));
-            this.buttonAddBrandType.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonAddBrandType.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonAddBrandType.Location = new System.Drawing.Point(414, 59);
-            this.buttonAddBrandType.Name = "buttonAddBrandType";
-            this.buttonAddBrandType.Size = new System.Drawing.Size(24, 24);
-            this.buttonAddBrandType.TabIndex = 213;
-            this.buttonAddBrandType.UseVisualStyleBackColor = true;
-            this.buttonAddBrandType.Click += new System.EventHandler(this.buttonAddBrand_Click);
-            // 
             // Create_DestinationMedia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -173,7 +178,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_DestinationMedia)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -185,12 +190,12 @@
         private System.Windows.Forms.TextBox textBoxSerialNumber;
         private System.Windows.Forms.Label labelDestinationMediaSeroalNum;
         private System.Windows.Forms.Label labelDestinationMediaSize;
-        private System.Windows.Forms.TextBox textBoxBrandOutput;
         private System.Windows.Forms.Label labelDestinationMediaBrand;
         private System.Windows.Forms.Label labelDestinationMedia;
         private System.Windows.Forms.Label labelDestinationMediaInfo;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox_DestinationMedia;
         private System.Windows.Forms.TextBox textBoxSizeOutput;
         private System.Windows.Forms.Button buttonAddBrandType;
+        private System.Windows.Forms.ComboBox comboBoxBrandOutput;
     }
 }

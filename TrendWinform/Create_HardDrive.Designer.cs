@@ -209,9 +209,9 @@
             this.lblHardDriveSize.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblHardDriveSize.Location = new System.Drawing.Point(4, 125);
             this.lblHardDriveSize.Name = "lblHardDriveSize";
-            this.lblHardDriveSize.Size = new System.Drawing.Size(48, 13);
+            this.lblHardDriveSize.Size = new System.Drawing.Size(51, 13);
             this.lblHardDriveSize.TabIndex = 130;
-            this.lblHardDriveSize.Text = "Size (kb)";
+            this.lblHardDriveSize.Text = "Size (GB)";
             // 
             // textBoxSize
             // 
